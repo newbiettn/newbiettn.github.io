@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>newbiettn</title>
+    <description>the road goes on and on</description>
+    <link>http://127.0.0.1:4000</link>
+    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Likelihood ratio test</title>
+        <description>&lt;p&gt;The likelihood-ratio test is an alternative to $\chi^2$ test in order to assess the **goodness of fit**. It is straight-forward and easy to use.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Calculate $G = -2ln\bigg[\frac{likeli \, hood \, of \, the \, replacing \, model \, h_\theta^{(1)}}{likelihood \, of \, the \, existing \, model \, h_\theta^{(0)}}\bigg] = 2[loglikelihood \, of \, h_\theta^{(0)} – loglikelihood \, of \, h_\theta^{(1)}]$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;– Notice that $ln$ is removed by performing logarithm.&lt;/p&gt;
+
+&lt;p&gt;– The log-likelihood is usually outputted by R-language.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Because the distribution model of likelihood ratio test is nearly the same as $\chi^2$, it allows us to assign $G$-score to $\chi^2$-score.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;– Mathematically we have $G$-score = $\chi^2$-score&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find $p$ value based on $\chi^2$ statistic obtained.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Determine if $h_\theta^{(1)}$ is more statistically significant than $h_\theta^{(0)}$ based on obtained $p$ value and the statistical significance level $\alpha$ (usually $\alpha = 0.05$)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;&lt;strong&gt;Example&lt;/strong&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Suppose we try to fit a given dataset with two alternative models $h_\theta^{(1)}$ and $h_\theta^{(0)}$ where in $h_\theta^{(1)}$ we eliminated some predictors we reckon that they are not sensitive enough. Now we try to assess if the model $h_\theta^{(1)}$ is more statistically significant than the original model by using the likelihood ratio test.&lt;/p&gt;
+
+&lt;p&gt;Suppose $df = 1$.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Log-likelihood of&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;– $h_\theta^{(1)}$ is 53.6&lt;/p&gt;
+
+&lt;p&gt;– $h_\theta^{(0)}$ is 68.3&lt;/p&gt;
+
+&lt;p&gt;Therefore, we have $G = 2[68.3 – 53.6] = 29.31$&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\chi^2 = G = 29.31$&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find $p = P[\chi^2(df = 1) = 29.31]$ by using R&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+  pchisq(29.31, 1, lower.tail = FALSE)
+  [1] 6.167658e-08
+ &lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Because $p$-value « $\alpha = 0.05$, we can reject the null hypothesis $H_0$ that two models are not significant different, and accept the alternative hypothesis $H_a$ that $h_\theta^{(1)}$ fits better than $h_\theta^{(0)}$.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 09 Aug 2016 21:34:05 +1000</pubDate>
+        <link>http://127.0.0.1:4000/2016/08/likelihood-ratio-test/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/08/likelihood-ratio-test/</guid>
+      </item>
+    
+      <item>
+        <title>Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)</title>
+        <description>&lt;h3 id=&quot;maximum-a-posteriori-estimation-map&quot;&gt;Maximum a Posteriori Estimation (MAP)&lt;/h3&gt;
+
+&lt;p&gt;Generally, MAP is a particular extension of MLE where we take in account a biased assumption of data, called &lt;strong&gt;&lt;em&gt;prior knowledge&lt;/em&gt;&lt;/strong&gt;. Specifically Bayes’ theorem (or Bayes’ rule) allows us to incorporate prior probability as follows&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”]P(\theta&lt;/td&gt;
+      &lt;td&gt;D) = \frac{P(D&lt;/td&gt;
+      &lt;td&gt;\theta)P(\theta)}{P(D)}[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;li style=&quot;margin-left: 150px;&quot;&gt;
+  [latex]P(D|\theta)[/latex] is the likelihood
+&lt;/li&gt;
+&lt;li style=&quot;margin-left: 150px;&quot;&gt;
+  [latex]P(\theta)[/latex] is the prior probability
+&lt;/li&gt;
+&lt;li style=&quot;margin-left: 150px;&quot;&gt;
+  [latex]P(D)[/latex] is the marginal likelihood
+&lt;/li&gt;
+&lt;li style=&quot;margin-left: 150px;&quot;&gt;
+  [latex]P(\theta|D)[/latex] is the posteriori likelihood
+&lt;/li&gt;
+
+&lt;p&gt;The principle of MAP is to estimate [latex]\theta[/latex] that maximise the posteriori likelihood [latex]P(\theta)[/latex]. Thus,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”]\hat{\theta}_{MAP} = argmax\ \frac{P(D&lt;/td&gt;
+      &lt;td&gt;\theta)P(\theta)}{P(D)}[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notice that the denominator [latex]P(D)[/latex] is independent of [latex]\theta[/latex]. Therefore&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”]P(\theta&lt;/td&gt;
+      &lt;td&gt;D) \propto {P(D&lt;/td&gt;
+      &lt;td&gt;\theta)P(\theta)}[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] \Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D&lt;/td&gt;
+      &lt;td&gt;\theta)P(\theta)}[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By assuming attributes [latex]X_{1}, X_{2}, …, X_{n}[/latex] are independent of each other, we have&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center; font-size: 20px;&quot;&gt;
+  [latex display=&amp;#8221;true&amp;#8221;]\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)[/latex]
+&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+</description>
+        <pubDate>Sat, 05 Mar 2016 22:23:49 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
+      </item>
+    
+      <item>
+        <title>Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1)</title>
+        <description>&lt;p&gt;There are some notes with regards to three important concepts – Maximum Likelihood Estimation (MLE), Maximum a Posterior Estimation (MAP), and Naive Bayes (NB) – that I would like to put here in order to remind me in case necessary. I also can see that my note can be fruitful to anyone having a hard time in grasping these concepts, because we’re gonna unfold plot twists of them that confused me while learning in this writing.&lt;/p&gt;
+
+&lt;h3 id=&quot;maximum-likelihood-estimation-mle&quot;&gt;Maximum Likelihood Estimation (MLE)&lt;/h3&gt;
+
+&lt;h4 id=&quot;probability-vs-likelihood&quot;&gt;Probability vs Likelihood&lt;/h4&gt;
+
+&lt;p&gt;First of all, before diving deep, it is essentially important to understand differences between two terms “likelihood” and “probability”, at least for the given concept. Thank to &lt;a href=&quot;http://statgen.iop.kcl.ac.uk/bgim/mle/sslike_3.html&quot; target=&quot;_blank&quot;&gt;this article&lt;/a&gt;, we can have a good explanation as follows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Likelihood&lt;/strong&gt;: Observation of data -&amp;gt; Estimation of parameters &lt;strong&gt;(I)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Probability&lt;/strong&gt;: Knowing parameters  -&amp;gt; Prediction of outcome &lt;strong&gt;(II)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If it’s still unclear, take another orthogonal but obvious example that involves another estimation method, called Least Squares Estimation (LSE), which is more preferable than MLE in case the data is linear. The way LSE works is straightforward: to estimate unknown parameters [latex]\theta_{j}[/latex] of fitting hypothesis functions [latex] h_{\theta_{j}} (x)[/latex] for given a set of data by minimising the sum of squared errors. In &lt;strong&gt;Figure 1&lt;/strong&gt; we have a good illustration of this idea. In this example, by using linear regression, which is the method of least squares, we are able to &lt;em&gt;&lt;strong&gt;approximate&lt;/strong&gt;&lt;/em&gt; locally optimal values of parameters [latex]\theta_{0} = 3.5[/latex] and [latex]\theta_{1} = 1.4[/latex] for a linear function [latex] h_{\theta_{j}} (x) = \theta_{0} + \theta_{1}x[/latex]. By substituting values of [latex]\theta_{j}[/latex] we would have a particular hypothesis function [latex] h_{\theta_{j}} (x) = 3.5 + 1.4x[/latex] corresponding to the blue line in the figure. Now we can use the hypothesis function we have found to &lt;strong&gt;&lt;em&gt;predict&lt;/em&gt;&lt;/strong&gt; a new value [latex]y[/latex] for a given [latex]x[/latex]. Briefly we have two distinct steps as follows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Approximation&lt;/strong&gt;: Observation of data -&amp;gt; Estimation of parameters &lt;strong&gt;(I’)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Prediction&lt;/strong&gt;: Knowing parameters  -&amp;gt; Prediction of value &lt;strong&gt;(II’)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now if we roughly put steps &lt;strong&gt;I&lt;/strong&gt; and &lt;strong&gt;I’&lt;/strong&gt;, &lt;strong&gt;II&lt;/strong&gt; and &lt;strong&gt;II’&lt;/strong&gt; into comparison, we can see that they share common traits. Particularly the goal of steps &lt;strong&gt;I &lt;/strong&gt;and &lt;strong&gt;I’ &lt;/strong&gt;is to estimate [latex]\theta_{j}[/latex] that either best explains or best fits the data. In contrast, in both steps &lt;strong&gt;II &lt;/strong&gt;and &lt;strong&gt;II’, &lt;/strong&gt;the target is to predict either value or probability by using given parameters [latex]\theta_{j}[/latex].&lt;/p&gt;
+
+&lt;div id=&quot;attachment_334&quot; style=&quot;width: 310px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-334 size-medium&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-300x290.png&quot; alt=&quot;Figure 1 &quot; width=&quot;300&quot; height=&quot;290&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-300x290.png 300w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-768x742.png 768w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-1024x989.png 1024w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM.png 1474w&quot; sizes=&quot;(max-width: 300px) 100vw, 300px&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Figure 1 [Photo courtesy of Wikipedia]
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I know I was messing up a bit above when using an example of LSE to illustrate the differences between Probability and Likelihood. But that’s the thing I had not realised at first when I started to learn MLE. I was wondering why the hell we need to estimate a parameter [latex]\theta[/latex] for a given data [latex]D[/latex]. It did not make sense because I assumed we already have a data, we can estimate any probability with ease… It was only when I started to approach MLE from a perspective of LSE as I illustrated above, things turn to be more clear to me.&lt;/p&gt;
+
+&lt;h4 id=&quot;definition&quot;&gt;Definition&lt;/h4&gt;
+
+&lt;p&gt;As said, the ultimate purpose of MLE is to choose parameter [latex]\theta[/latex] that best explains observed data [latex]D[/latex]. In other words, MLE is a method to search in a space [latex]\Omega[/latex] to find a [latex]\theta[/latex] that maximise the probability of data [latex]D[/latex]. We can formulated MLE mathematically as follows.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true” size=”10″]\hat{\theta_{MLE}} = argmax \ P(D&lt;/td&gt;
+      &lt;td&gt;\theta) = argmax \ P(X_{1}, X_{2}, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta)[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Given that [latex]D[/latex] has [latex]n[/latex] attributes, we can obtain&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] P(D&lt;/td&gt;
+      &lt;td&gt;\theta) = P(X_{1}, X_{2}, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta) [/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By using &lt;a href=&quot;https://en.wikipedia.org/wiki/Chain_rule_(probability)&quot; target=&quot;_blank&quot;&gt;chain rule&lt;/a&gt;, we can also have&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”]P(X_{1}, X_{2}, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta) = P(X_{1}&lt;/td&gt;
+      &lt;td&gt;X_{2}, …, X_{n}, \theta) P(X_2, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta) [/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] = P(X_{1}&lt;/td&gt;
+      &lt;td&gt;X_{2}, …, X_{n}, \theta) P(X_{2}&lt;/td&gt;
+      &lt;td&gt;X_{3}, …, X_{n}, \theta) P(X_3, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta) [/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If repeat this process, we would obtain&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] P(D&lt;/td&gt;
+      &lt;td&gt;\theta) = P(X_{1}&lt;/td&gt;
+      &lt;td&gt;X_{2}, …, X_{n}, \theta) P(X_{2}&lt;/td&gt;
+      &lt;td&gt;X_{3}, …, X_{n},\theta)\ …\ P(X_{n-1}&lt;/td&gt;
+      &lt;td&gt;X_{n}, \theta) P(X_n&lt;/td&gt;
+      &lt;td&gt;\theta)[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;According to this equation, we can see there is an extremely big problem of computation complexity. Suppose [latex]X_{1}, X_{2}, …, X_{n}[/latex] and [latex]\theta[/latex] are boolean. Given [latex]P(X_{1}, X_{2}, …, X_{n}&lt;/td&gt;
+      &lt;td&gt;\theta)[/latex], we would need [latex]2(2^{n}-1) + 1[/latex] parameters to describe. In practice, it is common to work with a dataset of more than 100 attributes, if not thousands.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;To reduce the number of parameters, MLE, MAP as well as NB fundamentally rely on an assumption that attributes [latex]X_{1}, X_{2}, …, X_{n}[/latex] are independent of each other. By doing this, we can reduce a number of parameters to [latex]2n + 1[/latex]. Thus,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] P(D&lt;/td&gt;
+      &lt;td&gt;\theta) = P(X_{1}&lt;/td&gt;
+      &lt;td&gt;\theta) P(X_{2}&lt;/td&gt;
+      &lt;td&gt;\theta)\ …\ P(X_{n-1}&lt;/td&gt;
+      &lt;td&gt;\theta) P(X_n&lt;/td&gt;
+      &lt;td&gt;\theta)[/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[latex display=”true”] = \prod_{i=1}^n P(X_i&lt;/td&gt;
+      &lt;td&gt;\theta) [/latex]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Finally we have&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center; font-size: 20px;&quot;&gt;
+  [latex display=&amp;#8221;true&amp;#8221;]\hat{\theta_{MLE}} = argmax \prod_{i=1}^n P(X_i|\theta)[/latex]
+&lt;/p&gt;
+</description>
+        <pubDate>Fri, 04 Mar 2016 03:48:25 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
+      </item>
+    
+      <item>
+        <title>Conquer unhappiness</title>
+        <description>&lt;p&gt;Though the primitive purpose of my blog is to discuss issues in Computer Science, it’s always tempting to write something a bit off-the-topic. The subject matter I want to put in writing this time is about conquering happiness. Whilst the topic is very clique when we can easily stumble upon such topic in countless number of articles, in both tabloid and non-tabloid newspaper, I still think it is always of concern, particularly to programmers.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_322&quot; style=&quot;width: 283px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-322 size-medium&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg&quot; alt=&quot;12742178_1012662988810459_3355825262889709744_n&quot; width=&quot;273&quot; height=&quot;300&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg 273w, http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n.jpg 473w&quot; sizes=&quot;(max-width: 273px) 100vw, 273px&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    You can&amp;#8217;t confuse me
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As often, when being interviewed, people tend to portray a programmer or a computer scientist as a weird, non-sporty, untidy and super fatty/skinny person who is heavily addicted to computers, not to mention sugar drinks. They may also wonder how such sort of people can overcome depressions, or tragically, whether programmers are always in state of bad mood, and that’s why they eventually become so weird ?!&lt;/p&gt;
+
+&lt;p&gt;I cannot answer those questions but there is a story I want to tell. In my first year at VUB, besides being intrigued by new programming stuffs, it was both appealing and entertaining to me to meet up a group of second year Master students, called InfoGroup. They own a separate and ample room in a building. In that room, besides desktops and books, I could see a lot of snacks, beers, wines and of course sugar drinks. I still remember a skinny, curly hair guy who put a monitor on top of many Cokes cans, surrounding his working cubic was a mountain of snacks. Many of his friends, both sitting next and in front of him, also seemed so nerdy with countless lines of codes running on their screens. It was actually an interesting experience to me because it was the first time, I understood why people being so serious about programmers. It did not take me long to get used to those kinds of people, but until now, whenever I recall those moments, I always feel very funny.&lt;/p&gt;
+
+&lt;p&gt;Non-sporty, odd, snack addictive, etc. There are maybe more adjectives to depict a software programmers, but the truth is I never see myself being such kind of people, except the part that I am truly addictive to computers. However, the critical part I would like to emphasise is I always have weekly plans to clean up myself, both mentally and physically, through varied kinds of exercises. I also have to say that it is very hard to stick to the plan when there are thousands of bugs can silently sneak into any line of codes for which a developer has to sweatily burn his ass to write. None of developers want bugs, at least to me, but when bugs occur, it is often that I have to skip meals to fix. In such case, snacks and sugar drinks become more tempting, and sometimes unavoided.&lt;/p&gt;
+
+&lt;p&gt;Nonetheless, in my experience, using sugar and being active likely get me depressed and foggy. When I was in that state of mood, I can write no line of codes. I get easily get struck by minor bugs. My creativity is dead and more importantly, insomnia occurs more often. It is extremely difficult to stay upbeat during those moments. Unhappiness and loneliness creep into my heart, getting me feel bad at everything, including myself.&lt;/p&gt;
+
+&lt;p&gt;In order to stay upbeat, swimming, running and weight lifting has become the norm in my life style for approximately 5 years. Whilst running and weight lifting are suitable for gloomy days, swimming is always my first choice when days become warm and sunny. I always have positive feelings after every swimming session. My mind is refreshed and my flesh is toned up. Come back to nerdy guys in InfoGroup at VUB. In my second year when going to gym, I surprisingly saw a nerdy and skinny guy of InfoGroup signed up for a gym class. Many days later, I saw more members of that group went to the gym. It was once again surprisingly and entertaining to me when I saw such change. I have no clue about it but I was more happy to chit chat with them in gym class rather than in computer room.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Feb 2016 09:52:14 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/02/conquer-unhappiness/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/02/conquer-unhappiness/</guid>
+      </item>
+    
+      <item>
+        <title>Full-text search with Apache Lucene</title>
+        <description>&lt;p&gt;Apache Lucene is a de facto open source library targeting search and search- related tasks such as indexing or querying.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-lucene-indexes-documents-algorithmically&quot;&gt;1. How Lucene indexes documents algorithmically&lt;/h3&gt;
+
+&lt;p&gt;Lucene uses the &lt;em&gt;inverted index data structure&lt;/em&gt; to index documents. The indexing strategy of Lucene is different from others when it creates segments and merges them, rather than uses a single index. Typically, an index segment consists of a dictionary index, a term dictionary and a posting dictionary.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_256&quot; style=&quot;width: 610px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-256&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-1024x476.png&quot; alt=&quot;The index diagram with the merge factor b is 3&quot; width=&quot;600&quot; height=&quot;279&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-1024x476.png 1024w, http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-300x139.png 300w, http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-768x357.png 768w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    &lt;strong&gt;Figure 1:&lt;/strong&gt; The index diagram with the merge factor b is 3
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt; illustrates an example of an index, where the merge factor equals three. In the example, there are 14 documents in the collection. Lucene repeatedly creates a segment for a document and periodically merges a group of 3 documents. The process is similar when Lucene keeps merging a group of 3 segments until there is no more segment to merge. After merging, all greyed segments will be removed and in total, Lucene merged 5 times after the indexing finishes. The approach of merging and deleting segments is considerably useful as the document collection does not change frequently. More importantly, the segment will never be modified. Instead, Lucene creates new segments when the document collection changes and later, it merges segments into new ones and deletes the old segments. This strategy ensures there is no conflict between reading writing indexes. Furthermore, this strategy also allows Lucene to avoid complex B-trees to store segments. Instead, all segments will be stored in flat files.&lt;/p&gt;
+
+&lt;h3 id=&quot;extract-text-andindex&quot;&gt;2. Extract text and index&lt;/h3&gt;
+
+&lt;p&gt;Typically we can divide indexing documents into two distinct procedures, extracting text and creating index &lt;strong&gt;(Figure 2)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_272&quot; style=&quot;width: 410px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-272&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM-252x300.png&quot; alt=&quot;Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index&quot; width=&quot;400&quot; height=&quot;477&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM-252x300.png 252w, http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM.png 562w&quot; sizes=&quot;(max-width: 400px) 100vw, 400px&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    &lt;strong&gt;Figure 2&lt;/strong&gt;. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In extracting procedure, it is common to use a versatile parser that can extract textual contents from documents. One of widely known tools we can use to parse documents is &lt;a href=&quot;https://tika.apache.org&quot; target=&quot;_blank&quot;&gt;Apache Tika&lt;/a&gt;. When parsing completes, we will have an input stream that needs to be indexed. It is the second procedure of our index process – creating an index.&lt;/p&gt;
+
+&lt;p&gt;More often than not, we do not index everything we retrieve from the input stream. We instead need to apply &lt;strong&gt;analysis process&lt;/strong&gt; where we will discard unimportant terms from the textual content (e.g., punctuations, stopping words). In Lucene, the analysis process is handled by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Analyzer&lt;/span&gt; . The framework already provides handy and powerful analysers that we can use without customising in a majority of problems.&lt;/p&gt;
+
+&lt;p&gt;After analysing, the textual contents are ready to be indexed.&lt;/p&gt;
+
+&lt;h3 id=&quot;building-an-index&quot;&gt;&lt;strong&gt;3. Building an index&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;In this section, we will look at how we can create a new index and add documents to it.&lt;/p&gt;
+
+&lt;h4 id=&quot;constructan-index-writer&quot;&gt;3.1 Construct an index writer&lt;/h4&gt;
+
+&lt;p&gt;In Lucene, the index is created and maintained by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;IndexWriter&lt;/span&gt; . The IndexWriter constructors can be defined in various ways but most often we simply need to supply&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Directory d &lt;/span&gt;where the index will be stored&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;lang:java decode:true crayon-inline&quot;&gt;IndexWriterConfig conf&lt;/span&gt;  holds all the configuration that is used to construct an &lt;span class=&quot;lang:default decode:true crayon-inline&quot;&gt;IndexWriter&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the code below, we can see that I have define an instance of &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;IndexWriterConfig&lt;/span&gt;  with a specialised &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Analyzer&lt;/span&gt; . The purpose is I want to analyse documents in a particular way that suits my personal needs (e.g., I want to keep specific words that built-in analysers will certainly remove).&lt;/p&gt;
+
+&lt;p&gt;In the given code sample, we use &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;FSDirectory&lt;/span&gt; . There are other alternative solutions, such as &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;SimpleFSDirectory&lt;/span&gt; , &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;NIOFSDirectory&lt;/span&gt; .&lt;/p&gt;
+
+&lt;pre class=&quot;lang:java decode:true&quot; title=&quot;Construct an IndexWriter&quot;&gt;/**
+ * Create an Indexer using the given directory to store index files, and the
+ * directory need to be indexed.
+ * 
+ * */
+public Indexer(String anIndexDir, String aDataDir) {
+	// set place to store indexes
+	this.indexDir = anIndexDir;
+
+	// set directory has to be indexed
+	this.dataDir = aDataDir;
+
+	try {
+		// create Directory to store indexes, use FSDirectory.open
+		// to automatically pick the most suitable directory implementation
+		Directory dir = FSDirectory.open(new File(indexDir));
+
+		// create an instance of Analyzer with my own custom analyzer
+		analyzer = new MyCustomAnalyzer();
+
+		// create configuration for new IndexWriter
+		IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_46,
+				analyzer);
+
+		// create IndexWriter, which can create new index, or
+		// adds, removes, or updates documents in the index
+		// however, it can not read or search
+		this.writer = new IndexWriter(dir, conf);
+
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+&lt;/pre&gt;
+
+&lt;p&gt;####&lt;/p&gt;
+
+&lt;h4 id=&quot;modelling-document&quot;&gt;3.2 Modelling document&lt;/h4&gt;
+
+&lt;p&gt;In the framework textual content is modelled using the class &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Document&lt;/span&gt; . This class allows to model a document instance with numerous attributes where for every attribute we can also define using the class &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Field&lt;/span&gt; .&lt;/p&gt;
+
+&lt;p&gt;In the sample code below, I have define an &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Document&lt;/span&gt;  instance with a number of attributes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Document ID&lt;/strong&gt;: because in practice we may have thousands of documents, I have used base64 to generate unique IDs for documents. Notice that we supply the &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;StringField&lt;/span&gt;  constructor with the variable &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Field.Store.YES&lt;/span&gt; , which means the values of this attributes will be stored in index files. More importantly, we &lt;strong&gt;do not index &lt;/strong&gt;the &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;StringField&lt;/span&gt;  by default.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;File path&lt;/strong&gt;: will be stored&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Content field&lt;/strong&gt;: as you may think, we need to index the content field for further full-text search. However, we may or may not store it in the index files. It is a matter of choice. In this particular case, I choose to store the field.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;lang:java decode:true &quot;&gt;Document doc = new Document();
+
+// docId
+// generated by base64 of filepath
+String id = BaseEncoding.base64().encode(f.getCanonicalPath().getBytes(Charsets.US_ASCII));
+doc.add(new StringField(MyDocumentIndexedProperties.ID_FIELD, id,
+		Field.Store.YES));
+
+// filepath
+doc.add(new StringField(MyDocumentIndexedProperties.FILE_PATH_FIELD, f
+		.getCanonicalPath(), Field.Store.YES));
+
+// content field
+TokenStream ts = analyzer.tokenStream(
+		MyDocumentIndexedProperties.CONTENT_FIELD, new StringReader(
+				handler.toString()));
+Field contentField = new Field(
+		MyDocumentIndexedProperties.CONTENT_FIELD,
+		AnalyzerUtils.tokenStreamToString(ts), TYPE_STORED);
+ts.close();
+doc.add(contentField);&lt;/pre&gt;
+
+&lt;p&gt;####&lt;/p&gt;
+
+&lt;h4 id=&quot;index-document&quot;&gt;3.3 Index document&lt;/h4&gt;
+
+&lt;p&gt;While Lucene consists many components, it, at the same time, uses such extremely simple and intuitive methods to abstract the complex structures that it is fascinating seeing how it is simple to perform indexing.&lt;/p&gt;
+
+&lt;pre class=&quot;lang:java decode:true &quot;&gt;Document doc = new Document();
+
+//modelling document in the same manner as section 3.2
+//...
+//...
+
+//add document to the index
+writer.addDocument(doc);
+
+//close the index when finish
+//which also means we commit the index to be ready to store
+writer.close()&lt;/pre&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;full-text-search&quot;&gt;4. Full-text search&lt;/h3&gt;
+
+&lt;p&gt;Until now we have an index that can be used to search over. To initialise a search, we must input a search query, which can be a keyword or even a wild card. In Lucene, the search query will firstly be handled by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;QueryParser&lt;/span&gt;  where the query will be parsed into meaningful structure, called &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Query&lt;/span&gt; . After that, the &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;IndexSearcher&lt;/span&gt;  will consume &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Query&lt;/span&gt;  instance in order to look up over the index.&lt;/p&gt;
+
+&lt;pre class=&quot;lang:java decode:true&quot;&gt;// searcher
+IndexSearcher searcher = new IndexSearcher(this.indexReader);
+
+// query parser
+QueryParser parser = new QueryParser(Version.LUCENE_46, &quot;content&quot;, new SimpleAnalyzer());
+
+// parsing query
+Query q = parser.parse(&quot;....&quot;);
+
+// look up and return top 10 relevant documents
+Topdocs docs = searcher.search(query, 10);&lt;/pre&gt;
+
+&lt;h3 id=&quot;bottom-line&quot;&gt;5. Bottom line&lt;/h3&gt;
+
+&lt;p&gt;So far we have seen a “hello world” example of using Lucene to perform full-text search. In real project, we can expect there are a number of possibilities where we need to tweak Lucene so that it can serve our search purpose at a higher level. An example scenario is when we need to support &lt;strong&gt;like-this search&lt;/strong&gt; where the system allows the user to search textual contents that are similar to the keywords. Theoretically we can measure &lt;strong&gt;the similarity &lt;/strong&gt;by using distance measure methods, such as Euclidean distance measure, cosine distance measure, or Manhattan distance measure, etc. Another scenario is when we can create a system that supports &lt;strong&gt;synonym search &lt;/strong&gt;where we retrieve not only document contains the search keywords but also documents that has synonyms of keywords.&lt;/p&gt;
+
+&lt;p&gt;As said, in spite of the simplicity, Lucene adds a tremendous amount of support in building a powerful search tool. In the future post, I may discuss how we can combine both Apache Lucene and Apache Mahout (a machine learning framework) in order to index a corpus and use that index to perform clustering. Stay tuned!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Jan 2016 21:36:49 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/01/full-text-search-with-apache-lucene/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/full-text-search-with-apache-lucene/</guid>
+      </item>
+    
+      <item>
+        <title>Google Reader replacement</title>
+        <description>&lt;p&gt;Lately I am not feeling like I am using time wisely when it is quite often I can see myself wasting a huge amount of time on consuming a large amount of information, among which were mostly garbage. I have done several contemplations regarding to this matter to see how I would done to improve such situation. And I come up with an idea of building a hub of filtered news. It would be exactly the same as Google Reader, which is already shut down for a period of time, but the difference is that this hub will be self-hosted.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_252&quot; style=&quot;width: 610px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-252 size-full&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-12-at-6.19.59-PM-e1452597705765.png&quot; alt=&quot;My Tiny Tiny RSS homepage&quot; width=&quot;600&quot; height=&quot;199&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    My Tiny Tiny RSS homepage
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At the moment there are some open source applications that can be alternatives to Google Reader, among them I think Tiny Tiny RSS would be a top candidate. TTS is lightweight, and easy-to-set-up. I have started to use it for a couple of hours, and I couldn’t say how satisfied I am.&lt;/p&gt;
+
+&lt;p&gt;It can be downloaded &lt;a href=&quot;https://tt-rss.org/gitlab/fox/tt-rss/wikis/home&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 13 Jan 2016 05:21:57 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/01/google-reader-replacement/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/google-reader-replacement/</guid>
+      </item>
+    
+      <item>
+        <title>Invited talk at Swiss Post Solution Vietnam</title>
+        <description>&lt;p&gt;Recently, I was invited by a friend of mine, who works at Swiss Post Solution Vietnam, to deliver a training course on the topic of Machine Learning. Despite the fact that the training is very short, approximately 9 hours in total, but it does not prevent me from conveying essential concepts that who is interested in Machine Learning should know. During two training sessions, I’d introduced linear regressions, logistic regression, neural networks as well as clustering (k-means algorithm in specific). It was a pity that people couldn’t have chance to get their hands dirty on the implementation in order to see how those concepts can be easily implemented in Octave.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_246&quot; style=&quot;width: 510px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-246 size-full&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/12511078_10153411584812689_1554295313_o-e1452569638503.jpg&quot; alt=&quot;Hai talking about Big Data processing framework&quot; width=&quot;500&quot; height=&quot;281&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Hai talking about Big Data processing framework
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;div id=&quot;attachment_239&quot; style=&quot;width: 510px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-239 size-full&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/invited_talk_12012016-e1452569191411.png&quot; alt=&quot;invited_talk_12012016&quot; width=&quot;500&quot; height=&quot;438&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Just a tour of machine learning
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After all, what I really concern is not only how people evaluate my presentation but what I have learnt during the time period I had spent effort to prepare. It was also great to talk and have lunches with people at the company, including ones who have very mature experiences in the field.&lt;/p&gt;
+
+&lt;p&gt;I start to miss a very cozy atmosphere of the company.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Jan 2016 21:26:07 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/01/invited-talk-at-swiss-post-solution-vietnam/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/invited-talk-at-swiss-post-solution-vietnam/</guid>
+      </item>
+    
+      <item>
+        <title>To hold the sun</title>
+        <description>&lt;p&gt;Previously self-helping books are not of my interests. I rarely paid my attention to any book of such type. I neither had any intention to pour my thoughts and feelings onto a book review. I rather prefer to keep it myself.&lt;/p&gt;
+
+&lt;div id=&quot;attachment_223&quot; style=&quot;width: 334px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img class=&quot;wp-image-223 size-full&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_.jpg&quot; alt=&quot;&amp;quot;To hold the sun&amp;quot; by Chas Watkins&quot; width=&quot;324&quot; height=&quot;499&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_.jpg 324w, http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_-195x300.jpg 195w&quot; sizes=&quot;(max-width: 324px) 100vw, 324px&quot; /&gt;
+  
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    &amp;#8220;To hold the sun&amp;#8221; by Chas Watkins
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;“To hold the sun” is the first self-helping book I’ve ever read. I like neither the book cover nor the title. It would definitely fail me if I were sort of person who judges books by their covers. Though the content is positively worth reading, it might attract even more readers if the book possessed aesthetically pleasing cover that is capable of reflecting inner values it wants to convey.&lt;/p&gt;
+
+&lt;p&gt;In a nutshell, the book is a self-narrative book of a typical uninspiring white-collar worker who is being stuck of reality where he has to to pay bills and house rent on a daily basis, and thus desires an escape to a new place. This unstimulating character got an unexpected trip to Roatan, a largest island of Honduras where he will meet a special person who has given strong impact on his life that he would never think of. It is a clique beginning for a self-helping book but what comes in later make the book worth reading. The book barely portrays the main character throughout the course of further conversations between him and the special person he meets. To resolve life problems of him is the ultimate goal of those conversations. There are many things to be named, including how our brains works scientifically, how to trick the brain in order to live a life to its fullest, or how mediation can help. Those conversations are compelling to follow and I was even able to feel I am the main character at different times during reading the book.&lt;/p&gt;
+
+&lt;p&gt;There is many parts of the book I vote. One of the best parts is when the special person elaborates his idea that the reality ain’t the reality. Indeed the reality is built by innermost feelings and thoughts of individuals by which we can have different opinions towards a same object we observe. We can only live life to its fullest only if we understand how our brains and the reality intersect.&lt;/p&gt;
+
+&lt;p style=&quot;text-align: justify;&quot;&gt;
+  I found the book not plainly a self-helping book but also a self-realising. There are many parts of the books I&amp;#8217;ve already known or read beforehand but I rarely notice them. Years ago I have started to learn such things and one of habits that I often do is to remind of myself that happiness is NOW, not tomorrow, and I really enjoy how I&amp;#8217;ve started to change. I highly recommend the book to anyone who is questing for not only motivations but also profound changes to his or her life.
+&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Dec 2015 22:16:10 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2015/12/to-hold-the-sun/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/to-hold-the-sun/</guid>
+      </item>
+    
+      <item>
+        <title>Javascript: a self walkthrough (part 1)</title>
+        <description>&lt;p style=&quot;text-align: justify;&quot;&gt;
+  I have been well-acquainted with Javascript since 2011, a bit late compared to some of my friends who were seemingly keen on creating animated web pages for school projects using supporting plugins like jQuery. Before 2011, I had no formal concept about Javascript, except the name. At that time, the language seemed to be extremely difficult to me, and that sort of though discouraged me to learn it.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align: justify;&quot;&gt;
+  Nevertheless, after nearly 3 years being a developer and 2 years having formal learning in VUB, I now have chance to observe the beauty of the language with supportive formal knowledge in my spare time. But still I retain my old opinion that &lt;em&gt;Javascript ain&amp;#8217;t an language that most people think they can learn in quick and dirty ways&lt;/em&gt;. Of course it is particularly easy to use jQuery and make it run like a charm, but to understand mechanisms under the hood of the language, there exists a harsh line. I think to become a good Javascript developer, at least we should grasp a firm knowledge about programming language, like &lt;em&gt;first-class object, &lt;/em&gt;&lt;em&gt;polymorphism, inheritance, delegation, asynchronous vs synchronous &lt;/em&gt;and so on.
+&lt;/p&gt;
+
+&lt;h3 style=&quot;text-align: justify;&quot;&gt;
+  &lt;strong&gt;Javascript is a functional programming language&lt;/strong&gt;
+&lt;/h3&gt;
+
+&lt;p style=&quot;text-align: justify;&quot;&gt;
+  First thing first, Javascript ain&amp;#8217;t object-oriented, it is functional like Haskell. In functional programming language, we treat functions as first-class objects where we can:
+&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Declare them using literals as we often do (e.g., &lt;span class=&quot;lang:js decode:true crayon-inline&quot;&gt;function&lt;/span&gt;) &amp;lt;pre class=&quot;lang:js decode:true&quot; title=&quot;Declare a function foo()&quot;&amp;gt;function foo() {};&amp;lt;/pre&amp;gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pass them as arguments to other functions. This characteristic is exclusive to Javascript and other functional programming languages. In Java, we do not have this feature until Java 7, but still it is minimal. &amp;lt;pre class=&quot;lang:js decode:true&quot; title=&quot;Pass function as an argument&quot;&amp;gt;//In jQuery, too loop through a list, we often do
+//To execute a function for each list item, we pass the function
+//as an argument
+$(‘li’).each(function{});&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assign them to variables. It is unlikely that we can do the same thing on Java &amp;lt;pre class=&quot;lang:js decode:true&quot; title=&quot;Assign a function to a variable&quot;&amp;gt;//As often as declaring a standalone function, we can
+//also declare a function and assign it to a variable
+var foo = function bar() {};&amp;lt;/pre&amp;gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Return them as results of other functions &amp;lt;pre class=&quot;lang:js decode:true &quot; title=&quot;Return a function as a result of other function&quot;&amp;gt;//We declare a function bar() nested inside the function foo()
+//As a result of foo(), we return function bar() without invocation
+function foo(){
+   function bar(){
+  //doing something here
+   }
+   return bar;
+}&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;//To invoke bar() from foo()
+foo()();&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;different-ways-to-invoke-functions&quot;&gt;Different ways to invoke functions&lt;/h3&gt;
+
+&lt;p&gt;Of course we can invoke a function easily using &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;()&lt;/span&gt; operator. But an additional thing we need to pay attention is &lt;em&gt;function context&lt;/em&gt;, aka &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;this&lt;/span&gt; , a familiar thing from Java. When closely observe, we can list 3 different methods to invoke a function.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Invoke a function as a global function whose context is &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;window&lt;/span&gt; &amp;lt;pre class=&quot;lang:js decode:true&quot; title=&quot;Declare a global function&quot;&amp;gt;//Declare a function and return its context
+function foo(){
+   return this;
+};&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;//Examine if the context of the function is window
+//Tips: using === to compare if two values have the same reference
+console.log( foo() === window);&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Invoke a function as a method &amp;lt;pre class=&quot;lang:js decode:true&quot;&amp;gt;//Create a variable with an property, and assign a function to the property
+//The function is now a method property of the given object
+function foo(){
+   bar: function(){
+  return this;
+   }
+}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;//verify if the function context is the method owner
+console.log(foo.bar() === foo);
+&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Invoke functions as constructors &amp;lt;pre class=&quot;lang:js decode:true&quot;&amp;gt;//Here we define the constructor of Foo object
+//Note that we capitalised the name to help distinguish constructor 
+//from other kinds of functions
+function Foo(){
+   this.bar = function () {return this;}
+}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;//Use the ‘new’ operator to create an instance of the object
+var foo1 = new Foo();
+var foo2 = new Foo();&lt;/p&gt;
+
+&lt;p&gt;//When we check, the context is our new instances
+console.log(foo1.bar() == foo1);
+console.log(foo2.bar() == foo2);&amp;lt;/pre&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Additionally to make it look like object-oriented languages, we can add _getter/setter_ using either nested or prototype-based functions about which we will talk later.&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 12 Nov 2015 21:07:41 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2015/11/javascript-a-self-walkthrough-part-1/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/javascript-a-self-walkthrough-part-1/</guid>
+      </item>
+    
+      <item>
+        <title>HTML5 canvas</title>
+        <description>&lt;p&gt;Recently, I have spent a couple of days to play with HTML5 canvas, a thing that I have desired to learn for years. Back in late 2012, I started to see many developers published their canvas visualisations. At that time it was very intriguing to me in the sense that it is browser-based and developed using javascript, a language that I’m kinda fond of. Unfortunately since I was totally occupied with both daily work and Master school preparation, I couldn’t have time to learn HTML5 canvas, although I was very much interested in.&lt;/p&gt;
+
+&lt;p&gt;One of different things that makes &lt;canvas&gt; interesting is we are able to imitate physical model. In this pen, I create infinite number of particles and put them on spiral movement. It reminds me of old equations about classical mechanics I learnt in the high school.&lt;/canvas&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Nov 2015 05:33:59 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2015/11/183/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/183/</guid>
+      </item>
+    
+  </channel>
+</rss>

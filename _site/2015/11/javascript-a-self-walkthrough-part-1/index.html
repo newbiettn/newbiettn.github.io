@@ -1,0 +1,249 @@
+<html>
+  <head>
+    <meta content='Javascript: a self walkthrough (part 1) - newbiettn' property='og:title' />
+    <title>Javascript: a self walkthrough (part 1) - newbiettn</title>
+    <meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
+	href="http://newbiettn.com/feed/" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+<link rel="shortcut icon"
+	href="http://newbiettn.com/wp-content/uploads/2015/01/favicon.jpg" />
+<title>newbiettn - the road goes on and on</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+
+<!-- GOOGLE WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Kreon'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather'
+	rel='stylesheet' type='text/css'>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="http://127.0.0.1:4000">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">the road goes on and on</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="November 12, 2015">November 12, 2015</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Javascript: a self walkthrough (part 1)">Javascript: a self walkthrough (part 1)</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <p style="text-align: justify;">
+  I have been well-acquainted with Javascript since 2011, a bit late compared to some of my friends who were seemingly keen on creating animated web pages for school projects using supporting plugins like jQuery. Before 2011, I had no formal concept about Javascript, except the name. At that time, the language seemed to be extremely difficult to me, and that sort of though discouraged me to learn it.
+</p>
+
+<p style="text-align: justify;">
+  Nevertheless, after nearly 3 years being a developer and 2 years having formal learning in VUB, I now have chance to observe the beauty of the language with supportive formal knowledge in my spare time. But still I retain my old opinion that <em>Javascript ain&#8217;t an language that most people think they can learn in quick and dirty ways</em>. Of course it is particularly easy to use jQuery and make it run like a charm, but to understand mechanisms under the hood of the language, there exists a harsh line. I think to become a good Javascript developer, at least we should grasp a firm knowledge about programming language, like <em>first-class object, </em><em>polymorphism, inheritance, delegation, asynchronous vs synchronous </em>and so on.
+</p>
+
+<h3 style="text-align: justify;">
+  <strong>Javascript is a functional programming language</strong>
+</h3>
+
+<p style="text-align: justify;">
+  First thing first, Javascript ain&#8217;t object-oriented, it is functional like Haskell. In functional programming language, we treat functions as first-class objects where we can:
+</p>
+
+<ul>
+  <li>
+    <p>Declare them using literals as we often do (e.g., <span class="lang:js decode:true crayon-inline">function</span>) &lt;pre class="lang:js decode:true" title="Declare a function foo()"&gt;function foo() {};&lt;/pre&gt;</p>
+  </li>
+  <li>
+    <p>Pass them as arguments to other functions. This characteristic is exclusive to Javascript and other functional programming languages. In Java, we do not have this feature until Java 7, but still it is minimal. &lt;pre class="lang:js decode:true" title="Pass function as an argument"&gt;//In jQuery, too loop through a list, we often do
+//To execute a function for each list item, we pass the function
+//as an argument
+$(‘li’).each(function{});</p>
+  </li>
+</ul>
+<p>&lt;/pre&gt;</p>
+
+<ul>
+  <li>
+    <p>Assign them to variables. It is unlikely that we can do the same thing on Java &lt;pre class="lang:js decode:true" title="Assign a function to a variable"&gt;//As often as declaring a standalone function, we can
+//also declare a function and assign it to a variable
+var foo = function bar() {};&lt;/pre&gt;</p>
+  </li>
+  <li>
+    <p>Return them as results of other functions &lt;pre class="lang:js decode:true " title="Return a function as a result of other function"&gt;//We declare a function bar() nested inside the function foo()
+//As a result of foo(), we return function bar() without invocation
+function foo(){
+   function bar(){
+  //doing something here
+   }
+   return bar;
+}</p>
+  </li>
+</ul>
+
+<p>//To invoke bar() from foo()
+foo()();&lt;/pre&gt;</p>
+
+<h3 id="different-ways-to-invoke-functions">Different ways to invoke functions</h3>
+
+<p>Of course we can invoke a function easily using <span class="lang:default decode:true crayon-inline ">()</span> operator. But an additional thing we need to pay attention is <em>function context</em>, aka <span class="lang:default decode:true crayon-inline ">this</span> , a familiar thing from Java. When closely observe, we can list 3 different methods to invoke a function.</p>
+
+<ul>
+  <li>Invoke a function as a global function whose context is <span class="lang:default decode:true crayon-inline ">window</span> &lt;pre class="lang:js decode:true" title="Declare a global function"&gt;//Declare a function and return its context
+function foo(){
+   return this;
+};</li>
+</ul>
+
+<p>//Examine if the context of the function is window
+//Tips: using === to compare if two values have the same reference
+console.log( foo() === window);&lt;/pre&gt;</p>
+
+<ul>
+  <li>Invoke a function as a method &lt;pre class="lang:js decode:true"&gt;//Create a variable with an property, and assign a function to the property
+//The function is now a method property of the given object
+function foo(){
+   bar: function(){
+  return this;
+   }
+}</li>
+</ul>
+
+<p>//verify if the function context is the method owner
+console.log(foo.bar() === foo);
+&lt;/pre&gt;</p>
+
+<ul>
+  <li>Invoke functions as constructors &lt;pre class="lang:js decode:true"&gt;//Here we define the constructor of Foo object
+//Note that we capitalised the name to help distinguish constructor 
+//from other kinds of functions
+function Foo(){
+   this.bar = function () {return this;}
+}</li>
+</ul>
+
+<p>//Use the ‘new’ operator to create an instance of the object
+var foo1 = new Foo();
+var foo2 = new Foo();</p>
+
+<p>//When we check, the context is our new instances
+console.log(foo1.bar() == foo1);
+console.log(foo2.bar() == foo2);&lt;/pre&gt;</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Additionally to make it look like object-oriented languages, we can add _getter/setter_ using either nested or prototype-based functions about which we will talk later.&lt;/li&gt; &lt;/ul&gt;
+</code></pre>
+</div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+  <!-- End Footer -->
+
+  </body>
+</html>

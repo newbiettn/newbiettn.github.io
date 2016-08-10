@@ -1,0 +1,20 @@
+---
+id: 159
+title: 'Visualize git log with &#8216;gource&#8217;'
+date: 2014-12-23T06:59:53+00:00
+author: newbiettn
+layout: post
+guid: http://newbiettn.com/?p=159
+permalink: /2014/12/visualize-git-log-with-gource/
+categories:
+  - Uncategorized
+tags:
+  - gource
+  - ihotfood
+  - visualization
+---
+Visualization never gets boring, especially when it comes to demonstrate your working processing in a time span.
+
+In my case, I had been working on the project **ihotfood** for a couple of months, spanning from October  2014 till mid December 2014. At the end of the project, I demonstrated the team members&#8217; contributions to the project in the most intuitive way. That&#8217;s where the de facto open source **gource **comes to shine.
+
+Git log can be used as the input to **gource**. Then, I customized by changing the avatars, adding subtitle and background music.

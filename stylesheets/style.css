@@ -1,0 +1,392 @@
+/*
+Theme Name: newbiettn_professional_life
+Theme URI: http://newbiettn.com
+*/
+
+/* Global  ---------------------- */
+@font-face {
+	font-family: 'baramondroman';
+	src: url('fonts/baramond-webfont.eot');
+	src: url('fonts/baramond-webfont.eot?#iefix')
+		format('embedded-opentype'), url('fonts/baramond-webfont.woff2')
+		format('woff2'), url('fonts/baramond-webfont.woff') format('woff'),
+		url('fonts/baramond-webfont.ttf') format('truetype'),
+		url('fonts/baramond-webfont.svg#baramondroman') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'baramondbold';
+	src: url('fonts/baramond_bold-webfont.eot');
+	src: url('fonts/baramond_bold-webfont.eot?#iefix')
+		format('embedded-opentype'), url('fonts/baramond_bold-webfont.woff2')
+		format('woff2'), url('fonts/baramond_bold-webfont.woff')
+		format('woff'), url('fonts/baramond_bold-webfont.ttf')
+		format('truetype'),
+		url('fonts/baramond_bold-webfont.svg#baramondbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	background: #fff;
+	font-family: 'baramondroman';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 17px;
+	line-height: 1;
+	color: #333;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	font-style: normal;
+	color: #222222;
+	text-rendering: optimizeLegibility;
+	line-height: 1.1;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	font-family: 'baramondbold';
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+	font-size: 60%;
+	color: #6f6f6f;
+	line-height: 0;
+}
+
+h1 {
+	font-size: 44px;
+}
+
+h2 {
+	font-size: 34px;
+}
+
+h3 {
+	font-size: 27px;
+}
+
+h4 {
+	font-size: 23px;
+}
+
+h5 {
+	font-size: 17px;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+	line-height: inherit;
+}
+
+a:hover {
+	color: #2F2F2F;
+}
+
+a:focus {
+	color: #2F2F2F;
+}
+
+p {
+	font-family: inherit;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 1.5;
+	margin-bottom: 17px;
+}
+
+iframe {
+	margin: 10px 0 15px;
+	border: 0;
+	width: 100%;
+}
+.border-top-light {
+	border-top: 1px solid #ededed;
+}
+.border-top-normal {
+	border-top: 1px solid #000;
+}
+.fixed {
+/* 	position: fixed;
+	right: 67px;
+	overflow-y:scroll;
+    overflow-x:hidden;
+    max-height: 500px; */
+}
+/* Preloader ---------------------- */
+.preloader  {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #fefefe;
+     z-index: 99;
+    height: 100%;
+ }
+
+.preload-status  {
+     width: 400px;
+     height: 300px;
+     position: absolute;
+     left: 40%;
+     background-image: url("images/loading.gif");
+     background-repeat: no-repeat;
+     background-position: center;
+}
+/* Top Bar  ---------------------- */
+.top {
+	width: 100%;
+	background: #EEEFF1;
+	padding: 0;
+	border-bottom: 1px solid #E4E5E7
+}
+
+@media only screen and (max-width: 767px) {
+	.top {
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+/* Lists ---------------------- */
+ul.social {
+	list-style: none;
+	padding: 5px 0 0 0;
+	margin: 0
+}
+
+ul.social li {
+	float: left;
+	display: inline;
+	padding: 8px 10px 1px;
+	border-right: 1px solid #E4E5E7
+}
+
+ul.social li:first-child {
+	padding-left: 0;
+}
+
+ul.social li:last-child {
+	border-right: 0
+}
+
+/* Header  ---------------------- */
+.site-header {
+	margin-top: 10px;
+	min-height: 220px;
+}
+h1.logo {
+	font-size: 64px;
+	padding: 10px 0 3px;
+	font-weight: 400;
+}
+
+p.motto {
+	font-size: 11px;
+	letter-spacing: 4px
+}
+
+@media only screen and (max-width: 767px) {
+	h1.logo {
+		padding-bottom: 9px
+	}
+	ul.social li {
+		padding: 8px 3px 0;
+		border-right: 0
+	}
+}
+
+/* Navigation  ---------------------- */
+.navigation {
+	margin: 15px 0 60px 0;
+	text-align: left;
+	width: 100%;
+	list-style: outside none none;
+	font-weight: bold;
+}
+
+nav {
+	font-size: 12px;
+	margin: 0px auto;
+}
+
+nav .dropdown {
+	display: none;
+}
+
+@media only screen and (max-width: 767px) {
+	.logo {
+		margin: 0 auto;
+		text-align: center;
+	}
+	nav .dropdown {
+		display: inline-block;
+		width: 100%;
+		margin: 0 auto;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	nav ul.navigation {
+		display: none;
+	}
+	nav ul li {
+		float: left;
+		display: block;
+		width: 100%
+	}
+}
+
+/* Post ---------------------- */
+.info {
+	border-bottom: 1px solid #E4E5E7;
+	padding: 15px 0px;
+}
+
+.info p {
+	margin: 0;
+	padding: 0;
+	font-size: 11px;
+	letter-spacing: 3px
+}
+
+.info h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 54px;
+	font-weight: 400;
+}
+
+.info h3 a {
+	color: #2F2F2F;
+}
+
+.day, .month {
+	text-transform: uppercase
+}
+
+article {
+	margin-bottom: 60px;
+	min-height: 250px;
+}
+
+article h2 {
+	padding: 0;
+	margin: 0;
+}
+
+article h2 a {
+	color: #2F2F2F;
+}
+
+.featuredimage {
+	margin: 15px 0;
+}
+
+.post_title {
+	font-weight: normal;
+	padding: 0;
+	margin-top: 11px;
+	margin-bottom: 11px;
+	color: #2F2F2F;
+	border-bottom: 0;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #ededed;
+}
+
+.post_title .dateline{
+	font-size: 12px;
+}
+p.written {
+	font-size: 16px;
+	color: #999;
+}
+
+.hentry p.written a {
+	text-decoration: none;
+}
+
+.more {
+	margin: 28px 0 15px;
+	font-size: 15px;
+	text-align: right;
+}
+
+.more a {
+	background: #2f2f2f;
+	color: #fff;
+	padding: 5px;
+}
+
+.more a:hover {
+	background: #000;
+	color: #fff;
+}
+
+.hentry {
+	padding: 9px 0
+}
+
+.hentry ul {
+	padding-left: 20px;
+}
+
+.hentry ul.pricing-table {
+	padding-left: 0;
+}
+
+.hentry ul li, .hentry ol li {
+	font-size: 16px;
+}
+
+.hentry ul.slides {
+	padding-left: 0;
+}
+
+.hentry p a {
+	text-decoration: underline;
+	color: #000;
+}
+
+.prevnext {
+	text-transform: uppercase;
+	padding-bottom: 17px;
+	border-bottom: 1px solid #EEEFF1
+}
+/* Archived list  ---------------------- */
+.article-list-item-title{
+	border-bottom: 1px dashed #e6e6e6;
+}
+
+.article-list-item-title span{
+	font-size: 16px;
+  line-height: 28px;
+}
+.article-list-item-title .post-meta {
+	float: right;
+}
+
+.article-list-item-title:hover{
+	background: #191919;
+	color: #fff;
+}
+.year-category-margin-top {
+	margin-top: 1em;
+}
+/* Footer  ---------------------- */
+footer {
+	margin-top: 80px !important;
+}
+footer .text-center {
+	margin-top: 20px;
+}

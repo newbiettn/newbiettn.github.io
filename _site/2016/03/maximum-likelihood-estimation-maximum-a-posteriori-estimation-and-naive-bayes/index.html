@@ -1,0 +1,285 @@
+<html>
+  <head>
+    <meta content='Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1) - newbiettn' property='og:title' />
+    <title>Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1) - newbiettn</title>
+    <meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
+	href="http://newbiettn.com/feed/" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+<link rel="shortcut icon"
+	href="http://newbiettn.com/wp-content/uploads/2015/01/favicon.jpg" />
+<title>newbiettn - the road goes on and on</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+
+<!-- GOOGLE WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Kreon'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather'
+	rel='stylesheet' type='text/css'>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="http://127.0.0.1:4000">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">the road goes on and on</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="March 04, 2016">March 04, 2016</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1)">Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1)</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <p>There are some notes with regards to three important concepts – Maximum Likelihood Estimation (MLE), Maximum a Posterior Estimation (MAP), and Naive Bayes (NB) – that I would like to put here in order to remind me in case necessary. I also can see that my note can be fruitful to anyone having a hard time in grasping these concepts, because we’re gonna unfold plot twists of them that confused me while learning in this writing.</p>
+
+<h3 id="maximum-likelihood-estimation-mle">Maximum Likelihood Estimation (MLE)</h3>
+
+<h4 id="probability-vs-likelihood">Probability vs Likelihood</h4>
+
+<p>First of all, before diving deep, it is essentially important to understand differences between two terms “likelihood” and “probability”, at least for the given concept. Thank to <a href="http://statgen.iop.kcl.ac.uk/bgim/mle/sslike_3.html" target="_blank">this article</a>, we can have a good explanation as follows.</p>
+
+<ul>
+  <li><strong>Likelihood</strong>: Observation of data -&gt; Estimation of parameters <strong>(I)</strong></li>
+  <li><strong>Probability</strong>: Knowing parameters  -&gt; Prediction of outcome <strong>(II)</strong></li>
+</ul>
+
+<p>If it’s still unclear, take another orthogonal but obvious example that involves another estimation method, called Least Squares Estimation (LSE), which is more preferable than MLE in case the data is linear. The way LSE works is straightforward: to estimate unknown parameters [latex]\theta_{j}[/latex] of fitting hypothesis functions [latex] h_{\theta_{j}} (x)[/latex] for given a set of data by minimising the sum of squared errors. In <strong>Figure 1</strong> we have a good illustration of this idea. In this example, by using linear regression, which is the method of least squares, we are able to <em><strong>approximate</strong></em> locally optimal values of parameters [latex]\theta_{0} = 3.5[/latex] and [latex]\theta_{1} = 1.4[/latex] for a linear function [latex] h_{\theta_{j}} (x) = \theta_{0} + \theta_{1}x[/latex]. By substituting values of [latex]\theta_{j}[/latex] we would have a particular hypothesis function [latex] h_{\theta_{j}} (x) = 3.5 + 1.4x[/latex] corresponding to the blue line in the figure. Now we can use the hypothesis function we have found to <strong><em>predict</em></strong> a new value [latex]y[/latex] for a given [latex]x[/latex]. Briefly we have two distinct steps as follows.</p>
+
+<ul>
+  <li><strong>Approximation</strong>: Observation of data -&gt; Estimation of parameters <strong>(I’)</strong></li>
+  <li><strong>Prediction</strong>: Knowing parameters  -&gt; Prediction of value <strong>(II’)</strong></li>
+</ul>
+
+<p>Now if we roughly put steps <strong>I</strong> and <strong>I’</strong>, <strong>II</strong> and <strong>II’</strong> into comparison, we can see that they share common traits. Particularly the goal of steps <strong>I </strong>and <strong>I’ </strong>is to estimate [latex]\theta_{j}[/latex] that either best explains or best fits the data. In contrast, in both steps <strong>II </strong>and <strong>II’, </strong>the target is to predict either value or probability by using given parameters [latex]\theta_{j}[/latex].</p>
+
+<div id="attachment_334" style="width: 310px" class="wp-caption aligncenter">
+  <img class="wp-image-334 size-medium" src="http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-300x290.png" alt="Figure 1 " width="300" height="290" srcset="http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-300x290.png 300w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-768x742.png 768w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM-1024x989.png 1024w, http://newbiettn.com/wp-content/uploads/2016/03/Screen-Shot-2016-03-03-at-4.29.41-PM.png 1474w" sizes="(max-width: 300px) 100vw, 300px" />
+  
+  <p class="wp-caption-text">
+    Figure 1 [Photo courtesy of Wikipedia]
+  </p>
+</div>
+
+<p>I know I was messing up a bit above when using an example of LSE to illustrate the differences between Probability and Likelihood. But that’s the thing I had not realised at first when I started to learn MLE. I was wondering why the hell we need to estimate a parameter [latex]\theta[/latex] for a given data [latex]D[/latex]. It did not make sense because I assumed we already have a data, we can estimate any probability with ease… It was only when I started to approach MLE from a perspective of LSE as I illustrated above, things turn to be more clear to me.</p>
+
+<h4 id="definition">Definition</h4>
+
+<p>As said, the ultimate purpose of MLE is to choose parameter [latex]\theta[/latex] that best explains observed data [latex]D[/latex]. In other words, MLE is a method to search in a space [latex]\Omega[/latex] to find a [latex]\theta[/latex] that maximise the probability of data [latex]D[/latex]. We can formulated MLE mathematically as follows.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true” size=”10″]\hat{\theta_{MLE}} = argmax \ P(D</td>
+      <td>\theta) = argmax \ P(X_{1}, X_{2}, …, X_{n}</td>
+      <td>\theta)[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Given that [latex]D[/latex] has [latex]n[/latex] attributes, we can obtain</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] P(D</td>
+      <td>\theta) = P(X_{1}, X_{2}, …, X_{n}</td>
+      <td>\theta) [/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By using <a href="https://en.wikipedia.org/wiki/Chain_rule_(probability)" target="_blank">chain rule</a>, we can also have</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”]P(X_{1}, X_{2}, …, X_{n}</td>
+      <td>\theta) = P(X_{1}</td>
+      <td>X_{2}, …, X_{n}, \theta) P(X_2, …, X_{n}</td>
+      <td>\theta) [/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] = P(X_{1}</td>
+      <td>X_{2}, …, X_{n}, \theta) P(X_{2}</td>
+      <td>X_{3}, …, X_{n}, \theta) P(X_3, …, X_{n}</td>
+      <td>\theta) [/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If repeat this process, we would obtain</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] P(D</td>
+      <td>\theta) = P(X_{1}</td>
+      <td>X_{2}, …, X_{n}, \theta) P(X_{2}</td>
+      <td>X_{3}, …, X_{n},\theta)\ …\ P(X_{n-1}</td>
+      <td>X_{n}, \theta) P(X_n</td>
+      <td>\theta)[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>According to this equation, we can see there is an extremely big problem of computation complexity. Suppose [latex]X_{1}, X_{2}, …, X_{n}[/latex] and [latex]\theta[/latex] are boolean. Given [latex]P(X_{1}, X_{2}, …, X_{n}</td>
+      <td>\theta)[/latex], we would need [latex]2(2^{n}-1) + 1[/latex] parameters to describe. In practice, it is common to work with a dataset of more than 100 attributes, if not thousands.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To reduce the number of parameters, MLE, MAP as well as NB fundamentally rely on an assumption that attributes [latex]X_{1}, X_{2}, …, X_{n}[/latex] are independent of each other. By doing this, we can reduce a number of parameters to [latex]2n + 1[/latex]. Thus,</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] P(D</td>
+      <td>\theta) = P(X_{1}</td>
+      <td>\theta) P(X_{2}</td>
+      <td>\theta)\ …\ P(X_{n-1}</td>
+      <td>\theta) P(X_n</td>
+      <td>\theta)[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] = \prod_{i=1}^n P(X_i</td>
+      <td>\theta) [/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Finally we have</p>
+
+<p style="text-align: center; font-size: 20px;">
+  [latex display=&#8221;true&#8221;]\hat{\theta_{MLE}} = argmax \prod_{i=1}^n P(X_i|\theta)[/latex]
+</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+  <!-- End Footer -->
+
+  </body>
+</html>

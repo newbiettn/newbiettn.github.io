@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <meta content='Martial Training &#8211; A multimodal system - newbiettn' property='og:title' />
+    <title>Martial Training &#8211; A multimodal system - newbiettn</title>
+    <meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
+	href="http://newbiettn.com/feed/" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+<link rel="shortcut icon"
+	href="http://newbiettn.com/wp-content/uploads/2015/01/favicon.jpg" />
+<title>newbiettn - the road goes on and on</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+
+<!-- GOOGLE WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Kreon'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather'
+	rel='stylesheet' type='text/css'>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="http://127.0.0.1:4000">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">the road goes on and on</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="January 01, 2015">January 01, 2015</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Martial Training &#8211; A multimodal system">Martial Training &#8211; A multimodal system</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <p>Martial Training is a project I worked with 2 other guys – 1 Vietnamese and 1 Brazilian. The fundemental idea is to support precise training in martial art by using <strong>Kinect</strong> for action recognition, voice control for both commands and feedbacks, logging and vibration for notification of incorrect movements.</p>
+
+<div id="attachment_73" style="width: 509px" class="wp-caption aligncenter">
+  <a href="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png"><img class="wp-image-73" src="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png" alt="The system architecture" width="499" height="375" srcset="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png 975w, http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture-300x225.png 300w" sizes="(max-width: 499px) 100vw, 499px" /></a>
+  
+  <p class="wp-caption-text">
+    The system architecture
+  </p>
+</div>
+
+<p>In the application, the template-based algorithm <strong>Dynamic Time Warping</strong> is used to compare actions, which can be recorded and stored in matrix vectors by using Kinect. During the implementation, DTW exposed contrainsts, including high time complexity O(N^2) and not being able to measure similarity parts of the body. Therefore, the application is limited in the sense that it can only notify the user if he performs the actions incorrectly but can not explicitely lets him know which part has problem.</p>
+
+<p>Besides notified by the sound, the system should be able to notify the user via vibration. To handle the vibration functionality, I built a tiny Android app which can connect to the main application, which was developed in C#, by using <strong>Socket</strong>. However, the socket is not persistent in the sense that after a succesful response, the connection will be close just like Http 1.0. Unfortunately, I was not be able to figure out the problem at the moment and spent 2 hours to investigate my code. Later I realized the code logic was wrong at all. I exactly needed a full-duplex connection similar to WebSocket. So, lesson learned.</p>
+
+<p>Regarding to the UI, I had to spent a couple of days in order to read the books <strong>WP4 Unleased</strong>. I had to admit that learning WPF requires a steep curve, which means that it appears to be difficult at the beginning but the deeper I digged, the easier it became. After having some experiences, I began to upgrade it with <strong>Metro</strong> style of Windows 8. I used the open source project <strong>MahApps. Metro</strong> to do that, then added logging display and other things to the UI.</p>
+
+<div id="attachment_74" style="width: 610px" class="wp-caption aligncenter">
+  <a href="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png"><img class="wp-image-74" src="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png" alt="Martial Training UI" width="600" height="361" srcset="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png 1003w, http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI-300x180.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a>
+  
+  <p class="wp-caption-text">
+    Martial Training UI
+  </p>
+</div>
+
+<p>As you can see, it is me in the picture for action tutorial and the left screen is for the user which captured by Kinect. The application is very limited but if you asked me how would I upgrade the application, I think I will augment the video by adding realtime information in the video to inform the user and of course switch the algorithm to machine-learning one.</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+  <!-- End Footer -->
+
+  </body>
+</html>

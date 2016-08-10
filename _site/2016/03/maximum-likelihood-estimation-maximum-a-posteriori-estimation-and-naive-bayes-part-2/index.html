@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <meta content='Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2) - newbiettn' property='og:title' />
+    <title>Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2) - newbiettn</title>
+    <meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
+	href="http://newbiettn.com/feed/" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+<link rel="shortcut icon"
+	href="http://newbiettn.com/wp-content/uploads/2015/01/favicon.jpg" />
+<title>newbiettn - the road goes on and on</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://newbiettn.com/xmlrpc.php" />
+
+<!-- GOOGLE WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Kreon'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather'
+	rel='stylesheet' type='text/css'>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="http://127.0.0.1:4000">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">the road goes on and on</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="http://127.0.0.1:4000/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="March 05, 2016">March 05, 2016</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)">Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <h3 id="maximum-a-posteriori-estimation-map">Maximum a Posteriori Estimation (MAP)</h3>
+
+<p>Generally, MAP is a particular extension of MLE where we take in account a biased assumption of data, called <strong><em>prior knowledge</em></strong>. Specifically Bayes’ theorem (or Bayes’ rule) allows us to incorporate prior probability as follows</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”]P(\theta</td>
+      <td>D) = \frac{P(D</td>
+      <td>\theta)P(\theta)}{P(D)}[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>where</p>
+
+<li style="margin-left: 150px;">
+  [latex]P(D|\theta)[/latex] is the likelihood
+</li>
+<li style="margin-left: 150px;">
+  [latex]P(\theta)[/latex] is the prior probability
+</li>
+<li style="margin-left: 150px;">
+  [latex]P(D)[/latex] is the marginal likelihood
+</li>
+<li style="margin-left: 150px;">
+  [latex]P(\theta|D)[/latex] is the posteriori likelihood
+</li>
+
+<p>The principle of MAP is to estimate [latex]\theta[/latex] that maximise the posteriori likelihood [latex]P(\theta)[/latex]. Thus,</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”]\hat{\theta}_{MAP} = argmax\ \frac{P(D</td>
+      <td>\theta)P(\theta)}{P(D)}[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Notice that the denominator [latex]P(D)[/latex] is independent of [latex]\theta[/latex]. Therefore</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”]P(\theta</td>
+      <td>D) \propto {P(D</td>
+      <td>\theta)P(\theta)}[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[latex display=”true”] \Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D</td>
+      <td>\theta)P(\theta)}[/latex]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By assuming attributes [latex]X_{1}, X_{2}, …, X_{n}[/latex] are independent of each other, we have</p>
+
+<p style="text-align: center; font-size: 20px;">
+  [latex display=&#8221;true&#8221;]\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)[/latex]
+</p>
+
+<p> </p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+  <!-- End Footer -->
+
+  </body>
+</html>
