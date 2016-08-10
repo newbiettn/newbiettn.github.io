@@ -15,13 +15,7 @@ tags:
 ---
 Though the primitive purpose of my blog is to discuss issues in Computer Science, it&#8217;s always tempting to write something a bit off-the-topic. The subject matter I want to put in writing this time is about conquering happiness. Whilst the topic is very clique when we can easily stumble upon such topic in countless number of articles, in both tabloid and non-tabloid newspaper, I still think it is always of concern, particularly to programmers.
 
-<div id="attachment_322" style="width: 283px" class="wp-caption aligncenter">
-  <img class="wp-image-322 size-medium" src="http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg" alt="12742178_1012662988810459_3355825262889709744_n" width="273" height="300" srcset="http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg 273w, http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n.jpg 473w" sizes="(max-width: 273px) 100vw, 273px" />
-  
-  <p class="wp-caption-text">
-    You can&#8217;t confuse me
-  </p>
-</div>
+![You can't confuse me](/images/psyduck.jpg){:class="img-center"}
 
 As often, when being interviewed, people tend to portray a programmer or a computer scientist as a weird, non-sporty, untidy and super fatty/skinny person who is heavily addicted to computers, not to mention sugar drinks. They may also wonder how such sort of people can overcome depressions, or tragically, whether programmers are always in state of bad mood, and that&#8217;s why they eventually become so weird ?!
 

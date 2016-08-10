@@ -41,11 +41,21 @@
 //flexslider
 
 $(window).load(function() {
-    $('.flexslider').flexslider();
-    $('.preload-status').fadeOut(); // will first fade out the loading animation
+  $('.flexslider').flexslider();
+  $('.preload-status').fadeOut(); // will first fade out the loading animation
 	$('.preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
 	$('body').delay(350).css({'overflow':'visible'});
-	
+
+  // Get on screen image
+var screenImage = $("img");
+
+// Create new offscreen image to test
+var theImage = new Image();
+theImage.src = screenImage.attr("src");
+
+// Get accurate measurements from that.
+var imageWidth = theImage.width;
+var imageHeight = theImage.height;
   });
 
 

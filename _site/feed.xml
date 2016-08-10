@@ -295,13 +295,7 @@
         <title>Conquer unhappiness</title>
         <description>&lt;p&gt;Though the primitive purpose of my blog is to discuss issues in Computer Science, it’s always tempting to write something a bit off-the-topic. The subject matter I want to put in writing this time is about conquering happiness. Whilst the topic is very clique when we can easily stumble upon such topic in countless number of articles, in both tabloid and non-tabloid newspaper, I still think it is always of concern, particularly to programmers.&lt;/p&gt;
 
-&lt;div id=&quot;attachment_322&quot; style=&quot;width: 283px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img class=&quot;wp-image-322 size-medium&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg&quot; alt=&quot;12742178_1012662988810459_3355825262889709744_n&quot; width=&quot;273&quot; height=&quot;300&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n-273x300.jpg 273w, http://newbiettn.com/wp-content/uploads/2016/02/12742178_1012662988810459_3355825262889709744_n.jpg 473w&quot; sizes=&quot;(max-width: 273px) 100vw, 273px&quot; /&gt;
-  
-  &lt;p class=&quot;wp-caption-text&quot;&gt;
-    You can&amp;#8217;t confuse me
-  &lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/images/psyduck.jpg&quot; alt=&quot;You can&#39;t confuse me&quot; class=&quot;img-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As often, when being interviewed, people tend to portray a programmer or a computer scientist as a weird, non-sporty, untidy and super fatty/skinny person who is heavily addicted to computers, not to mention sugar drinks. They may also wonder how such sort of people can overcome depressions, or tragically, whether programmers are always in state of bad mood, and that’s why they eventually become so weird ?!&lt;/p&gt;
 
@@ -326,11 +320,10 @@
 
 &lt;p&gt;Lucene uses the &lt;em&gt;inverted index data structure&lt;/em&gt; to index documents. The indexing strategy of Lucene is different from others when it creates segments and merges them, rather than uses a single index. Typically, an index segment consists of a dictionary index, a term dictionary and a posting dictionary.&lt;/p&gt;
 
-&lt;div id=&quot;attachment_256&quot; style=&quot;width: 610px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img class=&quot;wp-image-256&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-1024x476.png&quot; alt=&quot;The index diagram with the merge factor b is 3&quot; width=&quot;600&quot; height=&quot;279&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-1024x476.png 1024w, http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-300x139.png 300w, http://newbiettn.com/wp-content/uploads/2016/01/indexing_lucene-768x357.png 768w&quot; sizes=&quot;(max-width: 600px) 100vw, 600px&quot; /&gt;
-  
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/indexing-lucene.png&quot; alt=&quot;The index diagram with the merge factor b is 3 &quot; /&gt;
   &lt;p class=&quot;wp-caption-text&quot;&gt;
-    &lt;strong&gt;Figure 1:&lt;/strong&gt; The index diagram with the merge factor b is 3
+    The index diagram with the merge factor b is 3 
   &lt;/p&gt;
 &lt;/div&gt;
 
@@ -340,17 +333,16 @@
 
 &lt;p&gt;Typically we can divide indexing documents into two distinct procedures, extracting text and creating index &lt;strong&gt;(Figure 2)&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;div id=&quot;attachment_272&quot; style=&quot;width: 410px&quot; class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img class=&quot;wp-image-272&quot; src=&quot;http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM-252x300.png&quot; alt=&quot;Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index&quot; width=&quot;400&quot; height=&quot;477&quot; srcset=&quot;http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM-252x300.png 252w, http://newbiettn.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-16-at-11.13.03-AM.png 562w&quot; sizes=&quot;(max-width: 400px) 100vw, 400px&quot; /&gt;
-  
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/analyze-lucene.png&quot; alt=&quot;Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]&quot; /&gt;
   &lt;p class=&quot;wp-caption-text&quot;&gt;
-    &lt;strong&gt;Figure 2&lt;/strong&gt;. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]
+    Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]
   &lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;In extracting procedure, it is common to use a versatile parser that can extract textual contents from documents. One of widely known tools we can use to parse documents is &lt;a href=&quot;https://tika.apache.org&quot; target=&quot;_blank&quot;&gt;Apache Tika&lt;/a&gt;. When parsing completes, we will have an input stream that needs to be indexed. It is the second procedure of our index process – creating an index.&lt;/p&gt;
 
-&lt;p&gt;More often than not, we do not index everything we retrieve from the input stream. We instead need to apply &lt;strong&gt;analysis process&lt;/strong&gt; where we will discard unimportant terms from the textual content (e.g., punctuations, stopping words). In Lucene, the analysis process is handled by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Analyzer&lt;/span&gt; . The framework already provides handy and powerful analysers that we can use without customising in a majority of problems.&lt;/p&gt;
+&lt;p&gt;More often than not, we do not index everything we retrieve from the input stream. We instead need to apply &lt;strong&gt;analysis process&lt;/strong&gt; where we will discard unimportant terms from the textual content (e.g., punctuations, stopping words). In Lucene, the analysis process is handled by &lt;code class=&quot;highlighter-rouge&quot;&gt;Analyzer&lt;/code&gt;. The framework already provides handy and powerful analysers that we can use without customising in a majority of problems.&lt;/p&gt;
 
 &lt;p&gt;After analysing, the textual contents are ready to be indexed.&lt;/p&gt;
 
@@ -360,67 +352,67 @@
 
 &lt;h4 id=&quot;constructan-index-writer&quot;&gt;3.1 Construct an index writer&lt;/h4&gt;
 
-&lt;p&gt;In Lucene, the index is created and maintained by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;IndexWriter&lt;/span&gt; . The IndexWriter constructors can be defined in various ways but most often we simply need to supply&lt;/p&gt;
+&lt;p&gt;In Lucene, the index is created and maintained by &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexWriter&lt;/code&gt;. The IndexWriter constructors can be defined in various ways but most often we simply need to supply&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Directory d &lt;/span&gt;where the index will be stored&lt;/li&gt;
-  &lt;li&gt;&lt;span class=&quot;lang:java decode:true crayon-inline&quot;&gt;IndexWriterConfig conf&lt;/span&gt;  holds all the configuration that is used to construct an &lt;span class=&quot;lang:default decode:true crayon-inline&quot;&gt;IndexWriter&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Directory d&lt;/code&gt; where the index will be stored&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IndexWriterConfig conf&lt;/code&gt; holds all the configuration that is used to construct an &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexWriter&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In the code below, we can see that I have define an instance of &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;IndexWriterConfig&lt;/span&gt;  with a specialised &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Analyzer&lt;/span&gt; . The purpose is I want to analyse documents in a particular way that suits my personal needs (e.g., I want to keep specific words that built-in analysers will certainly remove).&lt;/p&gt;
+&lt;p&gt;In the code below, we can see that I have define an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexWriterConfig&lt;/code&gt; with a specialised Analyzer`. The purpose is I want to analyse documents in a particular way that suits my personal needs (e.g., I want to keep specific words that built-in analysers will certainly remove).&lt;/p&gt;
 
-&lt;p&gt;In the given code sample, we use &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;FSDirectory&lt;/span&gt; . There are other alternative solutions, such as &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;SimpleFSDirectory&lt;/span&gt; , &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;NIOFSDirectory&lt;/span&gt; .&lt;/p&gt;
+&lt;p&gt;In the given code sample, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;FSDirectory&lt;/code&gt; . There are other alternative solutions, such as &lt;code class=&quot;highlighter-rouge&quot;&gt;SimpleFSDirectory&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;NIOFSDirectory&lt;/code&gt; .&lt;/p&gt;
 
-&lt;pre class=&quot;lang:java decode:true&quot; title=&quot;Construct an IndexWriter&quot;&gt;/**
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;cm&quot;&gt;/**
  * Create an Indexer using the given directory to store index files, and the
  * directory need to be indexed.
- * 
- * */
-public Indexer(String anIndexDir, String aDataDir) {
-	// set place to store indexes
-	this.indexDir = anIndexDir;
+ *
+ * */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Indexer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anIndexDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aDataDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// set place to store indexes&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;indexDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anIndexDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-	// set directory has to be indexed
-	this.dataDir = aDataDir;
+	&lt;span class=&quot;c1&quot;&gt;// set directory has to be indexed&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dataDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aDataDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-	try {
-		// create Directory to store indexes, use FSDirectory.open
-		// to automatically pick the most suitable directory implementation
-		Directory dir = FSDirectory.open(new File(indexDir));
+	&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// create Directory to store indexes, use FSDirectory.open&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// to automatically pick the most suitable directory implementation&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FSDirectory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
 
-		// create an instance of Analyzer with my own custom analyzer
-		analyzer = new MyCustomAnalyzer();
+		&lt;span class=&quot;c1&quot;&gt;// create an instance of Analyzer with my own custom analyzer&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;analyzer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyCustomAnalyzer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 
-		// create configuration for new IndexWriter
-		IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_46,
-				analyzer);
+		&lt;span class=&quot;c1&quot;&gt;// create configuration for new IndexWriter&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;IndexWriterConfig&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IndexWriterConfig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;LUCENE_46&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;analyzer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-		// create IndexWriter, which can create new index, or
-		// adds, removes, or updates documents in the index
-		// however, it can not read or search
-		this.writer = new IndexWriter(dir, conf);
+		&lt;span class=&quot;c1&quot;&gt;// create IndexWriter, which can create new index, or&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// adds, removes, or updates documents in the index&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// however, it can not read or search&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IndexWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-}
-&lt;/pre&gt;
-
-&lt;p&gt;####&lt;/p&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;modelling-document&quot;&gt;3.2 Modelling document&lt;/h4&gt;
 
-&lt;p&gt;In the framework textual content is modelled using the class &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Document&lt;/span&gt; . This class allows to model a document instance with numerous attributes where for every attribute we can also define using the class &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Field&lt;/span&gt; .&lt;/p&gt;
+&lt;p&gt;In the framework textual content is modelled using the class &lt;code class=&quot;highlighter-rouge&quot;&gt;Document&lt;/code&gt; . This class allows to model a document instance with numerous attributes where for every attribute we can also define using the class &lt;code class=&quot;highlighter-rouge&quot;&gt;Field&lt;/code&gt; .&lt;/p&gt;
 
-&lt;p&gt;In the sample code below, I have define an &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Document&lt;/span&gt;  instance with a number of attributes:&lt;/p&gt;
+&lt;p&gt;In the sample code below, I have define an &lt;code class=&quot;highlighter-rouge&quot;&gt;Document&lt;/code&gt; instance with a number of attributes:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Document ID&lt;/strong&gt;: because in practice we may have thousands of documents, I have used base64 to generate unique IDs for documents. Notice that we supply the &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;StringField&lt;/span&gt;  constructor with the variable &lt;span class=&quot;lang:java decode:true crayon-inline &quot;&gt;Field.Store.YES&lt;/span&gt; , which means the values of this attributes will be stored in index files. More importantly, we &lt;strong&gt;do not index &lt;/strong&gt;the &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;StringField&lt;/span&gt;  by default.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Document ID&lt;/strong&gt;: because in practice we may have thousands of documents, I have used base64 to generate unique IDs for documents. Notice that we supply the &lt;code class=&quot;highlighter-rouge&quot;&gt;StringField&lt;/code&gt; constructor with the variable &lt;code class=&quot;highlighter-rouge&quot;&gt;Field.Store.YES&lt;/code&gt; , which means the values of this attributes will be stored in index files. More importantly, we &lt;strong&gt;do not index &lt;/strong&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;StringField&lt;/code&gt; by default.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;File path&lt;/strong&gt;: will be stored&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Content field&lt;/strong&gt;: as you may think, we need to index the content field for further full-text search. However, we may or may not store it in the index files. It is a matter of choice. In this particular case, I choose to store the field.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;lang:java decode:true &quot;&gt;Document doc = new Document();
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Document doc = new Document();
 
 // docId
 // generated by base64 of filepath
@@ -440,15 +432,15 @@ Field contentField = new Field(
 		MyDocumentIndexedProperties.CONTENT_FIELD,
 		AnalyzerUtils.tokenStreamToString(ts), TYPE_STORED);
 ts.close();
-doc.add(contentField);&lt;/pre&gt;
-
-&lt;p&gt;####&lt;/p&gt;
+doc.add(contentField);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;index-document&quot;&gt;3.3 Index document&lt;/h4&gt;
 
 &lt;p&gt;While Lucene consists many components, it, at the same time, uses such extremely simple and intuitive methods to abstract the complex structures that it is fascinating seeing how it is simple to perform indexing.&lt;/p&gt;
 
-&lt;pre class=&quot;lang:java decode:true &quot;&gt;Document doc = new Document();
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Document doc = new Document();
 
 //modelling document in the same manner as section 3.2
 //...
@@ -459,15 +451,15 @@ writer.addDocument(doc);
 
 //close the index when finish
 //which also means we commit the index to be ready to store
-writer.close()&lt;/pre&gt;
-
-&lt;p&gt; &lt;/p&gt;
+writer.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;full-text-search&quot;&gt;4. Full-text search&lt;/h3&gt;
 
-&lt;p&gt;Until now we have an index that can be used to search over. To initialise a search, we must input a search query, which can be a keyword or even a wild card. In Lucene, the search query will firstly be handled by &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;QueryParser&lt;/span&gt;  where the query will be parsed into meaningful structure, called &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Query&lt;/span&gt; . After that, the &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;IndexSearcher&lt;/span&gt;  will consume &lt;span class=&quot;lang:default decode:true crayon-inline &quot;&gt;Query&lt;/span&gt;  instance in order to look up over the index.&lt;/p&gt;
+&lt;p&gt;Until now we have an index that can be used to search over. To initialise a search, we must input a search query, which can be a keyword or even a wild card. In Lucene, the search query will firstly be handled by &lt;code class=&quot;highlighter-rouge&quot;&gt;QueryParser&lt;/code&gt; where the query will be parsed into meaningful structure, called &lt;code class=&quot;highlighter-rouge&quot;&gt;Query&lt;/code&gt; . After that, the &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexSearcher&lt;/code&gt; will consume &lt;code class=&quot;highlighter-rouge&quot;&gt;Query&lt;/code&gt; instance in order to look up over the index.&lt;/p&gt;
 
-&lt;pre class=&quot;lang:java decode:true&quot;&gt;// searcher
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// searcher
 IndexSearcher searcher = new IndexSearcher(this.indexReader);
 
 // query parser
@@ -477,7 +469,9 @@ QueryParser parser = new QueryParser(Version.LUCENE_46, &quot;content&quot;, new
 Query q = parser.parse(&quot;....&quot;);
 
 // look up and return top 10 relevant documents
-Topdocs docs = searcher.search(query, 10);&lt;/pre&gt;
+Topdocs docs = searcher.search(query, 10);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;bottom-line&quot;&gt;5. Bottom line&lt;/h3&gt;
 

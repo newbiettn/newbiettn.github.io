@@ -315,53 +315,22 @@ p.written {
 .hentry p.written a {
 	text-decoration: none;
 }
-
-.more {
-	margin: 28px 0 15px;
-	font-size: 15px;
-	text-align: right;
+.aligncenter, div.aligncenter {
+    display: block;
+    margin: 30px auto;
 }
-
-.more a {
-	background: #2f2f2f;
-	color: #fff;
-	padding: 5px;
+.wp-caption {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f0f0f0;
+    max-width: 60%;
+    padding: 5px 3px 10px;
+    text-align: center;
 }
-
-.more a:hover {
-	background: #000;
-	color: #fff;
-}
-
-.hentry {
-	padding: 9px 0
-}
-
-.hentry ul {
-	padding-left: 20px;
-}
-
-.hentry ul.pricing-table {
-	padding-left: 0;
-}
-
-.hentry ul li, .hentry ol li {
-	font-size: 16px;
-}
-
-.hentry ul.slides {
-	padding-left: 0;
-}
-
-.hentry p a {
-	text-decoration: underline;
-	color: #000;
-}
-
-.prevnext {
-	text-transform: uppercase;
-	padding-bottom: 17px;
-	border-bottom: 1px solid #EEEFF1
+.wp-caption-text {
+    font-size: 12px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
 }
 /* Archived list  ---------------------- */
 .article-list-item-title{
