@@ -25,22 +25,29 @@ My current environment is as follows
 
 1. Make _pear_ in MAMP accessible by adding the following code inside your _bash_profile_
 
-<pre class="lang:default decode:true">alias mpear='/Applications/MAMP/bin/php/php5.5.14/bin/pear'</pre>
+``` php
+alias mpear='/Applications/MAMP/bin/php/php5.5.14/bin/pear'
+```
 
 Normally, you need to restart Terminal to trigger the new command.
 
 2. Set _pear_ to the current _php.ini._ It should be done to make sure your pear does not associate with another version of PHP (which you don&#8217;t want).
 
-<pre class="lang:default decode:true ">mpear config-set php_ini /Applications/MAMP/bin/php/php5.5.14/conf/php.ini
-</pre>
+```
+/Applications/MAMP/bin/php/php5.5.14/conf/php.ini
+```
 
-3. Install _var_dump_ extension via Pear
+3. Install `var_dump` extension via `Pear`
 
-<pre class="lang:default decode:true ">mpear install Var_Dump-1.0.4</pre>
+```
+mpear install Var_Dump-1.0.4
+```
 
-Notice that in my case, it should be <span style="color: #000000;"><b>mpear</b>. It depends on how you choose in your <em>bash_profile</em></span>
+Notice that in my case, it should be `mpear`. It depends on how you choose in your `bash_profile``
 
 4. Verify if it works by some PHP codes
 
-<pre class="lang:php decode:true ">include_once 'Var_Dump.php';
-Var_Dump::display ( $dummyValue );</pre>
+``` php
+include_once 'Var_Dump.php';
+Var_Dump::display ( $dummyValue );
+```

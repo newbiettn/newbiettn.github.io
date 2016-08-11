@@ -19,13 +19,7 @@ tags:
 ---
 Martial Training is a project I worked with 2 other guys &#8211; 1 Vietnamese and 1 Brazilian. The fundemental idea is to support precise training in martial art by using **Kinect** for action recognition, voice control for both commands and feedbacks, logging and vibration for notification of incorrect movements.
 
-<div id="attachment_73" style="width: 509px" class="wp-caption aligncenter">
-  <a href="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png"><img class="wp-image-73" src="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png" alt="The system architecture" width="499" height="375" srcset="http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture.png 975w, http://newbiettn.com/wp-content/uploads/2015/01/Martial-Training-Architecture-300x225.png 300w" sizes="(max-width: 499px) 100vw, 499px" /></a>
-  
-  <p class="wp-caption-text">
-    The system architecture
-  </p>
-</div>
+{% include image.html url="/images/Martial-Training-Architecture.png" description="The system architecture" %}
 
 In the application, the template-based algorithm **Dynamic Time Warping** is used to compare actions, which can be recorded and stored in matrix vectors by using Kinect. During the implementation, DTW exposed contrainsts, including high time complexity O(N^2) and not being able to measure similarity parts of the body. Therefore, the application is limited in the sense that it can only notify the user if he performs the actions incorrectly but can not explicitely lets him know which part has problem.
 
@@ -33,12 +27,6 @@ Besides notified by the sound, the system should be able to notify the user via 
 
 Regarding to the UI, I had to spent a couple of days in order to read the books **WP4 Unleased**. I had to admit that learning WPF requires a steep curve, which means that it appears to be difficult at the beginning but the deeper I digged, the easier it became. After having some experiences, I began to upgrade it with **Metro** style of Windows 8. I used the open source project **MahApps. Metro** to do that, then added logging display and other things to the UI.
 
-<div id="attachment_74" style="width: 610px" class="wp-caption aligncenter">
-  <a href="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png"><img class="wp-image-74" src="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png" alt="Martial Training UI" width="600" height="361" srcset="http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI.png 1003w, http://newbiettn.com/wp-content/uploads/2015/01/Overal-UI-300x180.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a>
-  
-  <p class="wp-caption-text">
-    Martial Training UI
-  </p>
-</div>
+{% include image.html url="/images/Overal-UI.png" description="Martial Training UI" %}
 
 As you can see, it is me in the picture for action tutorial and the left screen is for the user which captured by Kinect. The application is very limited but if you asked me how would I upgrade the application, I think I will augment the video by adding realtime information in the video to inform the user and of course switch the algorithm to machine-learning one.

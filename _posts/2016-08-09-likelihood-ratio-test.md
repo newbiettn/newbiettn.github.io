@@ -43,10 +43,10 @@ Therefore, we have $G = 2[68.3 &#8211; 53.6] = 29.31$
 
 3. Find $p = P[\chi^2(df = 1) = 29.31\]\$ by using R
 
-  ```
-  pchisq(29.31, 1, lower.tail = FALSE)
-  [1] 6.167658e-08
-  ```
+```
+pchisq(29.31, 1, lower.tail = FALSE)
+[1] 6.167658e-08
+```
 
 
 4. Because $p$-value << $\alpha = 0.05$, we can reject the null hypothesis $H\_0$ that two models are not significant different, and accept the alternative hypothesis $H\_a$ that $h\_\theta^{(1)}$ fits better than $h\_\theta^{(0)}$.

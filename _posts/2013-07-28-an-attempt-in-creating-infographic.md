@@ -21,30 +21,6 @@ In the second infographic, I illustrated the development of Lumia phone in one s
 
 I unfortunately did not win any prize at all with these two pictures, anyway, both of them were just my attempts, it was not necessary to problematize.
 
-<div id='gallery-1' class='gallery galleryid-146 gallery-columns-1 gallery-size-large'>
-  <dl class='gallery-item'>
-    <dt class='gallery-icon landscape'>
-      <a href='http://newbiettn.com/wp-content/uploads/2015/01/9348887633_0b799ffb3e_o.jpg'><img width="1024" height="753" src="http://newbiettn.com/wp-content/uploads/2015/01/9348887633_0b799ffb3e_o-1024x753.jpg" class="attachment-large size-large" alt="The development of Lumia smartphones" aria-describedby="gallery-1-148" srcset="http://newbiettn.com/wp-content/uploads/2015/01/9348887633_0b799ffb3e_o-1024x753.jpg 1024w, http://newbiettn.com/wp-content/uploads/2015/01/9348887633_0b799ffb3e_o-300x221.jpg 300w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption' id='gallery-1-148'>
-      The development of Lumia smartphones
-    </dd>
-  </dl>
-  
-  <br style="clear: both" />
-  
-  <dl class='gallery-item'>
-    <dt class='gallery-icon landscape'>
-      <a href='http://newbiettn.com/wp-content/uploads/2015/01/7613400246_031eec0256_o.jpg'><img width="1024" height="666" src="http://newbiettn.com/wp-content/uploads/2015/01/7613400246_031eec0256_o-1024x666.jpg" class="attachment-large size-large" alt="Lionel Messie and his stats" aria-describedby="gallery-1-147" srcset="http://newbiettn.com/wp-content/uploads/2015/01/7613400246_031eec0256_o-1024x666.jpg 1024w, http://newbiettn.com/wp-content/uploads/2015/01/7613400246_031eec0256_o-300x195.jpg 300w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption' id='gallery-1-147'>
-      Lionel Messie and his stats
-    </dd>
-  </dl>
-  
-  <br style="clear: both" />
-</div>
+{% include image.html url="/images/7613400246_031eec0256_o.jpg" description="Lionel Messie and his stats" %}
 
-&nbsp;
+{% include image.html url="/images/9348887633_0b799ffb3e_o.jpg" description="The development of Lumia smartphones" %}

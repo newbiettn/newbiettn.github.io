@@ -19,37 +19,30 @@ tags:
 
 Generally, MAP is a particular extension of MLE where we take in account a biased assumption of data, called **_prior knowledge_**. Specifically Bayes&#8217; theorem (or Bayes&#8217; rule) allows us to incorporate prior probability as follows
 
-[latex display=&#8221;true&#8221;]P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}[/latex]
+$$
+P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}
+$$
 
-where
+In which, $P(D\|\theta)$ is the likelihood, $P(\theta)$ is the prior probability, $P(D)$ is the marginal likelihood, and $P(\theta\|D)$ is the posteriori likelihood.
 
-<li style="margin-left: 150px;">
-  [latex]P(D|\theta)[/latex] is the likelihood
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(\theta)[/latex] is the prior probability
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(D)[/latex] is the marginal likelihood
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(\theta|D)[/latex] is the posteriori likelihood
-</li>
+The principle of MAP is to estimate $\theta$ that maximise the posteriori likelihood $P(\theta)$. Thus,
 
-The principle of MAP is to estimate [latex]\theta[/latex] that maximise the posteriori likelihood [latex]P(\theta)[/latex]. Thus,
+$$
+\hat{\theta}_{MAP} = argmax\ \frac{P(D|\theta)P(\theta)}{P(D)}
+$$
 
-[latex display=&#8221;true&#8221;]\hat{\theta}_{MAP} = argmax\ \frac{P(D|\theta)P(\theta)}{P(D)}[/latex]
+Notice that the denominator $P(D)$ is independent of $\theta$. Therefore
 
-Notice that the denominator [latex]P(D)[/latex] is independent of [latex]\theta[/latex]. Therefore
+$$
+P(\theta|D) \propto {P(D|\theta)P(\theta)}
+$$
 
-[latex display=&#8221;true&#8221;]P(\theta|D) \propto {P(D|\theta)P(\theta)}[/latex]
+$$
+\Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D|\theta)P(\theta)}
+$$
 
-[latex display=&#8221;true&#8221;] \Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D|\theta)P(\theta)}[/latex]
+By assuming attributes $X\_{1}, X\_{2}, &#8230;, X_{n}$ are independent of each other, we have
 
-By assuming attributes [latex]X\_{1}, X\_{2}, &#8230;, X_{n}[/latex] are independent of each other, we have
-
-<p style="text-align: center; font-size: 20px;">
-  [latex display=&#8221;true&#8221;]\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)[/latex]
-</p>
-
-&nbsp;
+$$
+\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)
+$$

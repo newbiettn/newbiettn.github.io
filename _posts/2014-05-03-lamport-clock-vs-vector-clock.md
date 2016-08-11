@@ -42,13 +42,7 @@ tags:
   Suppose we have 3 different processes <strong>P0</strong>, <strong>P1</strong>, <strong>P2</strong> in the system. By following Lamport rules, every processes <strong>P0</strong>, <strong>P1</strong>, <strong>P2 </strong>will maintain a single Lamport clock, says <strong>t</strong>. Whenever a event sends a message to the receiver, it will necessarily attach its timestamp along with its message.
 </p>
 
-<div id="attachment_45" style="width: 310px" class="wp-caption aligncenter">
-  <a href="http://newbiettn.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-03-at-11.56.49-AM-300x109.png"><img class="size-full wp-image-45" src="http://newbiettn.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-03-at-11.56.49-AM-300x109.png" alt="Figure 1" width="300" height="109" /></a>
-  
-  <p class="wp-caption-text">
-    Figure 1
-  </p>
-</div>
+{% include image.html url="/images/Screen-Shot-2014-05-03-at-11.56.49-AM-300x109.png" description="Figure 1" %}
 
 <p style="text-align: justify;">
   The first rule is for every internal event inside the process, the clock <strong>t </strong>will be increased by <strong>1 </strong>as illustrated in the <em>Figure 1</em> with the process P0 and its events <em><strong>a, b, c, d</strong>&#8230; </em>
@@ -61,9 +55,9 @@ tags:
 </p>
 
 > **t:= max(currentTimestamp, messageTimestamp) + 1** where
-> 
+>
 > _currentTimestamp_: the current timestamp of the receiver
-> 
+>
 > _messageTimestamp_: the attached timestamp of the message
 
 <p style="text-align: justify;">
@@ -90,13 +84,7 @@ tags:
   Formally, vector clock is an array of integer instead of Lamport clocks&#8217;s unique integer. Reuse the above example, we will have a vector clock as following.
 </p>
 
-<div id="attachment_44" style="width: 310px" class="wp-caption aligncenter">
-  <a href="http://newbiettn.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-03-at-2.12.06-PM-300x94.png"><img class="size-full wp-image-44" src="http://newbiettn.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-03-at-2.12.06-PM-300x94.png" alt="Figure 2" width="300" height="94" /></a>
-  
-  <p class="wp-caption-text">
-    Figure 2
-  </p>
-</div>
+{% include image.html url="/images/Screen-Shot-2014-05-03-at-2.12.06-PM-300x94.png" description="Figure 2" %}
 
 <p style="text-align: justify;">
   I will now explain rules of the Vector clock algorithms step by step by using the example.

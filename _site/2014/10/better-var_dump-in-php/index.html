@@ -23,6 +23,7 @@
 <link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
 <link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/syntax.css' type='text/css' media='all' />
 <script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
 <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -115,7 +116,9 @@ MathJax.Hub.Config({
   <li>Make <em>pear</em> in MAMP accessible by adding the following code inside your <em>bash_profile</em></li>
 </ol>
 
-<pre class="lang:default decode:true">alias mpear='/Applications/MAMP/bin/php/php5.5.14/bin/pear'</pre>
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>alias mpear='/Applications/MAMP/bin/php/php5.5.14/bin/pear'
+</code></pre>
+</div>
 
 <p>Normally, you need to restart Terminal to trigger the new command.</p>
 
@@ -123,23 +126,28 @@ MathJax.Hub.Config({
   <li>Set <em>pear</em> to the current <em>php.ini.</em> It should be done to make sure your pear does not associate with another version of PHP (which you don’t want).</li>
 </ol>
 
-<pre class="lang:default decode:true ">mpear config-set php_ini /Applications/MAMP/bin/php/php5.5.14/conf/php.ini
-</pre>
+<div class="highlighter-rouge"><pre class="highlight"><code>/Applications/MAMP/bin/php/php5.5.14/conf/php.ini
+</code></pre>
+</div>
 
 <ol>
-  <li>Install <em>var_dump</em> extension via Pear</li>
+  <li>Install <code class="highlighter-rouge">var_dump</code> extension via <code class="highlighter-rouge">Pear</code></li>
 </ol>
 
-<pre class="lang:default decode:true ">mpear install Var_Dump-1.0.4</pre>
+<div class="highlighter-rouge"><pre class="highlight"><code>mpear install Var_Dump-1.0.4
+</code></pre>
+</div>
 
-<p>Notice that in my case, it should be <span style="color: #000000;"><b>mpear</b>. It depends on how you choose in your <em>bash_profile</em></span></p>
+<p>Notice that in my case, it should be <code class="highlighter-rouge">mpear</code>. It depends on how you choose in your <code class="highlighter-rouge">bash_profile</code>`</p>
 
 <ol>
   <li>Verify if it works by some PHP codes</li>
 </ol>
 
-<pre class="lang:php decode:true ">include_once 'Var_Dump.php';
-Var_Dump::display ( $dummyValue );</pre>
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>include_once 'Var_Dump.php';
+Var_Dump::display ( $dummyValue );
+</code></pre>
+</div>
 
                         </div>
                       </div>

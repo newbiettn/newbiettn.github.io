@@ -23,6 +23,7 @@
 <link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
 <link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/syntax.css' type='text/css' media='all' />
 <script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
 <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -105,70 +106,23 @@ MathJax.Hub.Config({
 
 <p>Generally, MAP is a particular extension of MLE where we take in account a biased assumption of data, called <strong><em>prior knowledge</em></strong>. Specifically Bayes’ theorem (or Bayes’ rule) allows us to incorporate prior probability as follows</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[latex display=”true”]P(\theta</td>
-      <td>D) = \frac{P(D</td>
-      <td>\theta)P(\theta)}{P(D)}[/latex]</td>
-    </tr>
-  </tbody>
-</table>
+<script type="math/tex; mode=display">P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}</script>
 
-<p>where</p>
+<p>In which, $P(D|\theta)$ is the likelihood, $P(\theta)$ is the prior probability, $P(D)$ is the marginal likelihood, and $P(\theta|D)$ is the posteriori likelihood.</p>
 
-<li style="margin-left: 150px;">
-  [latex]P(D|\theta)[/latex] is the likelihood
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(\theta)[/latex] is the prior probability
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(D)[/latex] is the marginal likelihood
-</li>
-<li style="margin-left: 150px;">
-  [latex]P(\theta|D)[/latex] is the posteriori likelihood
-</li>
+<p>The principle of MAP is to estimate $\theta$ that maximise the posteriori likelihood $P(\theta)$. Thus,</p>
 
-<p>The principle of MAP is to estimate [latex]\theta[/latex] that maximise the posteriori likelihood [latex]P(\theta)[/latex]. Thus,</p>
+<script type="math/tex; mode=display">\hat{\theta}_{MAP} = argmax\ \frac{P(D|\theta)P(\theta)}{P(D)}</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[latex display=”true”]\hat{\theta}_{MAP} = argmax\ \frac{P(D</td>
-      <td>\theta)P(\theta)}{P(D)}[/latex]</td>
-    </tr>
-  </tbody>
-</table>
+<p>Notice that the denominator $P(D)$ is independent of $\theta$. Therefore</p>
 
-<p>Notice that the denominator [latex]P(D)[/latex] is independent of [latex]\theta[/latex]. Therefore</p>
+<script type="math/tex; mode=display">P(\theta|D) \propto {P(D|\theta)P(\theta)}</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[latex display=”true”]P(\theta</td>
-      <td>D) \propto {P(D</td>
-      <td>\theta)P(\theta)}[/latex]</td>
-    </tr>
-  </tbody>
-</table>
+<script type="math/tex; mode=display">\Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D|\theta)P(\theta)}</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[latex display=”true”] \Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D</td>
-      <td>\theta)P(\theta)}[/latex]</td>
-    </tr>
-  </tbody>
-</table>
+<p>By assuming attributes $X_{1}, X_{2}, …, X_{n}$ are independent of each other, we have</p>
 
-<p>By assuming attributes [latex]X_{1}, X_{2}, …, X_{n}[/latex] are independent of each other, we have</p>
-
-<p style="text-align: center; font-size: 20px;">
-  [latex display=&#8221;true&#8221;]\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)[/latex]
-</p>
-
-<p> </p>
+<script type="math/tex; mode=display">\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)</script>
 
                         </div>
                       </div>

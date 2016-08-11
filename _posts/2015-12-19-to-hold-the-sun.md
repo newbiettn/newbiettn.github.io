@@ -17,13 +17,7 @@ tags:
 ---
 Previously self-helping books are not of my interests. I rarely paid my attention to any book of such type. I neither had any intention to pour my thoughts and feelings onto a book review. I rather prefer to keep it myself.
 
-<div id="attachment_223" style="width: 334px" class="wp-caption aligncenter">
-  <img class="wp-image-223 size-full" src="http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_.jpg" alt="&quot;To hold the sun&quot; by Chas Watkins" width="324" height="499" srcset="http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_.jpg 324w, http://newbiettn.com/wp-content/uploads/2015/12/51IIT4LfKeL._SX322_BO1204203200_-195x300.jpg 195w" sizes="(max-width: 324px) 100vw, 324px" />
-  
-  <p class="wp-caption-text">
-    &#8220;To hold the sun&#8221; by Chas Watkins
-  </p>
-</div>
+{% include image.html url="/images/to-hold-the-sun.jpg" description="&#8220;To hold the sun&#8221; by Chas Watkins" %}
 
 &#8220;To hold the sun&#8221; is the first self-helping book I&#8217;ve ever read. I like neither the book cover nor the title. It would definitely fail me if I were sort of person who judges books by their covers. Though the content is positively worth reading, it might attract even more readers if the book possessed aesthetically pleasing cover that is capable of reflecting inner values it wants to convey.
 

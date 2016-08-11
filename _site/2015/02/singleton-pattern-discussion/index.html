@@ -23,6 +23,7 @@
 <link rel='stylesheet' id='aude-layout-css'  href='http://127.0.0.1:4000/stylesheets/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='superfishcss-css'  href='http://127.0.0.1:4000/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
 <link rel='stylesheet' id='flexslider-css'  href='http://127.0.0.1:4000/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css'  href='http://127.0.0.1:4000/stylesheets/syntax.css' type='text/css' media='all' />
 <script type='text/javascript' src='http://127.0.0.1:4000/javascripts/jquery.js'></script>
 <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -101,72 +102,74 @@ MathJax.Hub.Config({
                     <div class="row">
                       <div class="maincontent">
                         <div class="twelve columns">
-                          <p>The <strong>Singleton </strong>pattern was used widely across in my projects. Back in time, I was confused when it came to an issue: if I should define <span class="lang:default decode:true  crayon-inline ">getInstance()</span>  method with supplied parameters.</p>
+                          <p>The <strong>Singleton </strong>pattern was used widely across in my projects. Back in time, I was confused when it came to an issue: if I should define <code class="highlighter-rouge">getInstance()</code> method with supplied parameters.</p>
 
-<p>My $0.02 is <strong>definitely not</strong>, since you intend to pass arguments to <span class="lang:default decode:true  crayon-inline ">getInstance()</span>  method, singleton is no longer itself. I think it would be much more like a factory by which you can instantiate many sorts of instances depending on passing arguments.</p>
+<p>My $0.02 is <strong>definitely not</strong>, since you intend to pass arguments to <code class="highlighter-rouge">getInstance()</code> method, singleton is no longer itself. I think it would be much more like a factory by which you can instantiate many sorts of instances depending on passing arguments.</p>
 
 <p>Let’s get hands dirty by making ourselves a singleton class.</p>
 
-<pre class="lang:default decode:true">public class SingletonDemo {
-	private static SingletonDemo instance = null;
-	
-	private SingletonDemo () {}
-	
-	public static synchronized SingletonDemo getInstance(){
-		if (instance == null) {
-			instance = new SingletonDemo();
-		}
-		return instance;
-	}
-}
-</pre>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingletonDemo</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="n">SingletonDemo</span> <span class="n">instance</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 
-<p>Here we have a SingletonDemo class which will return a singleton by invoking the method <span class="lang:default decode:true  crayon-inline ">getInstance()</span> . The class seems to be fine, however, we can still optimize it by using <strong>Initialization-on-demand holder idiom</strong>.</p>
+	<span class="kd">private</span> <span class="nf">SingletonDemo</span> <span class="o">()</span> <span class="o">{}</span>
 
-<pre class="lang:java decode:true">public class SingletonDemo {
-	private SingletonDemo () {}
-	
-	private static class SingletonDemoHolder {
-		private static final SingletonDemo INSTANCE = new SingletonDemo();
-	}
-	public static synchronized SingletonDemo getInstance(){
-		return SingletonDemoHolder.INSTANCE;
-	}
-}
-</pre>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">SingletonDemo</span> <span class="nf">getInstance</span><span class="o">(){</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingletonDemo</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 
-<p>The refactored code is better in the sense that the class <span class="lang:default decode:true  crayon-inline ">SingletonDemo</span>  has no static variables and the static inner class is not loaded until the JVM executes it. It provides thread safety.</p>
+<p>Here we have a SingletonDemo class which will return a singleton by invoking the method <code class="highlighter-rouge">getInstance()</code> . The class seems to be fine, however, we can still optimize it by using <strong>Initialization-on-demand holder idiom</strong>.</p>
 
-<p>Now suppose the class has properties and of course we need to initialize the instance after instantiating. We have two ways to make it. We either add parameters to <span class="lang:default decode:true  crayon-inline ">getInstance()</span>  method or define a new <span class="lang:default decode:true  crayon-inline ">init()</span>  method with mandatory parameters. From my point of view, both the former and the latter have pros and cons:</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingletonDemo</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nf">SingletonDemo</span> <span class="o">()</span> <span class="o">{}</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SingletonDemoHolder</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingletonDemo</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingletonDemo</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">SingletonDemo</span> <span class="nf">getInstance</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">SingletonDemoHolder</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The refactored code is better in the sense that the class <code class="highlighter-rouge">SingletonDemo</code>  has no static variables and the static inner class is not loaded until the JVM executes it. It provides thread safety.</p>
+
+<p>Now suppose the class has properties and of course we need to initialize the instance after instantiating. We have two ways to make it. We either add parameters to <code class="highlighter-rouge">getInstance()</code>  method or define a new <code class="highlighter-rouge">init()</code>  method with mandatory parameters. From my point of view, both the former and the latter have pros and cons:</p>
 
 <ol>
   <li>
     <p>The former perhaps _destroys _the <strong>Singleton </strong>pattern in the sense that the singleton now serves like a factory by which we can instantiate many different instances by supplying different arguments.</p>
   </li>
   <li>
-    <p>The latter, which exploits additional initialization method <span class="lang:default decode:true  crayon-inline ">init()</span> , preserves the <strong>Singleton </strong>pattern, however, it is not consistency since <em>developers may forget to invoke</em> <span class="lang:default decode:true  crayon-inline ">init()</span> , which results in <strong>incomplete instantiation</strong>. It’s considered as bad coding practice I think.</p>
+    <p>The latter, which exploits additional initialization method <code class="highlighter-rouge">init()</code> , preserves the <strong>Singleton </strong>pattern, however, it is not consistency since <em>developers may forget to invoke</em> <code class="highlighter-rouge">init()</code> , which results in <strong>incomplete instantiation</strong>. It’s considered as bad coding practice I think.</p>
   </li>
 </ol>
 
-<pre class="lang:java decode:true ">public class SingletonDemo {
-	private SingletonDemo () {}
-	
-	private Foo foo;
-	private Bar bar;
-	
-	private static class SingletonDemoHolder {
-		private static final SingletonDemo INSTANCE = new SingletonDemo();
-	}
-	public static synchronized SingletonDemo getInstance(){
-		return SingletonDemoHolder.INSTANCE;
-	}
-	public void init(Foo f, Bar b) {
-		this.foo = f;
-		this.bar = b;
-	}
-}</pre>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingletonDemo</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nf">SingletonDemo</span> <span class="o">()</span> <span class="o">{}</span>
 
-<p> </p>
+	<span class="kd">private</span> <span class="n">Foo</span> <span class="n">foo</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">Bar</span> <span class="n">bar</span><span class="o">;</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SingletonDemoHolder</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingletonDemo</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingletonDemo</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">SingletonDemo</span> <span class="nf">getInstance</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">SingletonDemoHolder</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">Foo</span> <span class="n">f</span><span class="o">,</span> <span class="n">Bar</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">foo</span> <span class="o">=</span> <span class="n">f</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">bar</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 
                         </div>
                       </div>

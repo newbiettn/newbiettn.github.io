@@ -107,7 +107,7 @@ In the sample code below, I have define an `Document` instance with a number of 
   * **File path**: will be stored
   * **Content field**: as you may think, we need to index the content field for further full-text search. However, we may or may not store it in the index files. It is a matter of choice. In this particular case, I choose to store the field.
 
-```
+``` java
 Document doc = new Document();
 
 // docId
@@ -135,7 +135,7 @@ doc.add(contentField);
 
 While Lucene consists many components, it, at the same time, uses such extremely simple and intuitive methods to abstract the complex structures that it is fascinating seeing how it is simple to perform indexing.
 
-```
+``` java
 Document doc = new Document();
 
 //modelling document in the same manner as section 3.2
@@ -154,7 +154,7 @@ writer.close()
 
 Until now we have an index that can be used to search over. To initialise a search, we must input a search query, which can be a keyword or even a wild card. In Lucene, the search query will firstly be handled by `QueryParser` where the query will be parsed into meaningful structure, called `Query` . After that, the `IndexSearcher` will consume `Query` instance in order to look up over the index.
 
-```
+``` java
 // searcher
 IndexSearcher searcher = new IndexSearcher(this.indexReader);
 
