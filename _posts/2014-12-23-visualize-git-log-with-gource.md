@@ -4,14 +4,6 @@ title: 'Visualize git log with &#8216;gource&#8217;'
 date: 2014-12-23T06:59:53+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=159
-permalink: /2014/12/visualize-git-log-with-gource/
-categories:
-  - Uncategorized
-tags:
-  - gource
-  - ihotfood
-  - visualization
 ---
 Visualization never gets boring, especially when it comes to demonstrate your working processing in a time span.
 

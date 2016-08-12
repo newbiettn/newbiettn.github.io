@@ -4,15 +4,6 @@ title: Invited talk at Swiss Post Solution Vietnam
 date: 2016-01-12T10:26:07+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=238
-permalink: /2016/01/invited-talk-at-swiss-post-solution-vietnam/
-categories:
-  - Uncategorized
-tags:
-  - machine learning
-  - presentation
-  - swiss post solution vietnam
-  - talk
 ---
 Recently, I was invited by a friend of mine, who works at Swiss Post Solution Vietnam, to deliver a training course on the topic of Machine Learning. Despite the fact that the training is very short, approximately 9 hours in total, but it does not prevent me from conveying essential concepts that who is interested in Machine Learning should know. During two training sessions, I&#8217;d introduced linear regressions, logistic regression, neural networks as well as clustering (k-means algorithm in specific). It was a pity that people couldn&#8217;t have chance to get their hands dirty on the implementation in order to see how those concepts can be easily implemented in Octave.
 

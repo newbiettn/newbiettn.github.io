@@ -2,10 +2,7 @@
 id: 453
 title: Likelihood ratio test
 date: 2016-08-09T11:34:05+00:00
-author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=453
-permalink: /2016/08/likelihood-ratio-test/
 categories:
   - Uncategorized
 ---

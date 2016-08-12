@@ -4,16 +4,6 @@ title: To hold the sun
 date: 2015-12-19T11:16:10+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=222
-permalink: /2015/12/to-hold-the-sun/
-categories:
-  - Uncategorized
-tags:
-  - book
-  - chas watkins
-  - review
-  - self-helping
-  - to hold the sun
 ---
 Previously self-helping books are not of my interests. I rarely paid my attention to any book of such type. I neither had any intention to pour my thoughts and feelings onto a book review. I rather prefer to keep it myself.
 

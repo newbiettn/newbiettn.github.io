@@ -4,18 +4,6 @@ title: 'WISE Appointment &#8211; The high-fidelity prototype'
 date: 2015-01-02T10:48:45+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=78
-permalink: /2015/01/wise-appointment-the-prototype/
-categories:
-  - Uncategorized
-tags:
-  - appointment
-  - high-fidelity appointment
-  - photoshop
-  - prototype
-  - PSD
-  - UI
-  - user interaction design
 ---
 The idea of the project is to create a system that allows
 - Student to make appointment with members in the WISE lab

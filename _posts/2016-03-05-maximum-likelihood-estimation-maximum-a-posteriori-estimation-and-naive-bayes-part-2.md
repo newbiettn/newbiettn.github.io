@@ -2,10 +2,7 @@
 id: 407
 title: Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)
 date: 2016-03-05T11:23:49+00:00
-author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=407
-permalink: /2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/
 categories:
   - Uncategorized
 tags:

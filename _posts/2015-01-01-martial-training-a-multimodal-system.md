@@ -4,18 +4,6 @@ title: 'Martial Training &#8211; A multimodal system'
 date: 2015-01-01T09:34:16+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=70
-permalink: /2015/01/martial-training-a-multimodal-system/
-categories:
-  - Uncategorized
-tags:
-  - android
-  - kinect
-  - multimodal
-  - socket
-  - user interface
-  - voice control
-  - wpf
 ---
 Martial Training is a project I worked with 2 other guys &#8211; 1 Vietnamese and 1 Brazilian. The fundemental idea is to support precise training in martial art by using **Kinect** for action recognition, voice control for both commands and feedbacks, logging and vibration for notification of incorrect movements.
 

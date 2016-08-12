@@ -374,7 +374,7 @@ initialize;name: aName; address: anAddress</pre>
   Along with lambda expression, Java 8 introduces <em>default methods</em> (defender methods) or<em> virtual extension methods</em>. The purpose is to provide the backward compatibility in the new Java [16]. For example, we have an interface <span class="lang:default decode:true  crayon-inline ">A</span>  and a class <span class="lang:default decode:true  crayon-inline ">Clazz</span>  implements the interface:
 </p>
 
-<pre class="lang:java decode:true">public interface A { 
+<pre class="lang:java decode:true">public interface A {
 void foo();
 }
 
@@ -402,88 +402,88 @@ bar();</pre>
   <pre class="lang:java decode:true ">public interface A { void foo();
 
 default void bar() {} }</pre>
-  
+
   <p style="text-align: justify;">
     The class <span class="lang:default decode:true  crayon-inline ">Clazz</span>  no longer has to worry about new method <span class="lang:default decode:true  crayon-inline ">bar()</span>  because it is provided by the interface.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.3.3 Traits in Smalltalk</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     Smalltalk supports trait implementation. In a nutshell, traits allow the developer to reuse a set of methods in order to extend the functionality of the classes ??. We can also use traits to avoid complicated inheritance. In Smalltalk, due to the limitation of single inheritance, traits of different collection properties is created to build diverse hierarchy of classes without code duplication [25].
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.3.4 Discussion</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     In general, the combination of interfaces and virtual extension methods in Java are fairly similar to traits in Smalltalk from the usage point of view. Both of them provide multiple inheritances. However, in terms of the language structure, interfaces are necessary in Java but not in Smalltalk. Java variables whose types are interface can reference to any objects that implement the interface. This feature is particularly helpful since Java is statically typed. But because Smalltalk is dynamic typed, interfaces consequently do not serve any purposes.
   </p>
-  
+
   <p style="text-align: justify;">
     In Java 7 and previous versions, sometimes it is annoying to implement all methods in an interface whereas in Smalltalk, you can create default implementations for methods and let classes reimplement only required methods. With the support of virtual extension methods, Java has a significant improvement in the language, allowing interfaces behave conceptually similar to traits.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.4 Encapsulation</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     There is no access modifiers in Smalltalk whereas Java obtains a number of modifiers including public, private, protected for both variables and methods .
   </p>
-  
+
   <p style="text-align: justify;">
     In detail, Smalltalk methods or messages are always considered to be public properties of an object in Smalltalk, or we can say a set of messages of an object is the object interface. Variables in Smalltalk, on the other hand, are the private properties of an object. The only way to access the instance variables inside Smalltalk object is to send the message to the object. The Smalltalk instance variables can be compared to protected instance variables of Java.
   </p>
-  
+
   <p style="text-align: justify;">
     In Java, we can have both private and public methods inside a single method body in which private methods are only invoked within the containing class while public methods can be used anywhere.
   </p>
-  
+
   <p style="text-align: justify;">
     Finally, the access modifier protected is unique to Java itself.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.5 Polymorphism</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     Both languages support polymorphism. There are no differences in their approach. Smalltalk allows sending messages having the same names to inherited object, while Java instances of classes in the same hierarchy can invoke methods of the same name but different implementations.There is an discussion about how these languages achieve polymorphism [7]. The idea is reflection languages like Smalltalk and Java do not approach polymorphism by inheritance. Instead, they use reflection.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.6 Inner classes</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     Inner classes in Java are classes defined inside the body of another classes or methods. By using inner classes, we can create new instance variables of new classes aesthetically and dynamically whenever we need it. For example, let’s have a NonStaticBar and StaticBar class nested inside the Foo class:
   </p>
-  
+
   <pre class="lang:java decode:true ">Class Foo {
 Class NonStaticBar {}; static class StaticBar {}; void doSomething () {};
 
 }</pre>
-  
+
   <p style="text-align: justify;">
     Within <span class="lang:default decode:true  crayon-inline ">Foo</span> , one can create new <span class="lang:default decode:true  crayon-inline ">NonStaticBar</span>  objects or call <span class="lang:default decode:true  crayon-inline ">doSomething()</span>  but outside <span class="lang:default decode:true  crayon-inline ">Foo</span>  scope, both <span class="lang:default decode:true  crayon-inline ">NonStaticBar</span>  and <span class="lang:default decode:true  crayon-inline ">doSomething()</span>  are not accessible without static keyword. In other words, <span class="lang:default decode:true  crayon-inline ">NonStaticBar</span>  objects are always enclosed by instances of the <span class="lang:default decode:true  crayon-inline ">Foo</span>  class. On the other hand, we can use <span class="lang:default decode:true  crayon-inline ">StaticBar</span>  class as a top-level class regardless its enclosing instances.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.7 Closures</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.7.1 Anonymous inner class</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     Besides classes that are nested inside classes or methods, Java support anonymous inner class. Using anonymous in- ner class, one can declare the class and instantiate new instance of that class at the same time as follows:
   </p>
-  
+
   <pre class="lang:java decode:true ">final int number = 0; AnonymousInnerClass aic = new
 
 AnonymousInnerClass() { public void read () {
@@ -493,31 +493,31 @@ System.out.println("number :" +
 number); }
 
 }</pre>
-  
+
   <p style="text-align: justify;">
     In our case, the compiler automatically generates the constructor of anonymous class <span class="lang:default decode:true  crayon-inline ">AnonymousInnerClass</span>  and passes the variable number with final modifier to the constructor. The reason for using final is to make sure all instances of <span class="lang:default decode:true  crayon-inline ">AnonymousInnerClass</span>  class have a reference of local variable number in case the garbage collection happens.
   </p>
-  
+
   <p style="text-align: justify;">
     Anonymous objects in Java can be used to model closures as we may see in Smalltalk, however, the most frustrating problem is that we cannot access variable outside the scope of anonymous objects without final keyword. Going back in time, Java actually supported the modification of out-of-scope variables without the constraint of using <span class="lang:default decode:true  crayon-inline ">final</span>  keyword. The Java language itself had no issue with referenced objects with this principle but there was memory problem regarding to garbage collection when it came to primitive types. As default, Java allocates primitive variables on stack but later the language allocated them into heap in order for the change. After many debates happened due to the issue of garbage collection, Java decided to add <span class="lang:default decode:true  crayon-inline ">final</span>  keyword [12].
   </p>
-  
+
   <p style="text-align: justify;">
     Another problem with Java anonymous inner classes is type checking. When one creates an anonymous class, he is required to implement an interface or extend a class. This obligation is to guarantee type safety is preserved at compile time.
   </p>
-  
+
   <p style="text-align: justify;">
     However, Java inner classes are not beautiful when we inspect what happens behind the scenes. Inner classes are pure syntactic sugar [15]. It implies that Java virtual machine does not support inner classes; instead compiler does a good trick when mapping inner classes to top-level classes with a dollar sign. In our case, we would have two binary classes <span class="lang:default decode:true  crayon-inline ">Foo.class</span>  and <span class="lang:default decode:true  crayon-inline ">FooBar.class</span>  generated by the compiler.
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.7.2 Lambda expression in Java 8</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     Java 8 introduces lambda expression as the new language feature. For example, we have a list of integers:
   </p>
-  
+
   <pre class="lang:java decode:true ">List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 One might loop over the list by using for statement in Java 7 as follows:
@@ -525,15 +525,15 @@ One might loop over the list by using for statement in Java 7 as follows:
 for (Integer number: numbers) { System.out.println(number);
 
 }</pre>
-  
+
   <p style="text-align: justify;">
     In the code snippet, the list is looped externally when every item in the list is pulled out for further implementation. It is apparent but the control flow might be limited in case we need to process the list in parallel.
   </p>
-  
+
   <p style="text-align: justify;">
     Alternatively, one might use <span class="lang:default decode:true  crayon-inline ">forEach()</span>  to internally loop over the list with anonymous class. For example:
   </p>
-  
+
   <pre class="lang:default decode:true ">numbers.forEach(new Consumer &lt;Integer &gt;() {
 
 @Override
@@ -541,338 +541,338 @@ for (Integer number: numbers) { System.out.println(number);
 public void accept(Integer value) { System.out.println(value);
 
 } });</pre>
-  
+
   <p style="text-align: justify;">
     Java 8 has the Consumer functional interface and <span class="lang:default decode:true  crayon-inline ">forEach()</span> . We will not discuss much about the <span class="lang:default decode:true  crayon-inline ">Consumer</span>  interface but rather focus on the lambda expression. Using lambda expression, we can make the code above to be more concise.
   </p>
-  
+
   <pre class="lang:java decode:true ">numbers.forEach((Integer value)
 -&gt; System.out.println(value));</pre>
-  
+
   <p style="text-align: justify;">
     As we can see, lambda expressions are fairly similar to anonymous objects with one method in terms of expressiveness. However, lambda expressions are not syntactic sugar of anonymous inner classes because JVM treats lambda expression more than a regular class [14].
   </p>
-  
+
   <p style="text-align: justify;">
     <strong>6.7.3 First-class function in Java 7</strong>
   </p>
-  
+
   <p style="text-align: justify;">
     In Smalltalk, blocks are first-class but Java 7 and previous versions do not have any thing similar. Java requires developers put functions within the classes, even in case the classes merely contain static functions. However, there are two schemes by which we can use to simulate first-class functions in Java to a certain degree &#8211;<em> anonymous inner class</em> and <em>Java core reflection</em>.
   </p>
-  
+
   <p style="text-align: justify;">
     Java core reflection can partly illustrate how first-class functions can be demonstrated by Java language. One can use reflection package of Java to write an example as:
   </p>
-  
+
   <pre class="lang:java decode:true ">Class c = foo.getClass();
 Method m = c.getMethod("saySomething"); // saySomething is a static method, we ignore the first parameter
 
 static methods it is ignored String s = (String)m.invoke(null);</pre>
-  
+
   <p style="text-align: justify;">
     What we have seen is to use Java reflection API to assign the static <span class="lang:default decode:true  crayon-inline ">saySomething</span>  method to a <span class="lang:default decode:true  crayon-inline ">Method</span>  object and invoke it by using the new object. However, neither anonymous inner class nor reflection API can fully make Java functions as first-class because the drawbacks outweigh the advantages they provide.
   </p>
-  
+
   <div class="page" title="Page 7">
     <div class="layoutArea">
       <div class="column">
         <p style="text-align: justify;">
           <strong>6.7.4 First-class function in Java 8</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           However, in Java 8, we no longer need anonymous inner classes and reflection to simulate functional-style operations. The latest Java introduces interfaces by which developers can use to create higher-order functions like Smalltalk. For example, one can use <span class="lang:default decode:true  crayon-inline ">filter()</span>  in package <span class="lang:default decode:true  crayon-inline ">java.util.stream</span>  to select numbers larger than 5 in a list by passing the predicate in form of a lambda expression.
         </p>
-        
+
         <pre class="lang:java decode:true ">Stream s = numbers.stream()
 .filter(x -&gt; x &gt; 5);</pre>
-        
+
         <p style="text-align: justify;">
           <strong>6.7.5 Smalltalk block</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           Inner class does not exist in Smalltalk because Smalltalk posses more handy mechanism called block. Smalltalk blocks are first-class [26]. We can store blocks in variables, pass them around, send message to them and return as the results of the functions. In some cases, even we can pass more than one block to a method. For example, one can define a block and later pass this block as an argument into another block:
         </p>
-        
+
         <pre class="lang:default decode:true ">foo := [:x :y | x + y ]
 bar := [:x :y :theblock | theblock value:x value: y].</pre>
-        
+
         <p style="text-align: justify;">
           Each block in Smalltalk is a full closure and also an object because every block is an instance of the Block class. Thus, we can always refer to the environment recorded by the block object as long as the block object exists.
         </p>
-        
+
         <p style="text-align: justify;">
           Smalltalk block is equivalent to the lambda expression. As a lambda expression, we can have arguments for a block. In the block, we can also have multiple expressions, however, only the last expression will be returned when the block is executed. It is important to know that Smalltalk block does not have name and type.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>7. REFLECTION</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           Both Smalltalk and Java have reflective architectures. In a nutshell, reflection is &#8220;<em>the ability of a program to manipu- late as data something representing the state of the program during its own execution&#8221;</em> [8].
         </p>
-        
+
         <p style="text-align: justify;">
           Table 3 summarizes the reflection facilities of Java core reflection, Java debug interface and Smalltalk [6].
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>7.1 Java core reflection and JDI</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           The reflection facility in Java is weak. The language provides two APIs for meta-programming &#8211; <em>Java core reflection</em> and the <em>Java Debugger Interface (JDI)</em>.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>7.1.1 Java core reflection</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           It is a traditional reflective API [6], in which every class in Java is an instance of <span class="lang:default decode:true  crayon-inline ">java.lang.Class</span> . Class provides facility for introspection, which allows us to inspect the properties of a class. One, for example, can use <span class="lang:default decode:true  crayon-inline ">Class.getSuperclass()</span>  to get the superclass of a class; or <span class="lang:default decode:true  crayon-inline ">Class. getDeclaredField()</span>  to get the declare fields of the class.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>7.1.2 Java Debug Interface (JDI)</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           JDI is a mirror-based reflective API [6], which consists a set of methods for examining remote virtual machine [21].
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>7.2 Smalltalk reflection</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           Smalltalk is a reflective programming language and &#8220;<em>has one of the most complete sets of reflective facilities&#8221;</em> [24]. This capability allows Smalltalk programs examine and modify their runtime stacks and redefine their methods. As said, we can only access instance variables by the instance accessors. However, Smalltalk allows us to inspect the object, modify its instances and send message to it. In the example, we firstly use the message class to ask the class of declared instance student. Next, we use the message <span class="lang:default decode:true  crayon-inline ">isKindOf: aClass</span>  to verify if student is an instance of the classes <span class="lang:default decode:true  crayon-inline ">Student</span> , <span class="lang:default decode:true  crayon-inline ">Person</span>  and <span class="lang:default decode:true  crayon-inline ">Float</span> .
         </p>
-        
+
         <pre class="lang:default decode:true ">student Student name: ’Ngoc Tran’ address: ’Brussels’.
 student class. Student
 student isKindOf: Student. true student isKindOf: Person. true student isKindOf: Float. false
 
 </pre>
-        
+
         <p style="text-align: justify;">
           In addition to inspecting objects and classes, Smalltalk intersection provides the capability of modifying objects and meta-objects at runtime, or adding and removing methods. For example, suppose we create a class whose instances act as proxies for other objects. Any messages sent to the real receiver have to pass through the proxy instance, in which necessary implementations, e.g., logging, will be executed before messages are delegated.
         </p>
-        
+
         <p style="text-align: justify;">
           In practice, reflection provides a framework to develop programming tools such as debuggers, or to change the pro- gramming paradigm.
         </p>
-        
+
         <p style="text-align: justify;">
           Classes in Smalltalk and Java are blueprint used to produce objects, but every class is an also object, and has its corresponding class. However, what is the class of class? The answer is metaclass, which holds all methods of its class and will be created automatically behind the scenes whenever a class is created. For example, the metaclass of the class Foo is Foo class. Inheritance is also possible in metaclass. It is significantly important because all methods in super metaclass will be inherited by sub-metaclass. More interestingly, if we want to find the super class of the <span class="lang:default decode:true  crayon-inline ">Object</span>  class, we will get an endless query.
         </p>
-        
+
         <p style="text-align: justify;">
           Indeed, metaclasses is difficult to grasp the whole concept but programmers do not have to understand it to use Smalltalk. The parallel of metaclass hierarchy and the class hierarchy seems in Smalltalk to be confusing but in real world, it helps creating elegant applications [27].<br /> <strong> 8. GENERICS</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           Generics are one of the most crucial updates in Java 5, and have thoroughly affected Java developers ever since [11]. Generics allow developers to create abstract types without troublesome type casting [18]. In fact, the compiler is in charge of type checking and casting. It assures that type safety never fails.
         </p>
-        
+
         <p style="text-align: justify;">
           Smalltalk support generics in a different manner compared to Java. In essence, all programming in Smalltalk is generic due to two properties of the language. Firstly, Smalltalk is dynamically typed. Secondly, everything in Smalltalk is object, which operates based on methods defined in classes. These two properties imply that messages in Smalltalk can be applied with different types of param- eters. In other words, programming in Smalltalk is about generic programming.
         </p>
-        
+
         <p style="text-align: justify;">
           Smalltalk uses double dispatch technique to deal with generics [9]. For example, the plus operator (+) is defined in the Integer class as follows:
         </p>
-        
+
         <pre class="lang:default decode:true ">Integer &gt;&gt;+ aNumber
 "Answer a Number which is the sum of the receiver and aNumber"
 ^aNumber addToInteger: self</pre>
-        
+
         <p style="text-align: justify;">
           Inside the method (+), the message addToInteger is sent to the receiver of the method +, #aNumber. The purpose is to dispatch the function call (+) to the function addtToInteger, letting aNumber handle the plus operator instead of using multiple if-and-else. To assure that the message <span class="lang:default decode:true  crayon-inline ">addToInteger</span>  can be understood by all instances of the class Number, every subclasses of <span class="lang:default decode:true  crayon-inline ">Number</span>  has to implement the method.
         </p>
-        
+
         <p style="text-align: justify;">
           Compared Java and Smalltalk in terms of generic programming, Smalltalk is more powerful. However, because type check only happens at runtime and the compiler provides no guarantees of type safety, we cannot assure correctness and robustness of the program [10]. In contrast, by using parameterized types, Java developers can create generic data structure whose types can be verified by the compiler.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>9. CORE UTILITIES</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>9.1 Collections</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           Collections are used to represent a group of objects [19]. In both languages Smalltalk and Java, the collection API lies at the heart of the language.
         </p>
-        
+
         <p style="text-align: justify;">
           In Smalltalk, the Collection class includes several subclasses: <span class="lang:default decode:true  crayon-inline ">Bag</span> , <span class="lang:default decode:true  crayon-inline ">OrderedCollection</span> , <span class="lang:default decode:true  crayon-inline ">SortedCollection</span> , <span class="lang:default decode:true  crayon-inline ">Array</span> , <span class="lang:default decode:true  crayon-inline ">String</span> , <span class="lang:default decode:true  crayon-inline ">Symbol</span> , <span class="lang:default decode:true  crayon-inline ">Set</span>  and <span class="lang:default decode:true  crayon-inline ">Dictionary</span> . In Java, the collection API is packed in <span class="lang:default decode:true  crayon-inline ">java.util</span>  package, including two largest sub-interfaces <span class="lang:default decode:true  crayon-inline ">Collection</span>  and <span class="lang:default decode:true  crayon-inline ">Map</span> . Under the <span class="lang:default decode:true  crayon-inline ">Collection</span>  interfaces we have <span class="lang:default decode:true  crayon-inline ">Set</span> , <span class="lang:default decode:true  crayon-inline ">List</span> , <span class="lang:default decode:true  crayon-inline ">Queue</span> .
         </p>
-        
+
         <p style="text-align: justify;">
           In particular, we notice a variation in the collection hierarchies between two languages. In Smalltalk, the <span class="lang:default decode:true  crayon-inline ">Dictionary</span>  class extends the <span class="lang:default decode:true  crayon-inline ">Collection</span>  class, while in Java, Map is outside of the <span class="lang:default decode:true  crayon-inline ">Collection</span>  interface. According to [17], a map with key, values is not a collection semantically, and should not be put in the same interface.
         </p>
-        
+
         <p style="text-align: justify;">
           The difference in conceptual model of the collection API results in different implementation. Firstly, Smalltalk <span class="lang:default decode:true  crayon-inline ">Dictionary</span>  can reuse predefined functionalities in its superclass, while Java needs to re-define the whole interface, which is more expensive.
         </p>
-        
+
         <p style="text-align: justify;">
           As said, we discuss the differences in the model of the collections of two languages, and following consequences. However, it is subjective to conclude either Java or Small is better on this feature.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>10. DEVELOPMENT ENVIRONMENT</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           One of the most differentiation between two languages is Smalltalk uses a standalone editing environment that runs on <em>image-based persistent</em> [31], which would help reduce the cycle between running and editing the application [5]. But the image-based environment also exposes developers to many dangers. For example, during program development, the developers would need to commit the code instead of backing up the image. Secondly, rebuilding the image is cumbersome in the long run.
         </p>
-        
+
         <p style="text-align: justify;">
           Using the image-based environment implies that Smalltalk programs have no source codes. Everything is contained inside the image. But when it comes to class modification, it seems to be inconvenient for minor changes. Fortunately, Smalltalk has introspection, helping developers inspect and modify objects on the fly.
         </p>
-        
+
         <p style="text-align: justify;">
           Java does not offer the image-based environment. The code needs to be compiled, and later loaded into the virtual machine for further execution. There must be good reasons for avoiding the image. Perhaps one of good reason is to separate the IDE and the programming language process.
         </p>
-        
+
         <p style="text-align: justify;">
           <strong>11. DISCUSSION</strong>
         </p>
-        
+
         <p style="text-align: justify;">
           In this paper, we discuss two object-oriented programming languages Smalltalk and Java on some basic and advanced features. We briefly compare syntax, and analyze language expressions. In detail, we study their object models, rela- tionships among classes and reflection API. Our concerns are not only about their variations but also how programmers would take advantage of the language features including the use of interfaces and traits, closures, and reflection. We also raise questions about the design principle of Smalltalk &#8211; the overwhelming number of methods in Object class. We note some differences in reflection API of two languages, and particularly suggest how Java could use reflection API to simulate higher-order function.
         </p>
-        
+
         <p style="text-align: justify;">
           Our analysis include several Java versions, in which we highlight new features &#8211; lambda expressions and functional interfaces &#8211; and explains how it would possibly introduce a new programming paradigm in the language. We then compare these new features with existing models in Smalltalk.
         </p>
-        
+
         <p>
           <strong>12. REFERENCES</strong><br /> [1] Beck, K. Smalltalk Best Practice Patterns. Volume 1: Coding. Prentice Hall, Englewood Cliffs, NJ, 1997.
         </p>
-        
+
         <p>
           [2] BeginnersBook. Static and dynamic binding in java. , 2014. [Online; accessed 11-July-2014].
         </p>
-        
+
         <p>
           [3] Black, A., Ducasse, S., Nierstrasz, O., Pollet, D., Cassou, D., Denker, M., et al. Pharo by example. 2009.
         </p>
-        
+
         <p>
           [4] Black, A., Ducasse, S., Nierstrasz, O., Pollet, D., Cassou, D., Denker, M., et al. Pharo by example. 2009.
         </p>
-        
+
         <p>
           [5] Blog, Z. The web is becoming smalltalk — zack?s blog. http://zacharyvoase.com/2013/02/10/smallweb/,<br /> 2014. [Online; accessed 5-July-2014].
         </p>
-        
+
         <p>
           [6] Bracha, G., and Ungar, D. Mirrors: design principles for meta-level facilities of object-oriented programming languages. ACM SIGPLAN Notices 39, 10 (2004), 331–344.
         </p>
-        
+
         <p>
           [7] Cunningham & Cunningham, I. Polymorphism and inheritance. http: //c2.com/cgi/wiki?PolymorphismAndInheritance, 2014. [Online; accessed 12-July-2014].
         </p>
-        
+
         <p>
           [8] Ducasse, S., Denker, M., and Lienhard, A. Evolving a reflective language: lessons learned from implementing traits. In Proceedings of the International Workshop on Smalltalk Technologies (2009), ACM, pp. 82–86.
         </p>
-        
+
         <p>
           [9] Hebel, K. J., and Johnson, R. E. Arithmetic and double dispatching in smalltalk-80. Journal of Object-Oriented Programming 2, 6 (1990), 40–44.
         </p>
-        
+
         <p>
           [10] Hobart, and Colleges, W. S. Javanotes 6.0, section 10.1 – generic programming. http://docs.oracle.com/javase/tutorial/extra/ generics/index.html, 2014. [Online; accessed 04-July-2014].
         </p>
-        
+
         <p>
           [11] Knudsen, J., and Niemeyer, P. Learning Java. O’Reilly, 2005.
         </p>
-        
+
         <p>
           [12] Madbean. Guy steele on variables-captured-by-anon-must-be-final (closures). http://madbean.com/2003/mb2003-49/, 2014. [Online; accessed 1-July-2014].
         </p>
-        
+
         <p>
           [13] Martin, R. C. Agile software development: principles, patterns, and practices. Prentice Hall PTR, 2003.
         </p>
-        
+
         <p>
           [14] Mihajlovski, N. Java 8 resources &#8211; introduction to java 8 lambda expressions. http://www.java8.org/introduction-to-java-8- lambda-expressions.html, 2014. [Online; accessed 1-July-2014].
         </p>
-        
+
         <p>
           [15] Niemeyer, P., and Peck, J. Exploring java.
         </p>
-        
+
         <p>
           [16] Oracle. Default methods (the java http://docs.oracle.com/javase/tutorial/java/ IandI/defaultmethods.html, 2014. [Online; accessed 28-June-2014].
         </p>
-        
+
         <p>
           [17] Oracle. Java collections api design faq. http: //docs.oracle.com/javase/8/docs/technotes/guides/collections/designfaq.html#a14, 2014. [Online; accessed 10-July-2014].
         </p>
-        
+
         <p>
           [18] Oracle. Lesson: Generics (the java tutorials). http://docs.oracle.com/javase/tutorial/extra/generics/index.html, 2014. [Online; accessed 3-July-2014].
         </p>
-        
+
         <p>
           [19] Oracle. Lesson: Introduction to collections [Online; accessed 28-June-2014].
         </p>
-        
+
         <p>
           [20] Oracle. Object (java platform se7). http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html, 2014. [Online; accessed 28-June-2014].
         </p>
-        
+
         <p>
           [21] Oracle. Overview (java debug interface). http://docs.oracle.com/javase/1.5.0/docs/ guide/jpda/jdi/, 2014. [Online; accessed 1-July-2014].
         </p>
-        
+
         <p>
           [22] Oracle. Primitive data types (the java http://docs.oracle.com/javase/tutorial/java/ nutsandbolts/datatypes.html, 2014. [Online; accessed 28-June-2014].
         </p>
-        
+
         <p>
           [23] Oracle. Providing constructors for your classes [Online; accessed 10-July-2014].
         </p>
-        
+
         <p>
           [24] Rivard, F. Smalltalk: a reflective language. In Proceedings of REFLECTION (1996), vol. 96, pp. 21–38.
         </p>
-        
+
         <p>
           [25] Scha ̈rli, N., Ducasse, S., Nierstrasz, O., and Black, A. P. Traits: Composable units of behaviour. In ECOOP 2003–Object-Oriented Programming. Springer, 2003, pp. 248–274.
         </p>
-        
+
         <p>
           [26] Scott, M. L. Programming language pragmatics. Morgan Kaufmann, 2000.
         </p>
-        
+
         <p>
           [27] University, P. S. Smalltalk: A white paper overview. http://web.cecs.pdx.edu/~harry/ musings/SmalltalkOverview.html, 2014. [Online; accessed 3-July-2014].
         </p>
-        
+
         <p>
           [28] Wikipedia. Ad hoc polymorphism — wikipedia, the free encyclopedia.<br /> http://en.wikipedia.org/w/index.php?title=Ad_ hoc_polymorphism&oldid=605733911, 2014. [Online; accessed 2-July-2014].
         </p>
-        
+
         <p>
           [29] Wikipedia. Duck typing — wikipedia, the free encyclopedia. http://en.wikipedia.org/w/index. php?title=Duck_typing&oldid=615442832, 2014. [Online; accessed 26-June-2014].
         </p>
-        
+
         <p>
           [30] Wikipedia. Smalltalk — wikipedia, the free encyclopedia. http://en.wikipedia.org/w/index. php?title=Smalltalk&oldid=615496590, 2014. [Online; accessed 26-June-2014].
         </p>
-        
+
         <p>
           [31] Wikipedia. Smalltalk — wikipedia, the free encyclopedia. http://en.wikipedia.org/w/index. php?title=Smalltalk&oldid=615496590, 2014. [Online; accessed 11-July-2014].
         </p>

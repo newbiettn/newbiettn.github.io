@@ -2,10 +2,7 @@
 id: 313
 title: Conquer unhappiness
 date: 2016-02-24T22:52:14+00:00
-author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=313
-permalink: /2016/02/conquer-unhappiness/
 categories:
   - Uncategorized
 tags:

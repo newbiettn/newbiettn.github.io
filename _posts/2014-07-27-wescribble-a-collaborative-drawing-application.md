@@ -4,18 +4,6 @@ title: 'weScribble &#8211; A collaborative drawing application'
 date: 2014-07-27T12:11:01+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=134
-permalink: /2014/07/wescribble-a-collaborative-drawing-application/
-categories:
-  - Uncategorized
-tags:
-  - ambienttalk
-  - android
-  - distributed computing
-  - draw
-  - faul-tolerent
-  - p2p
-  - vub
 ---
 During the course &#8220;Distributed computing system&#8221;, I implemented a collaborative system for drawing in Android named weScribble Pro. The future application allows multiple users to collaborate with each other for sharing and editing shapes on a common canvas. Users can draw several shapes (e.g. rectangle, square, line), move them in the canvas, and change some properties ( e.g. color or size). On top of that, users can select one or more shapes and group them in a grouped shape. A group shape can also be moved or changed, i.e. all the composite shapes move or change accordingly.
 

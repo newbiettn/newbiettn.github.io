@@ -4,29 +4,12 @@ title: Full-text search with Apache Lucene
 date: 2016-01-16T10:36:49+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=255
-permalink: /2016/01/full-text-search-with-apache-lucene/
-categories:
-  - Uncategorized
-tags:
-  - apache
-  - apache lucene
-  - apache mahout
-  - full-text search
-  - index
-  - indexing
-  - java
-  - lucene
-  - mahout
-  - query
-  - search
 ---
 Apache Lucene is a de facto open source library targeting search and search- related tasks such as indexing or querying.
 
 ### 1. How Lucene indexes documents algorithmically
 
 Lucene uses the _inverted index data structure_ to index documents. The indexing strategy of Lucene is different from others when it creates segments and merges them, rather than uses a single index. Typically, an index segment consists of a dictionary index, a term dictionary and a posting dictionary.
-
 
 {% include image.html url="/images/indexing-lucene.png" description="The index diagram with the merge factor b is 3 " %}
 

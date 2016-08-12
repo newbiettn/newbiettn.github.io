@@ -4,8 +4,6 @@ title: Google Reader replacement
 date: 2016-01-12T18:21:57+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=251
-permalink: /2016/01/google-reader-replacement/
 categories:
   - Uncategorized
 tags:

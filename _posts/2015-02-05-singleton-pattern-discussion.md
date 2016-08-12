@@ -4,14 +4,6 @@ title: Singleton pattern discussion
 date: 2015-02-05T11:47:07+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=166
-permalink: /2015/02/singleton-pattern-discussion/
-categories:
-  - Uncategorized
-tags:
-  - design pattern
-  - java
-  - singleton
 ---
 The **Singleton **pattern was used widely across in my projects. Back in time, I was confused when it came to an issue: if I should define ```getInstance()``` method with supplied parameters.
 
