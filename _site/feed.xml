@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>newbiettn</title>
-    <description>the road goes on and on</description>
-    <link>http://127.0.0.1:4000</link>
-    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <title>Ngoc Tran</title>
+    <description>Simply not just an alternative hypothesis</description>
+    <link>https://newbiettn.github.io</link>
+    <atom:link href="https://newbiettn.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Likelihood ratio test</title>
@@ -68,8 +68,8 @@
 &lt;/ol&gt;
 </description>
         <pubDate>Tue, 09 Aug 2016 21:34:05 +1000</pubDate>
-        <link>http://127.0.0.1:4000/2016/08/likelihood-ratio-test/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/08/likelihood-ratio-test/</guid>
+        <link>https://newbiettn.github.io/2016/08/likelihood-ratio-test/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/likelihood-ratio-test/</guid>
       </item>
     
       <item>
@@ -97,8 +97,8 @@
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;
 </description>
         <pubDate>Sat, 05 Mar 2016 22:23:49 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
+        <link>https://newbiettn.github.io/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
       </item>
     
       <item>
@@ -167,8 +167,8 @@
 &lt;script type=&quot;math/tex&quot;&gt;\hat{\theta_{MLE}} = argmax \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 04 Mar 2016 03:48:25 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
+        <link>https://newbiettn.github.io/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
       </item>
     
       <item>
@@ -188,8 +188,8 @@
 &lt;p&gt;In order to stay upbeat, swimming, running and weight lifting has become the norm in my life style for approximately 5 years. Whilst running and weight lifting are suitable for gloomy days, swimming is always my first choice when days become warm and sunny. I always have positive feelings after every swimming session. My mind is refreshed and my flesh is toned up. Come back to nerdy guys in InfoGroup at VUB. In my second year when going to gym, I surprisingly saw a nerdy and skinny guy of InfoGroup signed up for a gym class. Many days later, I saw more members of that group went to the gym. It was once again surprisingly and entertaining to me when I saw such change. I have no clue about it but I was more happy to chit chat with them in gym class rather than in computer room.&lt;/p&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 09:52:14 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/02/conquer-unhappiness/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/02/conquer-unhappiness/</guid>
+        <link>https://newbiettn.github.io/2016/02/conquer-unhappiness/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/02/conquer-unhappiness/</guid>
       </item>
     
       <item>
@@ -360,8 +360,8 @@
 &lt;p&gt;As said, in spite of the simplicity, Lucene adds a tremendous amount of support in building a powerful search tool. In the future post, I may discuss how we can combine both Apache Lucene and Apache Mahout (a machine learning framework) in order to index a corpus and use that index to perform clustering. Stay tuned!&lt;/p&gt;
 </description>
         <pubDate>Sat, 16 Jan 2016 21:36:49 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/01/full-text-search-with-apache-lucene/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/full-text-search-with-apache-lucene/</guid>
+        <link>https://newbiettn.github.io/2016/01/full-text-search-with-apache-lucene/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/full-text-search-with-apache-lucene/</guid>
       </item>
     
       <item>
@@ -380,8 +380,8 @@
 &lt;p&gt;It can be downloaded &lt;a href=&quot;https://tt-rss.org/gitlab/fox/tt-rss/wikis/home&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Jan 2016 05:21:57 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/01/google-reader-replacement/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/google-reader-replacement/</guid>
+        <link>https://newbiettn.github.io/2016/01/google-reader-replacement/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/google-reader-replacement/</guid>
       </item>
     
       <item>
@@ -407,8 +407,8 @@
 &lt;p&gt;I start to miss a very cozy atmosphere of the company.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jan 2016 21:26:07 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/01/invited-talk-at-swiss-post-solution-vietnam/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/invited-talk-at-swiss-post-solution-vietnam/</guid>
+        <link>https://newbiettn.github.io/2016/01/invited-talk-at-swiss-post-solution-vietnam/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/invited-talk-at-swiss-post-solution-vietnam/</guid>
       </item>
     
       <item>
@@ -433,8 +433,8 @@
 &lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Dec 2015 22:16:10 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2015/12/to-hold-the-sun/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/to-hold-the-sun/</guid>
+        <link>https://newbiettn.github.io/2015/12/to-hold-the-sun/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2015/12/to-hold-the-sun/</guid>
       </item>
     
       <item>
@@ -554,8 +554,8 @@
 &lt;p&gt;Additionally to make it look like object-oriented languages, we can add &lt;em&gt;getter/setter&lt;/em&gt; using either nested or prototype-based functions about which we will talk later.&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Nov 2015 21:07:41 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2015/11/javascript-a-self-walkthrough-part-1/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/javascript-a-self-walkthrough-part-1/</guid>
+        <link>https://newbiettn.github.io/2015/11/javascript-a-self-walkthrough-part-1/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2015/11/javascript-a-self-walkthrough-part-1/</guid>
       </item>
     
       <item>
@@ -571,8 +571,8 @@
 &lt;/iframe&gt;
 </description>
         <pubDate>Fri, 06 Nov 2015 05:33:59 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2015/11/183/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/183/</guid>
+        <link>https://newbiettn.github.io/2015/11/183/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2015/11/183/</guid>
       </item>
     
   </channel>
