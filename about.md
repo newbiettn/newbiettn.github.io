@@ -18,25 +18,15 @@ In Fall 2013, I was fortunately granted a scholarship that allows me to pursue 
 
 In Fall 2015, I was granted [NICTA scholarship](http://www.nicta.com) to pursue Ph.D at Swinburne University of Technology (Melbourne, Australia). I now become part of Swinburne Software Innovation Lab in a new project where I will research a data mining model using extensive sets of clinical data, and build on top such model a Domain Specific Visual Language to support medial practitioners.
 
-<p style="text-align: justify;">
-  <strong>PERSONAL STUFFS</strong>
-</p>
+**PERSONAL STUFFS**
 
-<p style="text-align: justify;">
-  My feelings are influenced by indie music. I am a big fan of <a title="Bon Iver" href="http://en.wikipedia.org/wiki/Bon_Iver">Bon Iver</a>. I am also looking for partners in a non-mainstream music site project.
-</p>
+My feelings are influenced by indie music. I am a big fan of <a title="Bon Iver" href="http://en.wikipedia.org/wiki/Bon_Iver">Bon Iver</a>. I am also looking for partners in a non-mainstream music site project.
 
-<p style="text-align: justify;">
-  I am also an amateur photographer. You can find some pictures in Flickr and Instagram.
-</p>
+I am also an amateur photographer. You can find some pictures in Flickr and Instagram.
 
-<p style="text-align: justify;">
-  Daily swimming makes me less introverted and get my body into shape. Thanks a bundle for that!
-</p>
+Daily swimming makes me less introverted and get my body into shape. Thanks a bundle for that!
 
-<p style="text-align: justify;">
-  <b>WHY &#8216;newbiettn&#8217;?</b>
-</p>
+WHY &#8216;newbiettn&#8217;?
 
 &#8216;newbiettn&#8217; is no more than a random choice of nickname I&#8217;ve made when in high school. Even so, it conveys a few meanings. Whereas &#8216;ttn&#8217; is an abbreviation of my full name, the term &#8216;newbie&#8217; is a slang word, referring to one that is new to something. It was me specifically, a newcomer of computer technology. Yet it&#8217;s not the end of story. There&#8217;s still an extending part of it, which I like much more than the literal meaning. Back in time, I was looking for a nickname that is capable of portraying me, not only in the present but also in many years to come. Then I thought of me somewhat as an curiosity junkie, who always seeks new things in the field, like a newcomer. That&#8217;s why I decided to use the term &#8216;newbie&#8217; as part of my forever nickname.
 
@@ -44,9 +34,8 @@ In Fall 2015, I was granted [NICTA scholarship](http://www.nicta.com) to pursue 
 
 &#8220;We can only see a short distance ahead, but we can see plenty there that needs to be done&#8221; &#8211; Alan Turing
 
-<p style="text-align: justify;">
-  <strong>CONNECT</strong>
-</p>
+
+**CONNECT**
 
 <li style="text-align: justify;">
   <strong>Github</strong>: <a href="http://github.com/newbiettn" target="_blank">http://github.com/newbiettn</a>
@@ -80,6 +69,8 @@ In Fall 2015, I was granted [NICTA scholarship](http://www.nicta.com) to pursue 
 When I was a child, I never thought writing would be of my interest. I always got struck by assignments of writing in school. That&#8217;s why it was seemingly certain to see a version of me would never start to write something, even meaningless, in spare time in the future. But when I grow up, that version is never a part of me. I realise one of best things I&#8217;ve ever done in my life is writing, and I see how much I have learnt when writing becomes a salient trait of me.
 
 This is the latest version of the site. I used <a title="Mura" href="http://www.getmura.com/" target="_blank">Mura</a> in the past, but now I&#8217;m with <a title="Get WordPress" href="http://wordpress.org/download/" target="_blank">WordPress</a>
+
+**Updated in August 2016**: Wordpress is over, [Jekyll](https://jekyllrb.com) is too simple to be ignored.
 
 <p style="text-align: justify;">
   The content is scattered.
