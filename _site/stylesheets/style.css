@@ -226,6 +226,10 @@ nav .dropdown {
 }
 
 @media only screen and (max-width: 767px) {
+	.motto {
+		margin: 0 auto;
+		text-align: center;
+	}
 	.logo {
 		margin: 0 auto;
 		text-align: center;
