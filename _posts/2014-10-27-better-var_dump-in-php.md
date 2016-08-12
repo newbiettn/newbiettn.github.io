@@ -4,8 +4,6 @@ title: Better var_dump in PHP
 date: 2014-10-27T01:07:26+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=39
-permalink: /2014/10/better-var_dump-in-php/
 categories:
   - Uncategorized
 tags:

@@ -4,8 +4,6 @@ title: 'Scheme and Smalltalk: Comparision of Two Programming Languages'
 date: 2013-12-30T10:58:12+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=172
-permalink: /2013/12/scheme-and-smalltalk-comparision-of-two-programming-languages/
 categories:
   - Uncategorized
 tags:
@@ -55,13 +53,13 @@ Scheme is a strongly typed language, which means we can not convert from one typ
 In case of Smalltalk, variables can have dif- ferent types at different moments, but objects do not. Types of objects is always strong. <span class="lang:default decode:true  crayon-inline ">’Hello World’</span> , for example, is always an instance of class <span class="lang:default decode:true  crayon-inline ">String</span> ; or <span class="lang:default decode:true  crayon-inline ">100</span>  is always an instance of class <span class="lang:default decode:true  crayon-inline">SmallInteger</span>.
 
 **1.2.3 Duck typing**
-  
+
 Smalltalk provides duck typing happening at runtime. The behaviors of objects are called by sending any messages to the objects. Thus, if the object understand the message we send to it, we can assume its type even we do not know what class is involved.
 
 **1.3 Lexical binding**
-  
+
 Like most modern languages, Scheme and Smalltalk both use lexical scope. The language supports lexical scoping, which means scoping organized in a structured hierarchy, and the innermost will be used in case there are several bindings in the environment.
-  
+
 In Scheme, we can use <span class="lang:default decode:true  crayon-inline ">let</span> , <span class="lang:default decode:true  crayon-inline ">let*</span> , <span class="lang:default decode:true  crayon-inline ">letrec</span>  to declare and bind local variables.
 
 <pre class="lang:scheme decode:true ">;;; bind x to separated scopes
@@ -155,7 +153,7 @@ Finally, compared Smalltalk’s block to lambda function of Scheme, lambda funct
 
 **3.1 Smalltalk**
 
-**3.1.1 Smalltalk is reflective** 
+**3.1.1 Smalltalk is reflective**
 
 Smalltalk is a reflective programming language and &#8220;_has one of the most complete sets of reflective facilities_&#8221; (Rivard, 1996). In a nutshell, reflection is &#8220;_the ability of a program to manipulate as data something representing the state of the program during its own execution_&#8221; (Ducasse et al., 2009).This capability, as a result, allows Smalltalk programs examine and modify their runtime stacks and redefine their methods. As said, we can only access instance variables by the instance accessors. However, Smalltalk _introspection_ allows us to inspect the object, modify its instances and send message to it. In the example, we firstly use the message class to ask the class of declared instance student. Next, we use the message <span class="lang:default decode:true  crayon-inline ">isKindOf: aClass</span>  to verify if student is an instance of the classes <span class="lang:default decode:true  crayon-inline ">Student</span> , <span class="lang:default decode:true  crayon-inline ">Person</span>  and <span class="lang:default decode:true  crayon-inline ">Float</span> .
 

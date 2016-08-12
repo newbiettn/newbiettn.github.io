@@ -4,8 +4,6 @@ title: An attempt in creating infographic
 date: 2013-07-28T08:43:03+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=146
-permalink: /2013/07/an-attempt-in-creating-infographic/
 categories:
   - Uncategorized
 tags:

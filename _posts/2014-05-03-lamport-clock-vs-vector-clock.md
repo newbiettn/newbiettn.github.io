@@ -4,8 +4,6 @@ title: Lamport clock vs Vector clock
 date: 2014-05-03T01:10:52+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=41
-permalink: /2014/05/lamport-clock-vs-vector-clock/
 categories:
   - Uncategorized
 tags:
