@@ -4,8 +4,6 @@ title: Lamport clock vs Vector clock
 date: 2014-05-03T01:10:52+00:00
 author: newbiettn
 layout: post
-categories:
-  - Uncategorized
 tags:
   - algorithm
   - distributed

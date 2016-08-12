@@ -4,8 +4,6 @@ title: 'Starcraft: my best RST game ever'
 date: 2013-08-28T08:59:04+00:00
 author: newbiettn
 layout: post
-categories:
-  - Uncategorized
 tags:
   - design
   - game

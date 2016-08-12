@@ -3,8 +3,6 @@ id: 313
 title: Conquer unhappiness
 date: 2016-02-24T22:52:14+00:00
 layout: post
-categories:
-  - Uncategorized
 tags:
   - gym
   - happiness

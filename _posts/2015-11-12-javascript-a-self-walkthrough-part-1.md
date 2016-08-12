@@ -4,10 +4,6 @@ title: 'Javascript: a self walkthrough (part 1)'
 date: 2015-11-12T10:07:41+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=198
-permalink: /2015/11/javascript-a-self-walkthrough-part-1/
-categories:
-  - Uncategorized
 tags:
   - functional
   - javascript

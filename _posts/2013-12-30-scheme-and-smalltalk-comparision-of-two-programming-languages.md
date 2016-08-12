@@ -4,8 +4,6 @@ title: 'Scheme and Smalltalk: Comparision of Two Programming Languages'
 date: 2013-12-30T10:58:12+00:00
 author: newbiettn
 layout: post
-categories:
-  - Uncategorized
 tags:
   - binding
   - functional

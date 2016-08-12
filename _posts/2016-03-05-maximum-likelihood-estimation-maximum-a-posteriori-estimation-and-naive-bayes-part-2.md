@@ -3,8 +3,6 @@ id: 407
 title: Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)
 date: 2016-03-05T11:23:49+00:00
 layout: post
-categories:
-  - Uncategorized
 tags:
   - bayes inference
   - bayes theorem

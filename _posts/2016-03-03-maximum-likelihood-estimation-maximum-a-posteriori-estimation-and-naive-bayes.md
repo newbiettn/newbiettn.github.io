@@ -3,8 +3,6 @@ id: 329
 title: Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1)
 date: 2016-03-03T16:48:25+00:00
 layout: post
-categories:
-  - Uncategorized
 tags:
   - least squares
   - likelihood

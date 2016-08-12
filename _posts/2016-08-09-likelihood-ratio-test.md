@@ -3,8 +3,6 @@ id: 453
 title: Likelihood ratio test
 date: 2016-08-09T11:34:05+00:00
 layout: post
-categories:
-  - Uncategorized
 ---
 The likelihood-ratio test is an alternative to $\chi^2$ test in order to assess the \*\*goodness of fit\*\*. It is straight-forward and easy to use.
 

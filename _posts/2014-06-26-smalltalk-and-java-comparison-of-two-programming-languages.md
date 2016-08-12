@@ -4,10 +4,6 @@ title: 'Smalltalk and Java: Comparison of two programming languages'
 date: 2014-06-26T23:04:34+00:00
 author: newbiettn
 layout: post
-guid: http://newbiettn.com/?p=6
-permalink: /2014/06/smalltalk-and-java-comparison-of-two-programming-languages/
-categories:
-  - Uncategorized
 tags:
   - comparision
   - java

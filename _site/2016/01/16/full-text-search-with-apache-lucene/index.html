@@ -1,0 +1,318 @@
+<html>
+  <head>
+    <meta content='Full-text search with Apache Lucene - newbiettn' property='og:title' />
+    <title>Full-text search with Apache Lucene - newbiettn</title>
+    <meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon"
+	href="https://newbiettn.github.io/images/favicon.jpg" />
+
+<!-- GOOGLE WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Kreon'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather'
+	rel='stylesheet' type='text/css'>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='https://newbiettn.github.io/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='https://newbiettn.github.io/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='https://newbiettn.github.io/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='https://newbiettn.github.io/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css'  href='https://newbiettn.github.io/stylesheets/syntax.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.js'></script>
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="https://newbiettn.github.io">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">Simply not just an alternative hypothesis</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="https://newbiettn.github.io/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="https://newbiettn.github.io/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="January 16, 2016">January 16, 2016</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Full-text search with Apache Lucene">Full-text search with Apache Lucene</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <p>Apache Lucene is a de facto open source library targeting search and search- related tasks such as indexing or querying.</p>
+
+<h3 id="how-lucene-indexes-documents-algorithmically">1. How Lucene indexes documents algorithmically</h3>
+
+<p>Lucene uses the <em>inverted index data structure</em> to index documents. The indexing strategy of Lucene is different from others when it creates segments and merges them, rather than uses a single index. Typically, an index segment consists of a dictionary index, a term dictionary and a posting dictionary.</p>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/indexing-lucene.png" alt="The index diagram with the merge factor b is 3 " />
+  <p class="wp-caption-text">
+    The index diagram with the merge factor b is 3 
+  </p>
+</div>
+
+<p><strong>Figure 1</strong> illustrates an example of an index, where the merge factor equals three. In the example, there are 14 documents in the collection. Lucene repeatedly creates a segment for a document and periodically merges a group of 3 documents. The process is similar when Lucene keeps merging a group of 3 segments until there is no more segment to merge. After merging, all greyed segments will be removed and in total, Lucene merged 5 times after the indexing finishes. The approach of merging and deleting segments is considerably useful as the document collection does not change frequently. More importantly, the segment will never be modified. Instead, Lucene creates new segments when the document collection changes and later, it merges segments into new ones and deletes the old segments. This strategy ensures there is no conflict between reading writing indexes. Furthermore, this strategy also allows Lucene to avoid complex B-trees to store segments. Instead, all segments will be stored in flat files.</p>
+
+<h3 id="extract-text-andindex">2. Extract text and index</h3>
+
+<p>Typically we can divide indexing documents into two distinct procedures, extracting text and creating index <strong>(Figure 2)</strong>.</p>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/analyze-lucene.png" alt="Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]" />
+  <p class="wp-caption-text">
+    Figure 2. Indexing with Lucene breaks down into three main operations: extracting text from source documents, analyzing it, and saving it to the index [Photo courtesy of Lucene in Action]
+  </p>
+</div>
+
+<p>In extracting procedure, it is common to use a versatile parser that can extract textual contents from documents. One of widely known tools we can use to parse documents is <a href="https://tika.apache.org" target="_blank">Apache Tika</a>. When parsing completes, we will have an input stream that needs to be indexed. It is the second procedure of our index process – creating an index.</p>
+
+<p>More often than not, we do not index everything we retrieve from the input stream. We instead need to apply <strong>analysis process</strong> where we will discard unimportant terms from the textual content (e.g., punctuations, stopping words). In Lucene, the analysis process is handled by <code class="highlighter-rouge">Analyzer</code>. The framework already provides handy and powerful analysers that we can use without customising in a majority of problems.</p>
+
+<p>After analysing, the textual contents are ready to be indexed.</p>
+
+<h3 id="building-an-index"><strong>3. Building an index</strong></h3>
+
+<p>In this section, we will look at how we can create a new index and add documents to it.</p>
+
+<h4 id="constructan-index-writer">3.1 Construct an index writer</h4>
+
+<p>In Lucene, the index is created and maintained by <code class="highlighter-rouge">IndexWriter</code>. The IndexWriter constructors can be defined in various ways but most often we simply need to supply</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Directory d</code> where the index will be stored</li>
+  <li><code class="highlighter-rouge">IndexWriterConfig conf</code> holds all the configuration that is used to construct an <code class="highlighter-rouge">IndexWriter</code></li>
+</ul>
+
+<p>In the code below, we can see that I have define an instance of <code class="highlighter-rouge">IndexWriterConfig</code> with a specialised Analyzer`. The purpose is I want to analyse documents in a particular way that suits my personal needs (e.g., I want to keep specific words that built-in analysers will certainly remove).</p>
+
+<p>In the given code sample, we use <code class="highlighter-rouge">FSDirectory</code> . There are other alternative solutions, such as <code class="highlighter-rouge">SimpleFSDirectory</code> , <code class="highlighter-rouge">NIOFSDirectory</code> .</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="cm">/**
+ * Create an Indexer using the given directory to store index files, and the
+ * directory need to be indexed.
+ *
+ * */</span>
+<span class="kd">public</span> <span class="nf">Indexer</span><span class="o">(</span><span class="n">String</span> <span class="n">anIndexDir</span><span class="o">,</span> <span class="n">String</span> <span class="n">aDataDir</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// set place to store indexes</span>
+	<span class="k">this</span><span class="o">.</span><span class="na">indexDir</span> <span class="o">=</span> <span class="n">anIndexDir</span><span class="o">;</span>
+
+	<span class="c1">// set directory has to be indexed</span>
+	<span class="k">this</span><span class="o">.</span><span class="na">dataDir</span> <span class="o">=</span> <span class="n">aDataDir</span><span class="o">;</span>
+
+	<span class="k">try</span> <span class="o">{</span>
+		<span class="c1">// create Directory to store indexes, use FSDirectory.open</span>
+		<span class="c1">// to automatically pick the most suitable directory implementation</span>
+		<span class="n">Directory</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">FSDirectory</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">indexDir</span><span class="o">));</span>
+
+		<span class="c1">// create an instance of Analyzer with my own custom analyzer</span>
+		<span class="n">analyzer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyCustomAnalyzer</span><span class="o">();</span>
+
+		<span class="c1">// create configuration for new IndexWriter</span>
+		<span class="n">IndexWriterConfig</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IndexWriterConfig</span><span class="o">(</span><span class="n">Version</span><span class="o">.</span><span class="na">LUCENE_46</span><span class="o">,</span>
+				<span class="n">analyzer</span><span class="o">);</span>
+
+		<span class="c1">// create IndexWriter, which can create new index, or</span>
+		<span class="c1">// adds, removes, or updates documents in the index</span>
+		<span class="c1">// however, it can not read or search</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IndexWriter</span><span class="o">(</span><span class="n">dir</span><span class="o">,</span> <span class="n">conf</span><span class="o">);</span>
+
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h4 id="modelling-document">3.2 Modelling document</h4>
+
+<p>In the framework textual content is modelled using the class <code class="highlighter-rouge">Document</code> . This class allows to model a document instance with numerous attributes where for every attribute we can also define using the class <code class="highlighter-rouge">Field</code> .</p>
+
+<p>In the sample code below, I have define an <code class="highlighter-rouge">Document</code> instance with a number of attributes:</p>
+
+<ul>
+  <li><strong>Document ID</strong>: because in practice we may have thousands of documents, I have used base64 to generate unique IDs for documents. Notice that we supply the <code class="highlighter-rouge">StringField</code> constructor with the variable <code class="highlighter-rouge">Field.Store.YES</code> , which means the values of this attributes will be stored in index files. More importantly, we <strong>do not index </strong>the <code class="highlighter-rouge">StringField</code> by default.</li>
+  <li><strong>File path</strong>: will be stored</li>
+  <li><strong>Content field</strong>: as you may think, we need to index the content field for further full-text search. However, we may or may not store it in the index files. It is a matter of choice. In this particular case, I choose to store the field.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="o">();</span>
+
+<span class="c1">// docId</span>
+<span class="c1">// generated by base64 of filepath</span>
+<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BaseEncoding</span><span class="o">.</span><span class="na">base64</span><span class="o">().</span><span class="na">encode</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">getCanonicalPath</span><span class="o">().</span><span class="na">getBytes</span><span class="o">(</span><span class="n">Charsets</span><span class="o">.</span><span class="na">US_ASCII</span><span class="o">));</span>
+<span class="n">doc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">StringField</span><span class="o">(</span><span class="n">MyDocumentIndexedProperties</span><span class="o">.</span><span class="na">ID_FIELD</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span>
+		<span class="n">Field</span><span class="o">.</span><span class="na">Store</span><span class="o">.</span><span class="na">YES</span><span class="o">));</span>
+
+<span class="c1">// filepath</span>
+<span class="n">doc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">StringField</span><span class="o">(</span><span class="n">MyDocumentIndexedProperties</span><span class="o">.</span><span class="na">FILE_PATH_FIELD</span><span class="o">,</span> <span class="n">f</span>
+		<span class="o">.</span><span class="na">getCanonicalPath</span><span class="o">(),</span> <span class="n">Field</span><span class="o">.</span><span class="na">Store</span><span class="o">.</span><span class="na">YES</span><span class="o">));</span>
+
+<span class="c1">// content field</span>
+<span class="n">TokenStream</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="na">tokenStream</span><span class="o">(</span>
+		<span class="n">MyDocumentIndexedProperties</span><span class="o">.</span><span class="na">CONTENT_FIELD</span><span class="o">,</span> <span class="k">new</span> <span class="n">StringReader</span><span class="o">(</span>
+				<span class="n">handler</span><span class="o">.</span><span class="na">toString</span><span class="o">()));</span>
+<span class="n">Field</span> <span class="n">contentField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Field</span><span class="o">(</span>
+		<span class="n">MyDocumentIndexedProperties</span><span class="o">.</span><span class="na">CONTENT_FIELD</span><span class="o">,</span>
+		<span class="n">AnalyzerUtils</span><span class="o">.</span><span class="na">tokenStreamToString</span><span class="o">(</span><span class="n">ts</span><span class="o">),</span> <span class="n">TYPE_STORED</span><span class="o">);</span>
+<span class="n">ts</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">doc</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">contentField</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="index-document">3.3 Index document</h4>
+
+<p>While Lucene consists many components, it, at the same time, uses such extremely simple and intuitive methods to abstract the complex structures that it is fascinating seeing how it is simple to perform indexing.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="o">();</span>
+
+<span class="c1">//modelling document in the same manner as section 3.2</span>
+<span class="c1">//...</span>
+<span class="c1">//...</span>
+
+<span class="c1">//add document to the index</span>
+<span class="n">writer</span><span class="o">.</span><span class="na">addDocument</span><span class="o">(</span><span class="n">doc</span><span class="o">);</span>
+
+<span class="c1">//close the index when finish</span>
+<span class="c1">//which also means we commit the index to be ready to store</span>
+<span class="n">writer</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+</code></pre>
+</div>
+
+<h3 id="full-text-search">4. Full-text search</h3>
+
+<p>Until now we have an index that can be used to search over. To initialise a search, we must input a search query, which can be a keyword or even a wild card. In Lucene, the search query will firstly be handled by <code class="highlighter-rouge">QueryParser</code> where the query will be parsed into meaningful structure, called <code class="highlighter-rouge">Query</code> . After that, the <code class="highlighter-rouge">IndexSearcher</code> will consume <code class="highlighter-rouge">Query</code> instance in order to look up over the index.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// searcher</span>
+<span class="n">IndexSearcher</span> <span class="n">searcher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IndexSearcher</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">indexReader</span><span class="o">);</span>
+
+<span class="c1">// query parser</span>
+<span class="n">QueryParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryParser</span><span class="o">(</span><span class="n">Version</span><span class="o">.</span><span class="na">LUCENE_46</span><span class="o">,</span> <span class="s">"content"</span><span class="o">,</span> <span class="k">new</span> <span class="n">SimpleAnalyzer</span><span class="o">());</span>
+
+<span class="c1">// parsing query</span>
+<span class="n">Query</span> <span class="n">q</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"...."</span><span class="o">);</span>
+
+<span class="c1">// look up and return top 10 relevant documents</span>
+<span class="n">Topdocs</span> <span class="n">docs</span> <span class="o">=</span> <span class="n">searcher</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="n">query</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="bottom-line">5. Bottom line</h3>
+
+<p>So far we have seen a “hello world” example of using Lucene to perform full-text search. In real project, we can expect there are a number of possibilities where we need to tweak Lucene so that it can serve our search purpose at a higher level. An example scenario is when we need to support <strong>like-this search</strong> where the system allows the user to search textual contents that are similar to the keywords. Theoretically we can measure <strong>the similarity </strong>by using distance measure methods, such as Euclidean distance measure, cosine distance measure, or Manhattan distance measure, etc. Another scenario is when we can create a system that supports <strong>synonym search </strong>where we retrieve not only document contains the search keywords but also documents that has synonyms of keywords.</p>
+
+<p>As said, in spite of the simplicity, Lucene adds a tremendous amount of support in building a powerful search tool. In the future post, I may discuss how we can combine both Apache Lucene and Apache Mahout (a machine learning framework) in order to index a corpus and use that index to perform clustering. Stay tuned!</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25289111-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <!-- End Footer -->
+
+  </body>
+</html>
