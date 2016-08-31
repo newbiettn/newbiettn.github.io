@@ -43,3 +43,5 @@ In contrast, suppose we have  a diabetes predictive model to evaluate, which met
 Lastly and interestingly, imagine if we had a system that can exploit all evidences and judge if a suspect guilty. In this case, what we care about most? Do we care if the suspect doesn't commit the crime but the system judges him guilty (FP)? Or do we care if the suspect does commit the crime but the system judges him not guilty (FN)? Yeah, I guess in this case, we should put more emphasis on FP rather than FN, because putting an innocent person to the jail is also a crime, and letting a guilty suspect go is not as dire as putting innocent person to jail.
 
 ** In statistic and relevant fields, usually we put more emphasis on Type I error (e.g., reject $$H_0$$ incorrectly (FP)), rather than Type 2 error (e.g., retain a false $$H_0$$ (FN)).
+
+The end.
