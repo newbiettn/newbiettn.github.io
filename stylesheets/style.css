@@ -63,7 +63,12 @@ a {
 	text-decoration: none;
 	line-height: inherit;
 }
-
+.maincontent a {
+	font-weight: bold;
+}
+.maincontent ul {
+	margin-left: 20px;
+}
 a:hover {
 	color: #2F2F2F;
 }
