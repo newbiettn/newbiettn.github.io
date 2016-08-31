@@ -1,5 +1,5 @@
 ---
-title: Precision, Recall, Sensitivity, Specificity
+title: Precision, Recall, Sensitivity and Specificity
 layout: post
 ---
 
