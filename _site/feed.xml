@@ -2,9 +2,88 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>newbiettn</title>
-    <description>Simply not just an alternative hypothesis</description>
+    <description>Standing on the shoulders of giants</description>
     <link>https://newbiettn.github.io</link>
     <atom:link href="https://newbiettn.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Precision, Recall, Sensitivity, Specificity</title>
+        <description>&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
+&lt;p&gt;I recently discovered that the concepts of precision, recall, sensitivity and specificity are very much important to what I am currently working on. Those are equally important but not for a single domain. Instead we have different indicators for different domains. For example, in information retrieval, precision and recall are two important measures that need to be taken into account when evaluate a search system. In pattern recognition and machine learning, precision and recall are important as well but there is a slight difference when interpret them. On the other hand, sensitivity and specificity are alternations to precision and recall when it comes to medical application. In this writing, we aim to explain why there exist those differences in the first place.&lt;/p&gt;
+
+&lt;p&gt;In order to begin, first we look at &lt;strong&gt;the confusion matrix&lt;/strong&gt; to understand where terms TP, FP, TN, and FN come from, and second, look at the Venn digram that perfectly portraits the territories of TP, FP, TN, and FN within the search space.&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/confusion-matrix-noted.jpg&quot; alt=&quot;The confusion matrix of the search space&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    The confusion matrix of the search space
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/precision-recall.jpg&quot; alt=&quot;The Venn diagram of the confusion matrix (I guess it better applies to information retrieval)&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    The Venn diagram of the confusion matrix (I guess it better applies to information retrieval)
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And mathematically, precision, recall, sensitivity and specificity are denoted as below.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Precision = \frac{TP}{TP + FP} \\
+\\
+Recall = Sensitivity = \frac{TP}{TP + FN} \\
+\\
+Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
+
+&lt;h4 id=&quot;precision&quot;&gt;Precision&lt;/h4&gt;
+&lt;p&gt;I found that we can easily understand the intuitive concept of precision by simply looking at the Venn diagram. Simply speaking, precision is the ratio between the documents that match the user expectation and the total number of documents returned by the system. One cay say that the higher the precision, the better. But it is always true because a system can &lt;em&gt;cheat&lt;/em&gt; the precision score up to 100% by only returning documents about which it is extremely confident. By doing this, the amount of returned documents is severely reduced, making it so resistant to FP.Look at the figure below, because the space of returned documents is so small, it can fall within the space of the expected documents easily. What is the problem with that? Because the amount of search result is extremely small, the information is likely inadequate to support the user tasks. Mathematically, we have &lt;script type=&quot;math/tex&quot;&gt;TP \rightarrow 1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;FP \rightarrow 0&lt;/script&gt;, thus &lt;script type=&quot;math/tex&quot;&gt;\frac{TP}{TP + FP} \rightarrow 1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/Venn-diagram-precision-optimized.jpg&quot; alt=&quot;We can cheat the precision result&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    We can cheat the precision result
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;recall-and-sensitivity&quot;&gt;Recall and Sensitivity&lt;/h4&gt;
+&lt;p&gt;We can also grasp the concept of recall and sensitivity smoothly through the Venn diagram observation. Both recall and sensitivity can be understand as the ratio between the documents that match the user expectation and the total number of expected documents from the user. Intuitively speaking, recall and sensitivity are big indicators for how much good information that a system really misses, whereas precision is an indicator for how much good information in the search result the user can use. We can also cheat the recall/sensitivity score by getting the system to add up the number of returned documents, making the search result overwhelmingly abundant. Then guess who is going have a hard time to filtrate such load of information. Look at the figure below, we can see that by returning an overwhelming amount of information, the system can ensure that its recall/sensitivity is maximized. Mathematically, by doing this we have &lt;script type=&quot;math/tex&quot;&gt;TP \rightarrow 1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;FN \rightarrow 0&lt;/script&gt;, therefore &lt;script type=&quot;math/tex&quot;&gt;\frac{TP}{TP + FN} \rightarrow 1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/Venn-diagram-recall-optimized.jpg&quot; alt=&quot;We can cheat the precision result&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    We can cheat the precision result
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;specificity&quot;&gt;Specificity&lt;/h4&gt;
+&lt;p&gt;To understand the concept of specificity, as oppose to observing the Venn diagram, I found it much more easier to understand by checking the confusion matrix. First of all, one has to understand that by using specificity, he wants to steer the focus of his evaluation towards how good the system can predict negative outcomes( or how good the system can avoid returning irrelevant documents,. That’s the reason why TN is the numerator of the equation in the first place. One can also maximize the specificity score of the system by getting the system return no information at all (or predict all observations are negative). Mathematically, when return no information or predict all are negative, &lt;script type=&quot;math/tex&quot;&gt;FP \rightarrow 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;TN \rightarrow 1&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;\frac{FP}{TN + FP} \rightarrow 1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;which-one-i-should-use&quot;&gt;Which one I should use&lt;/h4&gt;
+&lt;p&gt;We have four metrics to choose, so the question is which one I should. Well I can say that it depends on the problem domain. For example, if we have built a search system, in order to evaluate it, firstly we have to answer some questions: Which criteria we care about most? Do we care about the vast amount of information we ignore (which is TN)? Or do we care about the information we can return (FP + TP + FN)? My answer is I care about the relevant of information my system gives the user rather than the information I can’t return (there is countless amount of information, who cares in the first place). Thus, to evaluate the search system, I would use precision, recall and ignore specificity.&lt;/p&gt;
+
+&lt;p&gt;In contrast, suppose we have  a diabetes predictive model to evaluate, which metrics should we care about? Do we care if a patient doesn’t have diabetes, but the system predicts positive (TN + FP)? Do we care about if a patient has diabetes, but the system predicts negative (TP + FP)? and so on. My answer is I would use all of three indicators (e.g., precision, recall, specificity) because I guess we have to take into account all of indicators TP, FP, TN and FN. Everything is crucial in this case.&lt;/p&gt;
+
+&lt;p&gt;Lastly and interestingly, imagine if we had a system that can exploit all evidences and judge if a suspect guilty. In this case, what we care about most? Do we care if the suspect doesn’t commit the crime but the system judges him guilty (FP)? Or do we care if the suspect does commit the crime but the system judges him not guilty (FN)? Yeah, I guess in this case, we should put more emphasis on FP rather than FN, because putting an innocent person to the jail is also a crime, and letting a guilty suspect go is not as dire as putting innocent person to jail.&lt;/p&gt;
+
+&lt;p&gt;** In statistic and relevant fields, usually we put more emphasis on Type I error (e.g., reject &lt;script type=&quot;math/tex&quot;&gt;H_0&lt;/script&gt; incorrectly (FP)), rather than Type 2 error (e.g., retain a false &lt;script type=&quot;math/tex&quot;&gt;H_0&lt;/script&gt; (FN)).&lt;/p&gt;
+
+&lt;p&gt;The end.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +1000</pubDate>
+        <link>https://newbiettn.github.io/2016/08/30/precision-recall-sensitivity-specificity/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/30/precision-recall-sensitivity-specificity/</guid>
+      </item>
+    
+      <item>
+        <title>Variables selection using Fractional Polynomials</title>
+        <description>&lt;p&gt;I had quite a time with using the algorithm Fractional Polynomial (FP) to purposefully select variables for regression model. The algorithm’s idea is thoroughly explained in the paper “Multivariable regression model building by using fractional polynomials: Description of SAS, STATA and R programs”. Nevertheless, the authors mainly use SAS to demonstrate, as a result making it quite a bit different when compare the output from R-language to SAS. But after a few hours, I accomplished reproducing the example using our familiar R-language.&lt;/p&gt;
+
+&lt;p&gt;In short, FP is an algorithm to check if the variable is linear or non-linear.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Aug 2016 00:00:00 +1000</pubDate>
+        <link>https://newbiettn.github.io/2016/08/12/variables-selection-using-multivariate-polynomials/</link>
+        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/12/variables-selection-using-multivariate-polynomials/</guid>
+      </item>
     
       <item>
         <title>Likelihood ratio test</title>
@@ -435,144 +514,6 @@
         <pubDate>Sat, 19 Dec 2015 22:16:10 +1100</pubDate>
         <link>https://newbiettn.github.io/2015/12/19/to-hold-the-sun/</link>
         <guid isPermaLink="true">https://newbiettn.github.io/2015/12/19/to-hold-the-sun/</guid>
-      </item>
-    
-      <item>
-        <title>Javascript: a self walkthrough (part 1)</title>
-        <description>&lt;p&gt;I have been well-acquainted with Javascript since 2011, a bit late compared to some of my friends who were seemingly keen on creating animated web pages for school projects using supporting plugins like jQuery. Before 2011, I had no formal concept about Javascript, except the name. At that time, the language seemed to be extremely difficult to me, and that sort of though discouraged me to learn it.&lt;/p&gt;
-
-&lt;p&gt;Nevertheless, after nearly 3 years being a developer and 2 years having formal learning in VUB, I now have chance to observe the beauty of the language with supportive formal knowledge in my spare time. But still I retain my old opinion that &lt;em&gt;Javascript ain’t an language that most people think they can learn in quick and dirty ways&lt;/em&gt;. Of course it is particularly easy to use jQuery and make it run like a charm, but to understand mechanisms under the hood of the language, there exists a harsh line. I think to become a good Javascript developer, at least we should grasp a firm knowledge about programming language, like &lt;em&gt;first-class object&lt;/em&gt; polymorphism, inheritance, delegation, asynchronous vs synchronous and so on.&lt;/p&gt;
-
-&lt;h3 id=&quot;javascript-is-a-functional-programming-language&quot;&gt;Javascript is a functional programming language&lt;/h3&gt;
-
-&lt;p&gt;First thing first, Javascript ain’t object-oriented, it is functional like Haskell. In functional programming language, we treat functions as first-class objects where we can:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Declare them using literals as we often do (e.g., &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  function foo() {};
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pass them as arguments to other functions. This characteristic is exclusive to Javascript and other functional programming languages. In Java, we do not have this feature until Java 7, but still it is minimal.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//In jQuery, too loop through a list, we often do to&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//execute a function for each list item, we pass the&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//function as an argument&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;li&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Assign them to variables. It is unlikely that we can do the same thing on Java&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//As often as declaring a standalone function, we can&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//also declare a function and assign it to a variable&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Return them as results of other functions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//We declare a function bar() nested inside the function foo()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//As a result of foo(), we return function bar() without invocation&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;//doing something here&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//To invoke bar() from foo()&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;different-ways-to-invoke-functions&quot;&gt;Different ways to invoke functions&lt;/h3&gt;
-
-&lt;p&gt;Of course we can invoke a function easily using &lt;code class=&quot;highlighter-rouge&quot;&gt;()&lt;/code&gt; operator. But an additional thing we need to pay attention is &lt;em&gt;function context&lt;/em&gt;, aka &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; , a familiar thing from Java. When closely observe, we can list 3 different methods to invoke a function.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Invoke a function as a global function whose context is &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//Declare a function and return its context&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//Examine if the context of the function is window&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//Tips: using === to compare if two values have the same reference&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Invoke a function as a method&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//Create a variable with an property, and assign a function to the property&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//The function is now a method property of the given object&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//verify if the function context is the method owner&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Invoke functions as constructors&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//Here we define the constructor of Foo object&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//Note that we capitalised the name to help distinguish constructor&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//from other kinds of functions&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//Use the &#39;new&#39; operator to create an instance of the object&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//When we check, the context is our new instances&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Additionally to make it look like object-oriented languages, we can add &lt;em&gt;getter/setter&lt;/em&gt; using either nested or prototype-based functions about which we will talk later.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 12 Nov 2015 21:07:41 +1100</pubDate>
-        <link>https://newbiettn.github.io/2015/11/12/javascript-a-self-walkthrough-part-1/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2015/11/12/javascript-a-self-walkthrough-part-1/</guid>
-      </item>
-    
-      <item>
-        <title>HTML5 canvas</title>
-        <description>&lt;p&gt;Recently, I have spent a couple of days to play with HTML5 canvas, a thing that I have desired to learn for years. Back in late 2012, I started to see many developers published their canvas visualisations. At that time it was very intriguing to me in the sense that it is browser-based and developed using javascript, a language that I’m kinda fond of. Unfortunately since I was totally occupied with both daily work and Master school preparation, I couldn’t have time to learn HTML5 canvas, although I was very much interested in.&lt;/p&gt;
-
-&lt;p&gt;One of different things that makes &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; interesting is we are able to imitate physical model. In this pen, I create infinite number of particles and put them on spiral movement. It reminds me of old equations about classical mechanics I learnt in the high school.&lt;/p&gt;
-
-&lt;iframe width=&quot;300&quot; height=&quot;396&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; src=&quot;//codepen.io/newbiettn/embed/zvJdBy/?height=396&amp;amp;theme-id=0&amp;amp;default-tab=result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/newbiettn/pen/zvJdBy/&quot;&gt;Spiral Particles&lt;/a&gt; by newbiettn (&lt;a href=&quot;http://codepen.io/newbiettn&quot;&gt;@newbiettn&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-
-&lt;iframe width=&quot;300&quot; height=&quot;520&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; src=&quot;//codepen.io/newbiettn/embed/RWqPBL/?height=520&amp;amp;theme-id=0&amp;amp;default-tab=result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/newbiettn/pen/RWqPBL/&quot;&gt;Foggy tree&lt;/a&gt; by newbiettn (&lt;a href=&quot;http://codepen.io/newbiettn&quot;&gt;@newbiettn&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/iframe&gt;
-</description>
-        <pubDate>Fri, 06 Nov 2015 05:33:59 +1100</pubDate>
-        <link>https://newbiettn.github.io/2015/11/06/183/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2015/11/06/183/</guid>
       </item>
     
   </channel>

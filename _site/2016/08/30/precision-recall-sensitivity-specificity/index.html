@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='Precision, Recall, Sensitivity, Specificity - newbiettn' property='og:title' />
+    <title>Precision, Recall, Sensitivity, Specificity - newbiettn</title>
+    <link rel="canonical" href="https://newbiettn.github.io/2016/08/30/precision-recall-sensitivity-specificity/" />
+<meta charset="UTF-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon"
+	href="https://newbiettn.github.io/images/favicon.jpg" />
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<link rel='stylesheet' id='foundation-css'  href='https://newbiettn.github.io/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='aude-layout-css'  href='https://newbiettn.github.io/stylesheets/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='superfishcss-css'  href='https://newbiettn.github.io/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='https://newbiettn.github.io/stylesheets/flexslider.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css'  href='https://newbiettn.github.io/stylesheets/syntax.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.js'></script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+  </head>
+  <body class="home blog">
+  	<div class="preloader">
+    		<div class="preload-status">&nbsp;</div>
+  	</div>
+  	<!-- Header -->
+    <header class="row site-header">
+  <div class="two columns">
+  </div>
+  <div class="eight columns ">
+    <div class="row border-top-normal">
+      <a href="https://newbiettn.github.io">
+        <h1 class="logo">newbiettn</h1>
+      </a>
+      <p class="motto">Standing on the shoulders of giants</p>
+    </div>
+  </div>
+  <div class="two columns fixed">
+    <nav class="border-top-normal">
+      <ul id="themenu" class="navigation">
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="https://newbiettn.github.io/">
+             Home
+           </a>
+        </li>
+      
+        <li>
+          <a target="_top"
+             class="navigation"
+             href="https://newbiettn.github.io/about">
+             About
+           </a>
+        </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  	<!-- End Header -->
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+    	<div class="two columns">
+    	</div>
+    	<div class="content-container eight columns">
+    		<!-- Post -->
+        <div class="row article-container">
+    			<div class="twelve columns">
+    				<div class="row border-top-normal">
+    						<article>
+    							<div>
+    								<header class="post_title">
+    									<div class="row">
+    										<div class="one columns">
+    											<time class="dateline" datetime="August 30, 2016">August 30, 2016</time>
+    										</div>
+    										<div class="eleven columns">
+    											<h2><a href="#" title="Precision, Recall, Sensitivity, Specificity">Precision, Recall, Sensitivity, Specificity</a></h2>
+    										</div>
+    									</div>
+    								</header>
+                    <div class="row">
+                      <div class="maincontent">
+                        <div class="twelve columns">
+                          <h4 id="introduction">Introduction</h4>
+<p>I recently discovered that the concepts of precision, recall, sensitivity and specificity are very much important to what I am currently working on. Those are equally important but not for a single domain. Instead we have different indicators for different domains. For example, in information retrieval, precision and recall are two important measures that need to be taken into account when evaluate a search system. In pattern recognition and machine learning, precision and recall are important as well but there is a slight difference when interpret them. On the other hand, sensitivity and specificity are alternations to precision and recall when it comes to medical application. In this writing, we aim to explain why there exist those differences in the first place.</p>
+
+<p>In order to begin, first we look at <strong>the confusion matrix</strong> to understand where terms TP, FP, TN, and FN come from, and second, look at the Venn digram that perfectly portraits the territories of TP, FP, TN, and FN within the search space.</p>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/confusion-matrix-noted.jpg" alt="The confusion matrix of the search space" />
+  <p class="wp-caption-text">
+    The confusion matrix of the search space
+  </p>
+</div>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/precision-recall.jpg" alt="The Venn diagram of the confusion matrix (I guess it better applies to information retrieval)" />
+  <p class="wp-caption-text">
+    The Venn diagram of the confusion matrix (I guess it better applies to information retrieval)
+  </p>
+</div>
+
+<p>And mathematically, precision, recall, sensitivity and specificity are denoted as below.</p>
+
+<script type="math/tex; mode=display">Precision = \frac{TP}{TP + FP} \\
+\\
+Recall = Sensitivity = \frac{TP}{TP + FN} \\
+\\
+Specificity = \frac{TN}{TN + FP}</script>
+
+<h4 id="precision">Precision</h4>
+<p>I found that we can easily understand the intuitive concept of precision by simply looking at the Venn diagram. Simply speaking, precision is the ratio between the documents that match the user expectation and the total number of documents returned by the system. One cay say that the higher the precision, the better. But it is always true because a system can <em>cheat</em> the precision score up to 100% by only returning documents about which it is extremely confident. By doing this, the amount of returned documents is severely reduced, making it so resistant to FP.Look at the figure below, because the space of returned documents is so small, it can fall within the space of the expected documents easily. What is the problem with that? Because the amount of search result is extremely small, the information is likely inadequate to support the user tasks. Mathematically, we have <script type="math/tex">TP \rightarrow 1</script>, <script type="math/tex">FP \rightarrow 0</script>, thus <script type="math/tex">\frac{TP}{TP + FP} \rightarrow 1</script>.</p>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/Venn-diagram-precision-optimized.jpg" alt="We can cheat the precision result" />
+  <p class="wp-caption-text">
+    We can cheat the precision result
+  </p>
+</div>
+
+<h4 id="recall-and-sensitivity">Recall and Sensitivity</h4>
+<p>We can also grasp the concept of recall and sensitivity smoothly through the Venn diagram observation. Both recall and sensitivity can be understand as the ratio between the documents that match the user expectation and the total number of expected documents from the user. Intuitively speaking, recall and sensitivity are big indicators for how much good information that a system really misses, whereas precision is an indicator for how much good information in the search result the user can use. We can also cheat the recall/sensitivity score by getting the system to add up the number of returned documents, making the search result overwhelmingly abundant. Then guess who is going have a hard time to filtrate such load of information. Look at the figure below, we can see that by returning an overwhelming amount of information, the system can ensure that its recall/sensitivity is maximized. Mathematically, by doing this we have <script type="math/tex">TP \rightarrow 1</script>, <script type="math/tex">FN \rightarrow 0</script>, therefore <script type="math/tex">\frac{TP}{TP + FN} \rightarrow 1</script>.</p>
+
+<div class="wp-caption aligncenter">
+  <img src="/images/Venn-diagram-recall-optimized.jpg" alt="We can cheat the precision result" />
+  <p class="wp-caption-text">
+    We can cheat the precision result
+  </p>
+</div>
+
+<h4 id="specificity">Specificity</h4>
+<p>To understand the concept of specificity, as oppose to observing the Venn diagram, I found it much more easier to understand by checking the confusion matrix. First of all, one has to understand that by using specificity, he wants to steer the focus of his evaluation towards how good the system can predict negative outcomes( or how good the system can avoid returning irrelevant documents,. That’s the reason why TN is the numerator of the equation in the first place. One can also maximize the specificity score of the system by getting the system return no information at all (or predict all observations are negative). Mathematically, when return no information or predict all are negative, <script type="math/tex">FP \rightarrow 0</script> and <script type="math/tex">TN \rightarrow 1</script>, then <script type="math/tex">\frac{FP}{TN + FP} \rightarrow 1</script>.</p>
+
+<h4 id="which-one-i-should-use">Which one I should use</h4>
+<p>We have four metrics to choose, so the question is which one I should. Well I can say that it depends on the problem domain. For example, if we have built a search system, in order to evaluate it, firstly we have to answer some questions: Which criteria we care about most? Do we care about the vast amount of information we ignore (which is TN)? Or do we care about the information we can return (FP + TP + FN)? My answer is I care about the relevant of information my system gives the user rather than the information I can’t return (there is countless amount of information, who cares in the first place). Thus, to evaluate the search system, I would use precision, recall and ignore specificity.</p>
+
+<p>In contrast, suppose we have  a diabetes predictive model to evaluate, which metrics should we care about? Do we care if a patient doesn’t have diabetes, but the system predicts positive (TN + FP)? Do we care about if a patient has diabetes, but the system predicts negative (TP + FP)? and so on. My answer is I would use all of three indicators (e.g., precision, recall, specificity) because I guess we have to take into account all of indicators TP, FP, TN and FN. Everything is crucial in this case.</p>
+
+<p>Lastly and interestingly, imagine if we had a system that can exploit all evidences and judge if a suspect guilty. In this case, what we care about most? Do we care if the suspect doesn’t commit the crime but the system judges him guilty (FP)? Or do we care if the suspect does commit the crime but the system judges him not guilty (FN)? Yeah, I guess in this case, we should put more emphasis on FP rather than FN, because putting an innocent person to the jail is also a crime, and letting a guilty suspect go is not as dire as putting innocent person to jail.</p>
+
+<p>** In statistic and relevant fields, usually we put more emphasis on Type I error (e.g., reject <script type="math/tex">H_0</script> incorrectly (FP)), rather than Type 2 error (e.g., retain a false <script type="math/tex">H_0</script> (FN)).</p>
+
+<p>The end.</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+    			</div>
+    		</div>
+        <!-- End Post -->
+    </div>
+    <aside class="two columns fixed">
+      <div class="row sidebar ">
+      </div>
+    </aside>
+  </div>
+    <!-- Footer -->
+<footer class="row">
+  <div class="two columns"> </div>
+  <div class="eight columns border-top-normal">
+      <div class="row">
+        <div class="twelve columns ">
+          <p class="text-center">No Rights Reserved - Information is FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="two columns"> </div>
+  </footer>
+
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/foundation.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/superfish.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.flexslider.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/source/jquery.fancybox.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/source/helpers/jquery.fancybox-media.js?ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/app.js?1423606192&#038;ver=4.5.3'></script>
+<script type='text/javascript' src='https://newbiettn.github.io/javascripts/jquery.foundation.buttons.js?ver=4.5.3'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25289111-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <!-- End Footer -->
+
+  </body>
+</html>

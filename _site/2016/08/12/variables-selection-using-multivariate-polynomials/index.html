@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content='Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2) - newbiettn' property='og:title' />
-    <title>Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2) - newbiettn</title>
-    <link rel="canonical" href="https://newbiettn.github.io/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/" />
+    <meta content='Variables selection using Fractional Polynomials - newbiettn' property='og:title' />
+    <title>Variables selection using Fractional Polynomials - newbiettn</title>
+    <link rel="canonical" href="https://newbiettn.github.io/2016/08/12/variables-selection-using-multivariate-polynomials/" />
 <meta charset="UTF-8" />
 
 <!-- Set the viewport width to device width for mobile -->
@@ -86,37 +86,19 @@ MathJax.Hub.Config({
     								<header class="post_title">
     									<div class="row">
     										<div class="one columns">
-    											<time class="dateline" datetime="March 05, 2016">March 05, 2016</time>
+    											<time class="dateline" datetime="August 12, 2016">August 12, 2016</time>
     										</div>
     										<div class="eleven columns">
-    											<h2><a href="#" title="Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)">Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 2)</a></h2>
+    											<h2><a href="#" title="Variables selection using Fractional Polynomials">Variables selection using Fractional Polynomials</a></h2>
     										</div>
     									</div>
     								</header>
                     <div class="row">
                       <div class="maincontent">
                         <div class="twelve columns">
-                          <h3 id="maximum-a-posteriori-estimation-map">Maximum a Posteriori Estimation (MAP)</h3>
+                          <p>I had quite a time with using the algorithm Fractional Polynomial (FP) to purposefully select variables for regression model. The algorithm’s idea is thoroughly explained in the paper “Multivariable regression model building by using fractional polynomials: Description of SAS, STATA and R programs”. Nevertheless, the authors mainly use SAS to demonstrate, as a result making it quite a bit different when compare the output from R-language to SAS. But after a few hours, I accomplished reproducing the example using our familiar R-language.</p>
 
-<p>Generally, MAP is a particular extension of MLE where we take in account a biased assumption of data, called <strong><em>prior knowledge</em></strong>. Specifically Bayes’ theorem (or Bayes’ rule) allows us to incorporate prior probability as follows</p>
-
-<script type="math/tex; mode=display">P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}</script>
-
-<p>In which, $P(D|\theta)$ is the likelihood, $P(\theta)$ is the prior probability, $P(D)$ is the marginal likelihood, and $P(\theta|D)$ is the posteriori likelihood.</p>
-
-<p>The principle of MAP is to estimate $\theta$ that maximise the posteriori likelihood $P(\theta)$. Thus,</p>
-
-<script type="math/tex; mode=display">\hat{\theta}_{MAP} = argmax\ \frac{P(D|\theta)P(\theta)}{P(D)}</script>
-
-<p>Notice that the denominator $P(D)$ is independent of $\theta$. Therefore</p>
-
-<script type="math/tex; mode=display">P(\theta|D) \propto {P(D|\theta)P(\theta)}</script>
-
-<script type="math/tex; mode=display">\Rightarrow \hat{\theta}_{MAP} = argmax\ {P(D|\theta)P(\theta)}</script>
-
-<p>By assuming attributes $X_{1}, X_{2}, …, X_{n}$ are independent of each other, we have</p>
-
-<script type="math/tex; mode=display">\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)</script>
+<p>In short, FP is an algorithm to check if the variable is linear or non-linear.</p>
 
                         </div>
                       </div>
