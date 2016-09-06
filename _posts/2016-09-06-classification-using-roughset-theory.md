@@ -23,7 +23,7 @@ In ML, we usually call $x_i$ observations, objects, rows; and $a_j$ predictors, 
 ##### 2) Decision system: $DS = (U, A \cup \{d\})$ | $DS \subseteq I$
 Decision system $DS$ is a special type of information system $I$ that can be used in classification. $d$ is the *decision$ values (i.e., Yes/No, 1/0, and so on). In ML, we call $d_k \in \{d\}$ response, or outcome.
 
-##### 3) Indiscernibility relation
+#### 3) Indiscernibility relation
 Given an information system $I = (U, A)$, for any subset $B \subseteq A$, the indiscernibility or equivalence relation is defined by:
 $$
 IND(B) = \{(x, y) \in U^2 | \forall a \in B, a(x) = a(y)\}
@@ -36,7 +36,7 @@ IND(B) = \{\{e1, e2, e3\}, \{e4, e6\}, \{e5\}\}
 $$
 We can also say that $e1, e2, e3$ are indiscernible from each other.
 
-##### 4) Approximation
+#### 4) Approximation
 The concept of approximation regards the problem of **data reduction** in ML. For that, we can define a approximation set $X (X \subseteq U)$ by using the information from the set $B (B \subseteq A)$. To do that, we have to construct $B-lower$ $(\underline{B}X)$ and $B-upper$ $(\overline{B}X)$ approximations of $X$:
 $$
 \underline{B}X = \{x | [x]_B \subseteq X\}
@@ -58,7 +58,9 @@ $$
 
 {% include image.html url="/images/vagueness-o-data.png" description="Figure 3" %}
 
-For example, in Figure 3, let $W = \{x | Walk(x) = yes\}$ we can have:
+For example, in Figure 3, let
+$$W = \{x | Walk(x) = yes\}$$
+we can have:
 
 - $\underline{B}W = \{x1, x6\}$
 - $\overline{B}W = \{x1, x3, x4, x6\}$
