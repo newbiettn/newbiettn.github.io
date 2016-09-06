@@ -30,7 +30,7 @@ IND(B) = \{(x, y) \in U^2 | \forall a \in B, a(x) = a(y)\}
 $$
 where $IND(B)$ is called the **B-indiscernibility relation**. The equivalence classes of $IND(B)$ are denoted as $[x]_B$.
 
-Take an example from Figure 2. Suppose we have $B=\{Headache, Muscle-pain\}$. Thus, we can have:
+Take an example from Figure 2. Suppose we have $B= \{ Headache, Musclepain \}$. Thus, we can have:
 $$
 IND(B) = \{\{e1, e2, e3\}, \{e4, e6\}, \{e5\}\}
 $$
