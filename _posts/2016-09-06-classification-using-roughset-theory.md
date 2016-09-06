@@ -58,7 +58,7 @@ $$
 
 {% include image.html url="/images/vagueness-o-data.png" description="Figure 3" %}
 
-For example, in Figure 3, let $W = \{x | Walk(x) = yes\}$, we can have:
+For example, in Figure 3, let $W = \{x | Walk(x) = yes\}$ we can have:
 
 - $\underline{B}W = \{x1, x6\}$
 - $\overline{B}W = \{x1, x3, x4, x6\}$
