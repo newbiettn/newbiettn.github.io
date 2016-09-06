@@ -12,7 +12,7 @@ RS theory defines a number of concepts:
 
 {% include image.html url="/images/headache-muscle-temp-dataset.png" description="Figure 2: Sample dataset" %}
 
-##### 1) Information system: $I = (U, A)$
+#### 1) Information system: $I = (U, A)$
 Information system can be understood as a body of information/knowledge that we have. Mathematically the information system is denoted as a pair $(U, A)$ where:
 
 - $U = \{x_1, x_2, ..., x_n\}$: universally represents a non-empty $(U \neq \emptyset)$, finite set of observations $x_i$.
@@ -20,7 +20,7 @@ Information system can be understood as a body of information/knowledge that we 
 
 In ML, we usually call $x_i$ observations, objects, rows; and $a_j$ predictors, features, attributes.
 
-##### 2) Decision system: $DS = (U, A \cup \{d\})$ | $DS \subseteq I$
+#### 2) Decision system: $DS = (U, A \cup \{d\})$ | $DS \subseteq I$
 Decision system $DS$ is a special type of information system $I$ that can be used in classification. $d$ is the *decision$ values (i.e., Yes/No, 1/0, and so on). In ML, we call $d_k \in \{d\}$ response, or outcome.
 
 #### 3) Indiscernibility relation
