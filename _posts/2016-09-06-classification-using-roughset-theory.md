@@ -21,7 +21,7 @@ Information system can be understood as a body of information/knowledge that we 
 In ML, we usually call $x_i$ observations, objects, rows; and $a_j$ predictors, features, attributes.
 
 #### 2) Decision system: $DS = (U, A \cup \{d\})$ | $DS \subseteq I$
-Decision system $DS$ is a special type of information system $I$ that can be used in classification. $d$ is the *decision$ values (i.e., Yes/No, 1/0, and so on). In ML, we call $d_k \in \{d\}$ response, or outcome.
+Decision system $DS$ is a special type of information system $I$ that can be used in classification. $d$ is the *decision* values (i.e., Yes/No, 1/0, and so on). In ML, we call $d_k \in \{d\}$ response, or outcome.
 
 #### 3) Indiscernibility relation
 Given an information system $I = (U, A)$, for any subset $B \subseteq A$, the indiscernibility or equivalence relation is defined by:
