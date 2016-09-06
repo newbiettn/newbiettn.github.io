@@ -15,8 +15,8 @@ RS theory defines a number of concepts:
 ##### 1) Information system: $I = (U, A)$
 Information system can be understood as a body of information/knowledge that we have. Mathematically the information system is denoted as a pair $(U, A)$ where:
 
-- $U = \{x_1, x_2, ..., x_n\}$: universally represents a non-empty $(U \neq \emptyset)$, finite set of observations $x_i$ $(|U| < \infty)$.
-- $A = \{a_1, a_2, ..., a_n\}$: represent a non-empty $(A \neq \emptyset)$, finite set of attributes $a_j$ $(|A| < \infty)$ such that $a \in A$, $a: U \rightarrow V_a$, where $V_a$ is the value set of $a$ (which means every observation in $U$ can be set to attributes that belong to $V_a$).
+- $U = \{x_1, x_2, ..., x_n\}$: universally represents a non-empty $(U \neq \emptyset)$, finite set of observations $x_i$.
+- $A = \{a_1, a_2, ..., a_n\}$: represent a non-empty $(A \neq \emptyset)$, finite set of attributes $a_j$ such that $a \in A$, $a: U \rightarrow V_a$, where $V_a$ is the value set of $a$ (which means every observation in $U$ can be set to attributes that belong to $V_a$).
 
 In ML, we usually call $x_i$ observations, objects, rows; and $a_j$ predictors, features, attributes.
 
