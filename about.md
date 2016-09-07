@@ -16,13 +16,13 @@ I graduated with 1st ranking in CS major from <a title="International University
 
 In Fall 2013, I was fortunately granted a scholarship that allows me to pursue Master degree in any Belgian university. I chose to study Master of Computer Science at Vrije Universiteit Brussel, a public university located in Brussels (Belgium). I have learnt so much knowledge during two years at the school. Even some of things I would never apply, I can see they have changed me forever in the way I observe and evaluate problems in the field.
 
-In Fall 2015, I was granted both **[NICTA scholarship](http://www.nicta.com)** and **Swinburne Scholarship** to pursue Ph.D at Swinburne University of Technology (Melbourne, Australia). I now become part of Swinburne Software Innovation Lab in a new project where I will research a data mining model using extensive sets of clinical data, and build on top such model a Domain Specific Visual Language to support medial practitioners.
+In Fall 2015, I was granted both <span style="text-decoration: underline;">**[NICTA scholarship](http://www.nicta.com)**</span> and <span style="text-decoration: underline;">**Swinburne Scholarship**</span> to pursue Ph.D at Swinburne University of Technology (Melbourne, Australia). I now become part of Swinburne Software Innovation Lab in a new project where I will research a data mining model using extensive sets of clinical data, and build on top such model a Domain Specific Visual Language to support medial practitioners.
 
 
 **Update 08/2016**:
 
-- NICTA has been merged to **[CSIRO](http://www.csiro.au/)** under a new brand name **[Data61](http://www.data61.csiro.au/)**. I am proud of being a part of CSIRO.
-- My journey has been so interesting and challenging to ride on when I am principally supervised by Prof. Jean-Guy Schneider (Swinburne University), Prof. Rajesh Vasa (Deakin University), Ingo Weber (Data61 and University of NSW) and Dr. Elif Ekinci (Austin Hospital and University of Melbourne).
+- NICTA has been merged to <span style="text-decoration: underline;">**[CSIRO](http://www.csiro.au/)**</span> under a new brand name <span style="text-decoration: underline;">**[Data61](http://www.data61.csiro.au/)**</span>. I am proud of being a part of CSIRO.
+- My journey has been so interesting and challenging to ride on when I am principally supervised by Prof. Jean-Guy Schneider (Swinburne University), Prof. Rajesh Vasa (Deakin University), Ingo Weber (Data61/CSIRO and University of NSW) and Dr. Elif Ekinci (Austin Hospital and University of Melbourne).
 
 **PERSONAL STUFFS**
 
