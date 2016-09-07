@@ -18,7 +18,11 @@ In Fall 2013, I was fortunately granted a scholarship that allows me to pursue 
 
 In Fall 2015, I was granted both **[NICTA scholarship](http://www.nicta.com)** and **Swinburne Scholarship** to pursue Ph.D at Swinburne University of Technology (Melbourne, Australia). I now become part of Swinburne Software Innovation Lab in a new project where I will research a data mining model using extensive sets of clinical data, and build on top such model a Domain Specific Visual Language to support medial practitioners.
 
-**Update 08/2016**: NICTA has been merged to **[CSIRO](http://www.csiro.au/)** under a new brand name **[Data61](http://www.data61.csiro.au/)**. I am proud of being a part of CSIRO.
+
+**Update 08/2016**:
+
+- NICTA has been merged to **[CSIRO](http://www.csiro.au/)** under a new brand name **[Data61](http://www.data61.csiro.au/)**. I am proud of being a part of CSIRO.
+- My journey has been so interesting and challenging to ride on when I am principally supervised by Prof. Jean-Guy Schneider (Swinburne University), Prof. Rajesh Vasa (Deakin University), Ingo Weber (Data61 and University of NSW) and Dr. Elif Ekinci (Austin Hospital and University of Melbourne).
 
 **PERSONAL STUFFS**
 
