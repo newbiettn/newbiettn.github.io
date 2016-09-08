@@ -9,6 +9,11 @@
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+<script type="text/javascript">
+    var host = "ngoctran.me";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
 <link rel='stylesheet' id='foundation-css'  href='{{ site.url }}/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
 <link rel='stylesheet' id='aude-layout-css'  href='{{ site.url }}/stylesheets/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='superfishcss-css'  href='{{ site.url }}/stylesheets/superfish.css?ver=4.5.3' type='text/css' media='all' />
@@ -18,11 +23,6 @@
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script type='text/javascript' src='{{ site.url }}/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
 <script type='text/javascript' src='{{ site.url }}/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
-<script type="text/javascript">
-    var host = "ngoctran.me";
-    if ((host == window.location.host) && (window.location.protocol != "https:"))
-        window.location.protocol = "https";
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
