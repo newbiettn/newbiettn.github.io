@@ -18,6 +18,11 @@
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script type='text/javascript' src='{{ site.url }}/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
 <script type='text/javascript' src='{{ site.url }}/javascripts/jquery.infinitescroll.min.js?ver=4.5.3'></script>
+<script type="text/javascript">
+    var host = "yoursite.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
