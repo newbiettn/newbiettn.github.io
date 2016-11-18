@@ -2,7 +2,6 @@
 title: Precision, Recall, Sensitivity and Specificity
 layout: post
 ---
-
 #### Introduction
 I recently discovered that the concepts of precision, recall, sensitivity and specificity are very much important to what I am currently working on. Those are equally important but not for a single domain. Instead we have different indicators for different domains. For example, in information retrieval, precision and recall are two important measures that need to be taken into account when evaluate a search system. In pattern recognition and machine learning, precision and recall are important as well but there is a slight difference when interpret them. On the other hand, sensitivity and specificity are alternations to precision and recall when it comes to medical application. In this writing, we aim to explain why there exist those differences in the first place.
 
@@ -35,7 +34,7 @@ We can also grasp the concept of recall and sensitivity smoothly through the Ven
 #### Specificity
 To understand the concept of specificity, as oppose to observing the Venn diagram, I found it much more easier to understand by checking the confusion matrix. First of all, one has to understand that by using specificity, he wants to steer the focus of his evaluation towards how good the system can predict negative outcomes( or how good the system can avoid returning irrelevant documents,. That's the reason why TN is the numerator of the equation in the first place. One can also maximize the specificity score of the system by getting the system return no information at all (or predict all observations are negative). Mathematically, when return no information or predict all are negative, $$FP \rightarrow 0$$ and $$TN \rightarrow 1$$, then $$\frac{FP}{TN + FP} \rightarrow 1$$.
 
-#### Which one I should use
+#### Which one I should use?
 We have four metrics to choose, so the question is which one I should. Well I can say that it depends on the problem domain. For example, if we have built a search system, in order to evaluate it, firstly we have to answer some questions: Which criteria we care about most? Do we care about the vast amount of information we ignore (which is TN)? Or do we care about the information we can return (FP + TP + FN)? My answer is I care about the relevant of information my system gives the user rather than the information I can't return (there is countless amount of information, who cares in the first place). Thus, to evaluate the search system, I would use precision, recall and ignore specificity.
 
 In contrast, suppose we have  a diabetes predictive model to evaluate, which metrics should we care about? Do we care if a patient doesn't have diabetes, but the system predicts positive (TN + FP)? Do we care about if a patient has diabetes, but the system predicts negative (TP + FP)? and so on. My answer is I would use all of three indicators (e.g., precision, recall, specificity) because I guess we have to take into account all of indicators TP, FP, TN and FN. Everything is crucial in this case.

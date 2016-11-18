@@ -5,8 +5,8 @@ Theme URI: http://newbiettn.com
 
 
 body {
-	background: #fff;
-	font-family: "Sentinel SSm A","Sentinel SSm B", Georgia, serif;
+	background: #F6F6F6;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 17px;
@@ -16,7 +16,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	overflow: hidden;
 }
-
+.site-main, .site-header, .site-footer{
+	background: #fff;
+}
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	font-style: normal;
@@ -63,7 +65,16 @@ a {
 	text-decoration: none;
 	line-height: inherit;
 }
-
+article a {
+	color: navy;
+	text-decoration: underline;
+}
+.maincontent a {
+	font-weight: bold;
+}
+.maincontent ul {
+	margin-left: 20px;
+}
 a:hover {
 	color: #2F2F2F;
 }
@@ -79,7 +90,6 @@ p {
 	line-height: 1.5;
 	margin-bottom: 17px;
 }
-
 iframe {
 	margin: 10px 0 15px;
 	border: 0;
@@ -97,6 +107,11 @@ iframe {
 	overflow-y:scroll;
     overflow-x:hidden;
     max-height: 500px; */
+}
+
+.content-container ul {
+	margin-bottom: 0;
+	margin-left: 35px;
 }
 /* Preloader ---------------------- */
 .preloader  {
@@ -158,7 +173,7 @@ ul.social li:last-child {
 
 /* Header  ---------------------- */
 .site-header {
-	margin-top: 10px;
+	padding-top: 10px;
 	min-height: 220px;
 }
 h1.logo {
@@ -271,7 +286,6 @@ article h2 a {
 .featuredimage {
 	margin: 15px 0;
 }
-
 .post_title {
 	font-weight: normal;
 	padding: 0;
@@ -290,7 +304,11 @@ p.written {
 	font-size: 16px;
 	color: #999;
 }
-
+.site-example {
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	background: #F8F9F9;
+}
 .hentry p.written a {
 	text-decoration: none;
 }
@@ -348,7 +366,7 @@ code.highlighter-rouge {
 }
 /* Footer  ---------------------- */
 footer {
-	margin-top: 80px !important;
+	padding-top: 80px !important;
 }
 footer .text-center {
 	margin-top: 20px;

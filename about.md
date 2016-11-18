@@ -32,7 +32,6 @@ I am also an amateur photographer. You can find some pictures in Flickr and Inst
 
 Daily swimming makes me less introverted and get my body into shape. Thanks a bundle for that!
 
-
 **WHY newbiettn?**
 
 &#8216;newbiettn&#8217; is no more than a random choice of nickname I&#8217;ve made when in high school. Even so, it conveys a few meanings. Whereas &#8216;ttn&#8217; is an abbreviation of my full name, the term &#8216;newbie&#8217; is a slang word, referring to one that is new to something. It was me specifically, a newcomer of computer technology. Yet it&#8217;s not the end of story. There&#8217;s still an extending part of it, which I like much more than the literal meaning. Back in time, I was looking for a nickname that is capable of portraying me, not only in the present but also in many years to come. Then I thought of me somewhat as an curiosity junkie, who always seeks new things in the field, like a newcomer. That&#8217;s why I decided to use the term &#8216;newbie&#8217; as part of my forever nickname.

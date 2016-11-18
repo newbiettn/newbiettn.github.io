@@ -3,11 +3,92 @@
   <channel>
     <title>newbiettn</title>
     <description>Standing on the shoulders of giants</description>
-    <link>https://newbiettn.github.io</link>
-    <atom:link href="https://newbiettn.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://127.0.0.1:4000</link>
+    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Precision, Recall, Sensitivity, Specificity</title>
+        <title>Classification using Rough Set theory</title>
+        <description>&lt;h4 id=&quot;i-introduction&quot;&gt;I. Introduction&lt;/h4&gt;
+&lt;p&gt;Rough Set (RS) algorithm targets the &lt;strong&gt;vagueness&lt;/strong&gt; of the knowledge, e.g., the boundary between observations is not strong enough to set them apart. Look at Figure 1, we can see that we have no clue how to correctly classify items $x_3$ and $x_4$ when the attribute values of those items are identical.&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/vagueness-o-data.png&quot; alt=&quot;Figure 1: it is impractical to classify x3 and x4&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Figure 1: it is impractical to classify x3 and x4
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;ii-primary-concepts-of-rs&quot;&gt;II. Primary concepts of RS&lt;/h4&gt;
+&lt;p&gt;RS theory defines a number of concepts:&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/headache-muscle-temp-dataset.png&quot; alt=&quot;Figure 2: Sample dataset&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Figure 2: Sample dataset
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;information-system-i--u-a&quot;&gt;1) Information system: $I = (U, A)$&lt;/h4&gt;
+&lt;p&gt;Information system can be understood as a body of information/knowledge that we have. Mathematically the information system is denoted as a pair $(U, A)$ where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$U = {x_1, x_2, …, x_n}$: universally represents a non-empty $(U \neq \emptyset)$, finite set of observations $x_i$.&lt;/li&gt;
+  &lt;li&gt;$A = {a_1, a_2, …, a_n}$: represent a non-empty $(A \neq \emptyset)$, finite set of attributes $a_j$ such that $a \in A$, $a: U \rightarrow V_a$, where $V_a$ is the value set of $a$ (which means every observation in $U$ can be set to attributes that belong to $V_a$).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In ML, we usually call $x_i$ observations, objects, rows; and $a_j$ predictors, features, attributes.&lt;/p&gt;
+
+&lt;h4 id=&quot;decision-system-ds--u-a-cup-d--ds-subseteq-i&quot;&gt;2) Decision system: $DS = (U, A \cup {d})$ | $DS \subseteq I$&lt;/h4&gt;
+&lt;p&gt;Decision system $DS$ is a special type of information system $I$ that can be used in classification. $d$ is the &lt;em&gt;decision&lt;/em&gt; values (i.e., Yes/No, 1/0, and so on). In ML, we call $d_k \in {d}$ response, or outcome.&lt;/p&gt;
+
+&lt;h4 id=&quot;indiscernibility-relation&quot;&gt;3) Indiscernibility relation&lt;/h4&gt;
+&lt;p&gt;Given an information system $I = (U, A)$, for any subset $B \subseteq A$, the indiscernibility or equivalence relation is defined by:
+&lt;script type=&quot;math/tex&quot;&gt;IND(B) = \{(x, y) \in U^2 | \forall a \in B, a(x) = a(y)\}&lt;/script&gt;
+where $IND(B)$ is called the &lt;strong&gt;B-indiscernibility relation&lt;/strong&gt;. The equivalence classes of $IND(B)$ are denoted as $[x]_B$.&lt;/p&gt;
+
+&lt;p&gt;Take an example from Figure 2. Suppose we have $B= { Headache, Musclepain }$. Thus, we can have:
+&lt;script type=&quot;math/tex&quot;&gt;IND(B) = \{\{e1, e2, e3\}, \{e4, e6\}, \{e5\}\}&lt;/script&gt;
+We can also say that $e1, e2, e3$ are indiscernible from each other.&lt;/p&gt;
+
+&lt;h4 id=&quot;approximation&quot;&gt;4) Approximation&lt;/h4&gt;
+&lt;p&gt;The concept of approximation regards the problem of &lt;strong&gt;data reduction&lt;/strong&gt; in ML. For that, we can define a approximation set $X (X \subseteq U)$ by using the information from the set $B (B \subseteq A)$. To do that, we have to construct $B-lower$ $(\underline{B}X)$ and $B-upper$ $(\overline{B}X)$ approximations of $X$:
+&lt;script type=&quot;math/tex&quot;&gt;\underline{B}X = \{x | [x]_B \subseteq X\}&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;\overline{B}X = \{x | [x]_B \cap X \neq \emptyset\}&lt;/script&gt;
+Whereas &lt;em&gt;lower-approximation&lt;/em&gt; consists of all observations which &lt;strong&gt;certainly&lt;/strong&gt; belong to the class, &lt;em&gt;upper-approximation&lt;/em&gt; contains all observations which &lt;strong&gt;likely&lt;/strong&gt; belong to the class.&lt;/p&gt;
+
+&lt;p&gt;From that we have $B-boundary$:
+&lt;script type=&quot;math/tex&quot;&gt;BN_B(X) = \overline{B}X - \underline{B}X&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;and $B-outside$:
+&lt;script type=&quot;math/tex&quot;&gt;BO_B = U - \overline{B}X&lt;/script&gt;&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/vagueness-o-data.png&quot; alt=&quot;Figure 3&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Figure 3
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For example, in Figure 3, let
+&lt;script type=&quot;math/tex&quot;&gt;W = \{x | Walk(x) = yes\}&lt;/script&gt;
+we can have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\underline{B}W = {x1, x6}$&lt;/li&gt;
+  &lt;li&gt;$\overline{B}W = {x1, x3, x4, x6}$&lt;/li&gt;
+  &lt;li&gt;$BN_B(W) = {x3, x4}$&lt;/li&gt;
+  &lt;li&gt;$BO_B = {x2, x5, x7}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;iii-roughtsets-package-in-r&quot;&gt;III. “RoughtSets” package in R&lt;/h4&gt;
+</description>
+        <pubDate>Tue, 06 Sep 2016 00:00:00 +1000</pubDate>
+        <link>http://127.0.0.1:4000/2016/09/06/classification-using-roughset-theory/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/09/06/classification-using-roughset-theory/</guid>
+      </item>
+    
+      <item>
+        <title>Precision, Recall, Sensitivity and Specificity</title>
         <description>&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
 &lt;p&gt;I recently discovered that the concepts of precision, recall, sensitivity and specificity are very much important to what I am currently working on. Those are equally important but not for a single domain. Instead we have different indicators for different domains. For example, in information retrieval, precision and recall are two important measures that need to be taken into account when evaluate a search system. In pattern recognition and machine learning, precision and recall are important as well but there is a slight difference when interpret them. On the other hand, sensitivity and specificity are alternations to precision and recall when it comes to medical application. In this writing, we aim to explain why there exist those differences in the first place.&lt;/p&gt;
 
@@ -58,7 +139,7 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;h4 id=&quot;specificity&quot;&gt;Specificity&lt;/h4&gt;
 &lt;p&gt;To understand the concept of specificity, as oppose to observing the Venn diagram, I found it much more easier to understand by checking the confusion matrix. First of all, one has to understand that by using specificity, he wants to steer the focus of his evaluation towards how good the system can predict negative outcomes( or how good the system can avoid returning irrelevant documents,. That’s the reason why TN is the numerator of the equation in the first place. One can also maximize the specificity score of the system by getting the system return no information at all (or predict all observations are negative). Mathematically, when return no information or predict all are negative, &lt;script type=&quot;math/tex&quot;&gt;FP \rightarrow 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;TN \rightarrow 1&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;\frac{FP}{TN + FP} \rightarrow 1&lt;/script&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;which-one-i-should-use&quot;&gt;Which one I should use&lt;/h4&gt;
+&lt;h4 id=&quot;which-one-i-should-use&quot;&gt;Which one I should use?&lt;/h4&gt;
 &lt;p&gt;We have four metrics to choose, so the question is which one I should. Well I can say that it depends on the problem domain. For example, if we have built a search system, in order to evaluate it, firstly we have to answer some questions: Which criteria we care about most? Do we care about the vast amount of information we ignore (which is TN)? Or do we care about the information we can return (FP + TP + FN)? My answer is I care about the relevant of information my system gives the user rather than the information I can’t return (there is countless amount of information, who cares in the first place). Thus, to evaluate the search system, I would use precision, recall and ignore specificity.&lt;/p&gt;
 
 &lt;p&gt;In contrast, suppose we have  a diabetes predictive model to evaluate, which metrics should we care about? Do we care if a patient doesn’t have diabetes, but the system predicts positive (TN + FP)? Do we care about if a patient has diabetes, but the system predicts negative (TP + FP)? and so on. My answer is I would use all of three indicators (e.g., precision, recall, specificity) because I guess we have to take into account all of indicators TP, FP, TN and FN. Everything is crucial in this case.&lt;/p&gt;
@@ -70,19 +151,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;The end.&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 Aug 2016 00:00:00 +1000</pubDate>
-        <link>https://newbiettn.github.io/2016/08/30/precision-recall-sensitivity-specificity/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/30/precision-recall-sensitivity-specificity/</guid>
-      </item>
-    
-      <item>
-        <title>Variables selection using Fractional Polynomials</title>
-        <description>&lt;p&gt;I had quite a time with using the algorithm Fractional Polynomial (FP) to purposefully select variables for regression model. The algorithm’s idea is thoroughly explained in the paper “Multivariable regression model building by using fractional polynomials: Description of SAS, STATA and R programs”. Nevertheless, the authors mainly use SAS to demonstrate, as a result making it quite a bit different when compare the output from R-language to SAS. But after a few hours, I accomplished reproducing the example using our familiar R-language.&lt;/p&gt;
-
-&lt;p&gt;In short, FP is an algorithm to check if the variable is linear or non-linear.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 12 Aug 2016 00:00:00 +1000</pubDate>
-        <link>https://newbiettn.github.io/2016/08/12/variables-selection-using-multivariate-polynomials/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/12/variables-selection-using-multivariate-polynomials/</guid>
+        <link>http://127.0.0.1:4000/2016/08/30/precision-recall-sensitivity-specificity/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/08/30/precision-recall-sensitivity-specificity/</guid>
       </item>
     
       <item>
@@ -147,8 +217,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Tue, 09 Aug 2016 21:34:05 +1000</pubDate>
-        <link>https://newbiettn.github.io/2016/08/09/likelihood-ratio-test/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/08/09/likelihood-ratio-test/</guid>
+        <link>http://127.0.0.1:4000/2016/08/09/likelihood-ratio-test/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/08/09/likelihood-ratio-test/</guid>
       </item>
     
       <item>
@@ -176,8 +246,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;
 </description>
         <pubDate>Sat, 05 Mar 2016 22:23:49 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
+        <link>http://127.0.0.1:4000/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
       </item>
     
       <item>
@@ -246,8 +316,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;script type=&quot;math/tex&quot;&gt;\hat{\theta_{MLE}} = argmax \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 04 Mar 2016 03:48:25 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
+        <link>http://127.0.0.1:4000/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
       </item>
     
       <item>
@@ -267,8 +337,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;In order to stay upbeat, swimming, running and weight lifting has become the norm in my life style for approximately 5 years. Whilst running and weight lifting are suitable for gloomy days, swimming is always my first choice when days become warm and sunny. I always have positive feelings after every swimming session. My mind is refreshed and my flesh is toned up. Come back to nerdy guys in InfoGroup at VUB. In my second year when going to gym, I surprisingly saw a nerdy and skinny guy of InfoGroup signed up for a gym class. Many days later, I saw more members of that group went to the gym. It was once again surprisingly and entertaining to me when I saw such change. I have no clue about it but I was more happy to chit chat with them in gym class rather than in computer room.&lt;/p&gt;
 </description>
         <pubDate>Thu, 25 Feb 2016 09:52:14 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/02/25/conquer-unhappiness/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/02/25/conquer-unhappiness/</guid>
+        <link>http://127.0.0.1:4000/2016/02/25/conquer-unhappiness/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/02/25/conquer-unhappiness/</guid>
       </item>
     
       <item>
@@ -439,8 +509,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;As said, in spite of the simplicity, Lucene adds a tremendous amount of support in building a powerful search tool. In the future post, I may discuss how we can combine both Apache Lucene and Apache Mahout (a machine learning framework) in order to index a corpus and use that index to perform clustering. Stay tuned!&lt;/p&gt;
 </description>
         <pubDate>Sat, 16 Jan 2016 21:36:49 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/01/16/full-text-search-with-apache-lucene/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/16/full-text-search-with-apache-lucene/</guid>
+        <link>http://127.0.0.1:4000/2016/01/16/full-text-search-with-apache-lucene/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/16/full-text-search-with-apache-lucene/</guid>
       </item>
     
       <item>
@@ -459,8 +529,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;It can be downloaded &lt;a href=&quot;https://tt-rss.org/gitlab/fox/tt-rss/wikis/home&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Jan 2016 05:21:57 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/01/13/google-reader-replacement/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/13/google-reader-replacement/</guid>
+        <link>http://127.0.0.1:4000/2016/01/13/google-reader-replacement/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/13/google-reader-replacement/</guid>
       </item>
     
       <item>
@@ -486,8 +556,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;I start to miss a very cozy atmosphere of the company.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jan 2016 21:26:07 +1100</pubDate>
-        <link>https://newbiettn.github.io/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</guid>
+        <link>http://127.0.0.1:4000/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</guid>
       </item>
     
       <item>
@@ -512,8 +582,8 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Dec 2015 22:16:10 +1100</pubDate>
-        <link>https://newbiettn.github.io/2015/12/19/to-hold-the-sun/</link>
-        <guid isPermaLink="true">https://newbiettn.github.io/2015/12/19/to-hold-the-sun/</guid>
+        <link>http://127.0.0.1:4000/2015/12/19/to-hold-the-sun/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/19/to-hold-the-sun/</guid>
       </item>
     
   </channel>
