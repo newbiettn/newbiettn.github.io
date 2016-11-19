@@ -22,6 +22,8 @@ This page is a cumulative notes of mine and can be used as a quick reference of 
   * [Orthogonal matrix](#orthogonal-matrix)
   * [Span the space](#span-the-space)
   * [Four fundamental subspaces](#four-fundamental-subspaces)
+
+
 ---
 
 ### Geometric series
