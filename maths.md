@@ -7,6 +7,7 @@ This page is a cumulative notes of mine and can be used as a quick reference of 
 
 ##### Table of Contents
   * [Geometric series](#geometric-series)
+  * [Power series](#power-series)
   * [Taylor series](#taylor-series)
   * [Gradient](#gradient)
   * [Scalar product](#scalar-product)
@@ -16,7 +17,11 @@ This page is a cumulative notes of mine and can be used as a quick reference of 
   * [Orthogonal vectors](#orthogonal-vectors)
   * [Projection of a vector on a line](#projection-of-a-vector-on-a-line)
   * [LU Decomposition (A = LU)](#lu-decomposition-a--lu)
-
+  * [Normalized vector](#normalized-vector)
+  * [Orthonormal vectors](#orthonormal-vectors)
+  * [Orthogonal matrix](#orthogonal-matrix)
+  * [Span the space](#span-the-space)
+  * [Four fundamental subspaces](#four-fundamental-subspaces)
 ---
 
 ### Geometric series
