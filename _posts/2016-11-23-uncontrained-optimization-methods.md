@@ -22,7 +22,9 @@ In this post, we are going to review classical unconstrained optimization algori
 __Note:__ All R codes of experiments can be found [here](https://github.com/newbiettn/R/tree/master/optimization_algorithms)
 
 ### 1. Gradient descent
+
 #### 1.1. Concept
+
 Gradient descent (or steepest descent) is the most intuitively simple among three algorithms. The underlying mechanism of the algorithm is the concept of the gradient $\nabla$ of the function $f$. Intuitively speaking, $\nabla f$ indicates the direction by which if we traverse along the graph curve of $f$, we are able to find the increasing function values (e.g., $f(x_{n+1}) \gt f(x)$). Conversely, if we traverse the opposite direction of $\nabla f$, we can obtain decreasing values of $f$ such that $f(x_{n+1}) \lt f(x)$. And that's how gradient descent works!
 
 Mathematically speaking, given a differential function $f(x)$, if
