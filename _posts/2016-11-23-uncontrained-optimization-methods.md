@@ -51,23 +51,23 @@ Consider $f(x)$ as a quadratic function. Suppose we have $f(x) = ax^2 + bx + c$ 
 
 " %}
 
-At the beginning, we blindly set $x_0 = 45$, and sequentially change $\eta = (0.1, 0.3, 0.5, 0.7)$ to observe how the learning rate affects the convergence of the algorithm. Look at Figure 1, at $\eta = 0.1$ (the top left), gradient descent can find the minimum of $f(x)$ after roughly 10 iterations. However, from the figure, we can also see that the rate of convergence of the algorithm significantly reduces as soon as it is close to the minimum. When $\eta = 0.3$ (the top right), we need roughly 5 iterations, and it seems like at $\eta = 0.5$ (the bottom left), we only need 2 iterations, which is really computationally effective. The worst case is when $\eta = 0.7$ (the bottom right), we "jump" over the minimum several times before we approach it.
+At the beginning, we blindly set $x_0 = 45$, and sequentially change $\eta = (0.1, 0.3, 0.5, 0.7)$ to observe how the learning rate affects the convergence of the algorithm. Look at Figure 1, at $\eta = 0.1$ (the top left), gradient descent can find the minima of $f(x)$ after roughly 10 iterations. However, from the figure, we can also see that the rate of convergence of the algorithm significantly reduces as soon as it is close to the minima. When $\eta = 0.3$ (the top right), we need roughly 5 iterations, and it seems like at $\eta = 0.5$ (the bottom left), we only need 2 iterations, which is really computationally effective. The worst case is when $\eta = 0.7$ (the bottom right), we "jump" over the minima several times before we approach it.
 
 <script src="https://gist.github.com/newbiettn/bfb06b4f890c538b0e5da98474904a61.js"></script>
 
-{% include image.html url="/images/grad_desc_quad_func.gif" description="Fig 1. Find the local  minimum of a quadratic function" %}
+{% include image.html url="/images/grad_desc_quad_func.gif" description="Fig 1. Find the local  minima of a quadratic function" %}
 
 {% include math-example.html id="2" content="
 
-Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minimum of $f(x)$.
+Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minima of $f(x)$.
 
 " %}
 
-This example demonstrates that __gradient descent cannot guarantee finding global minimum of the function__ although we keep changing $\eta$. The worst case happens when $\eta = 0.02$ (the top right), gradient descent can only find the sub minimal value of the function.
+This example demonstrates that __gradient descent cannot guarantee finding global minima of the function__ although we keep changing $\eta$. The worst case happens when $\eta = 0.02$ (the top right), gradient descent can only find the sub minimal value of the function.
 
 <script src="https://gist.github.com/newbiettn/3a3ad725cf87f03d1cca10c39a6cf77d.js"></script>
 
-{% include image.html url="/images/grad_desc_poly_func.gif" description="Fig 2. Find the local minimum of a polynomial function" %}
+{% include image.html url="/images/grad_desc_poly_func.gif" description="Fig 2. Find the local minima of a polynomial function" %}
 
 ### 2. Newton's method
 
@@ -110,14 +110,14 @@ Similar to gradient descent, Newton's method can be used to find optimize the fu
 #### 2.2. Experiments
 
 {% include math-example.html id="1" content="
-Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minimum of $f(x)$.
+Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minima of $f(x)$.
 " %}
 
-In this example, we are going to find the local minimum of $f(x)$ by using both gradient descent and Newton's method. We can see that the rate of convergence of Newton's method is higher than gradient descent. This happens due to the fact the Newton's method makes use of the 2nd-order derivative of $f$.
+In this example, we are going to find the local minima of $f(x)$ by using both gradient descent and Newton's method. We can see that the rate of convergence of Newton's method is higher than gradient descent. This happens due to the fact the Newton's method makes use of the 2nd-order derivative of $f$.
 
 <script src="https://gist.github.com/newbiettn/76430b8d6e124f994f56f47d3116b921.js"></script>
 
-{% include image.html url="/images/grad_desc__and_newton_poly_func.gif" description="Fig 4. Find the local  minimum of a polynomial function using both gradient descent and Newton's method" %}
+{% include image.html url="/images/grad_desc__and_newton_poly_func.gif" description="Fig 4. Find the local minima of a polynomial function using both gradient descent and Newton's method" %}
 
 
 ### 3. Gauss-Newton method
