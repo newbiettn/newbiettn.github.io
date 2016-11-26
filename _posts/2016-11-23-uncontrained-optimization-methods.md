@@ -19,6 +19,7 @@ __Table of Contents__
 
 In this post, we are going to review classical unconstrained optimization algorithms, including gradient descent, Newton's and Gauss-Newton. Those three algorithms have been heavily used as optimization methods of different machine learning algorithms, such as linear regression, logistic regression, neural network, and so on.
 
+__Note:__ All R codes of experiments can be found [here](https://github.com/newbiettn/R/tree/master/optimization_algorithms)
 
 ### 1. Gradient descent
 #### 1.1. Concept
