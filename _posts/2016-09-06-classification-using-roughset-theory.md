@@ -1,6 +1,7 @@
 ---
 title: Classification using Rough Set theory
 layout: post
+comments: true
 ---
 #### I. Introduction
 Rough Set (RS) algorithm targets the **vagueness** of the knowledge, e.g., the boundary between observations is not strong enough to set them apart. Look at Figure 1, we can see that we have no clue how to correctly classify items $x_3$ and $x_4$ when the attribute values of those items are identical.
@@ -66,5 +67,3 @@ we can have:
 - $\overline{B}W = \{x1, x3, x4, x6\}$
 - $BN_B(W) = \{x3, x4\}$
 - $BO_B = \{x2, x5, x7\}$
-
-#### III. "RoughtSets" package in R

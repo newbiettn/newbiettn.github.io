@@ -1,9 +1,7 @@
 ---
-id: 159
 title: 'Visualize git log with &#8216;gource&#8217;'
-date: 2014-12-23T06:59:53+00:00
-author: newbiettn
 layout: post
+comments: true
 ---
 Visualization never gets boring, especially when it comes to demonstrate your working processing in a time span.
 

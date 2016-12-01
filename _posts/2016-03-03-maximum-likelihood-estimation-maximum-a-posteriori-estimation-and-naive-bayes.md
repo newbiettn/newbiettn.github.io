@@ -1,15 +1,7 @@
 ---
-id: 329
 title: Maximum Likelihood Estimation, Maximum a Posteriori Estimation and Naive Bayes (part 1)
-date: 2016-03-03T16:48:25+00:00
 layout: post
-tags:
-  - least squares
-  - likelihood
-  - maximum a posteriori
-  - maximum likelihood
-  - naive bayes
-  - probability
+comments: true
 ---
 There are some notes with regards to three important concepts &#8211; Maximum Likelihood Estimation (MLE), Maximum a Posterior Estimation (MAP), and Naive Bayes (NB) &#8211; that I would like to put here in order to remind me in case necessary. I also can see that my note can be fruitful to anyone having a hard time in grasping these concepts, because we&#8217;re gonna unfold plot twists of them that confused me while learning in this writing.
 

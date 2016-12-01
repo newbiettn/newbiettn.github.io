@@ -1,9 +1,8 @@
 ---
-id: 54
 title: Restaurant Recommendation
-date: 2014-12-27T08:44:03+00:00
 author: newbiettn
 layout: post
+comments: true
 ---
 
 In the last semester, I and my team have developed a restaurant recommendation system named <strong>iHotFood</strong> which supports <em>real-time comment system,</em> <em>restaurant recommendation </em>and <em>responsive UI</em>. Since I handled these three most important parts of the project, I wanted to share my own experiences I&#8217;ve collected after this 3-month project.

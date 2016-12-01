@@ -1,14 +1,9 @@
 ---
 id: 6
 title: 'Smalltalk and Java: Comparison of two programming languages'
-date: 2014-06-26T23:04:34+00:00
-author: newbiettn
 layout: post
-tags:
-  - comparision
-  - java
-  - oop
-  - smalltalk
+comments: true
+
 ---
 <p style="text-align: justify;">
   <strong>1. INTRODUCTION</strong><br /> Smalltalk is the pioneer in the object-oriented programming. Many inventions in Smalltalk programming languages, such as the virtual machine, debugging by inspection, IDE, Model-View-Controller architecture, have become prevailingly adopted in other programming languages. Java was born later and influenced by Smalltalk though, the language is supplied with distinct features including interfaces, abstract classes, anonymous classes and so on. The Java language has profoundly evolved since the introduction of lambda expression and the functional interface in the latest version 1.8.

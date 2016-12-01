@@ -1,9 +1,7 @@
 ---
-id: 39
 title: Better var_dump in PHP
-date: 2014-10-27T01:07:26+00:00
-author: newbiettn
 layout: post
+comments: true
 ---
 In this workaround you can find how to have a better _var_dump_ in PHP (because the built-in one is ugly).
 
