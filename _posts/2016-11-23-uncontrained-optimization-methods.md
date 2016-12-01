@@ -1,6 +1,7 @@
 ---
 title: Unconstrained optimization methods
 layout: post
+comments: true
 ---
 __Table of Contents__
 
