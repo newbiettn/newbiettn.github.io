@@ -7,6 +7,296 @@
     <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Perceptron</title>
+        <description>&lt;p&gt;This is a perceptron&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Dec 2016 00:00:00 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/12/01/perceptron/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/12/01/perceptron/</guid>
+      </item>
+    
+      <item>
+        <title>Unconstrained optimization methods</title>
+        <description>&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#gradient-descent&quot;&gt;1. Gradient descent&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#concept&quot;&gt;1.1. Concept&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#experiments&quot;&gt;1.2. Experiments&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#newtons-method&quot;&gt;2. Newton’s method&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#concept&quot;&gt;2.1. Concept&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#minimization-and-maximization-problem&quot;&gt;2.2. Minimization and maximization problem&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#experiments&quot;&gt;2.2. Experiments&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gauss-newton-method&quot;&gt;3. Gauss-Newton method&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#concept&quot;&gt;3.1. Concept&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#experiments&quot;&gt;3.2. Experiments&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In this post, we are going to review classical unconstrained optimization algorithms, including gradient descent, Newton’s and Gauss-Newton. Those three algorithms have been heavily used as optimization methods of different machine learning algorithms, such as linear regression, logistic regression, neural network, and so on.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; All R codes of experiments can be found &lt;a href=&quot;https://github.com/newbiettn/R/tree/master/optimization_algorithms&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;gradient-descent&quot;&gt;1. Gradient descent&lt;/h3&gt;
+
+&lt;h4 id=&quot;concept&quot;&gt;1.1. Concept&lt;/h4&gt;
+
+&lt;p&gt;Gradient descent (or steepest descent) is the most intuitively simple among three algorithms. The underlying mechanism of the algorithm is the concept of the gradient $\nabla$ of the function $f$. Intuitively speaking, $\nabla f$ indicates the direction by which if we traverse along the graph curve of $f$, we are able to find the increasing function values (e.g., $f(x_{n+1}) \gt f(x)$). Conversely, if we traverse the opposite direction of $\nabla f$, we can obtain decreasing values of $f$ such that $f(x_{n+1}) \lt f(x)$. And that’s how gradient descent works!&lt;/p&gt;
+
+&lt;p&gt;Mathematically speaking, given a differential function $f(x)$, if&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_{n+1} = x_n - \eta \nabla f(x)&lt;/script&gt;
+
+&lt;p&gt;where $\eta$ ($0 \lt \eta &amp;lt; 1$) is &lt;strong&gt;the learning rate&lt;/strong&gt;, $\nabla f(x)$ is the gradient of $f$ at $x_n$.&lt;/p&gt;
+
+&lt;p&gt;then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x_{n+1}) \geq f(x_n)&lt;/script&gt;
+
+&lt;p&gt;This process stops either after $m$ predefined iterations or until $f(x_{n+1}) \approx f(x_n)$.&lt;/p&gt;
+
+&lt;h4 id=&quot;experiments&quot;&gt;1.2. Experiments&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten columns centered site-example&quot;&gt;
+      &lt;p style=&quot;font-weight: bold&quot;&gt;Example 1:&lt;/p&gt;
+      
+
+Consider $f(x)$ as a quadratic function. Suppose we have $f(x) = ax^2 + bx + c$ with $a = 1, b = 2, c = 3$. We aim to find a value $x^*$ at which we reach the minima of $f(x)$.
+
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the beginning, we blindly set $x_0 = 45$, and sequentially change $\eta = (0.1, 0.3, 0.5, 0.7)$ to observe how the learning rate affects the convergence of the algorithm. Look at Figure 1, at $\eta = 0.1$ (the top left), gradient descent can find the minima of $f(x)$ after roughly 10 iterations. However, from the figure, we can also see that the rate of convergence of the algorithm significantly reduces as soon as it is close to the minima. When $\eta = 0.3$ (the top right), we need roughly 5 iterations, and it seems like at $\eta = 0.5$ (the bottom left), we only need 2 iterations, which is really computationally effective. The worst case is when $\eta = 0.7$ (the bottom right), we “jump” over the minima several times before we approach it.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/newbiettn/bfb06b4f890c538b0e5da98474904a61.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/grad_desc_quad_func.gif&quot; alt=&quot;Fig 1. Find the local  minima of a quadratic function&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 1. Find the local  minima of a quadratic function
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten columns centered site-example&quot;&gt;
+      &lt;p style=&quot;font-weight: bold&quot;&gt;Example 2:&lt;/p&gt;
+      
+
+Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minima of $f(x)$.
+
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;This example demonstrates that &lt;strong&gt;gradient descent cannot guarantee finding global minima of the function&lt;/strong&gt; although we keep changing $\eta$. The worst case happens when $\eta = 0.02$ (the top right), gradient descent can only find the sub minimal value of the function.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/newbiettn/3a3ad725cf87f03d1cca10c39a6cf77d.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/grad_desc_poly_func.gif&quot; alt=&quot;Fig 2. Find the local minima of a polynomial function&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 2. Find the local minima of a polynomial function
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;newtons-method&quot;&gt;2. Newton’s method&lt;/h3&gt;
+
+&lt;h4 id=&quot;concept-1&quot;&gt;2.1. Concept&lt;/h4&gt;
+
+&lt;p&gt;In my opinion, Newton’s method (or Newton-Raphson method) can be intuitively comprehended as &lt;strong&gt;a method to approximate an approximation&lt;/strong&gt;. It means that if we already have a reasonably good approximation of a function $f$ at a certain value $x_0$, we still can have a better approximation by estimating an approximation of the approximation itself.&lt;/p&gt;
+
+&lt;p&gt;I found &lt;a href=&quot;http://tutorial.math.lamar.edu/Classes/CalcI/NewtonsMethod.aspx&quot;&gt;this page&lt;/a&gt; has a brilliant explanation for the algorithm and thus I will reiterate that explanation by my own words.&lt;/p&gt;
+
+&lt;p&gt;Suppose we have a function $f(x) \in \mathbb{R^2}$, and we want to find the value of $f$ at a certain value $x_0$. One can say that we can simply plug $x_0$ into $f$ to get the searching value. However, there exist many functions, such as $f = \sqrt{x}$, where we cannot straightforwardly get the value. One can also say that computers can do that. But unlike simple equation like $f(x) = 2x$, where we can compute manually, we &lt;strong&gt;do not have any exact expression to describe that root function&lt;/strong&gt;. In fact, computers use approximation methods behind the scene (like Newton’s method) to compute root value of numbers.&lt;/p&gt;
+
+&lt;p&gt;Suppose we want to find an approximation of $f(x^*) = 0$. We do that as follows.&lt;/p&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/newton_exp.gif&quot; alt=&quot;Fig 3. Using 2nd tangent line to have a better approximation&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 3. Using 2nd tangent line to have a better approximation
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First, we construct &lt;strong&gt;a tangent line&lt;/strong&gt; (the blue line) at a point $x_0$ where $x_0$ is a guessing point and is reasonably close to the target point where $y = 0$. We can construct the tangent line by using &lt;strong&gt;slope-point form&lt;/strong&gt;. We can see that $x_1$ is a better approximation than $x_0$. However, we are still able to get a better one.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;y - f(x_0) = f&#39;(x_0)(x-x_0)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Second, we construct a second tangent line at $x_1$ (the green line). Again, by using the slope-point form of the tangent line, we have,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;0 = f(x_0) + f&#39;(x_0)(x_1 - x_0)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+&amp; \Longleftrightarrow x_1 - x_0 = - \frac{f(x_0)}{f&#39;{x_0}} \\
+&amp; \Longleftrightarrow x_1 = x_0 - \frac{f(x_0)}{f&#39;{x_0}}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As a result, we can find a closer point $x_1$ by using the formula $x_1 = x_0 - \frac{f(x_0)}{f’{x_0}}$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;minimization-and-maximization-problem&quot;&gt;2.2. Minimization and maximization problem&lt;/h4&gt;
+&lt;p&gt;Similar to gradient descent, Newton’s method can be used to find optimize the function by setting the derivative to 0 like we explained above.&lt;/p&gt;
+
+&lt;h4 id=&quot;experiments-1&quot;&gt;2.2. Experiments&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten columns centered site-example&quot;&gt;
+      &lt;p style=&quot;font-weight: bold&quot;&gt;Example 1:&lt;/p&gt;
+      
+Consider $f(x)$ as a polynomial function. Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We aim to find a value $x^*$ at which we reach the minima of $f(x)$.
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this example, we are going to find the local minima of $f(x)$ by using both gradient descent and Newton’s method. We can see that the rate of convergence of Newton’s method is higher than gradient descent. This happens due to the fact the Newton’s method makes use of the 2nd-order derivative of $f$.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/newbiettn/76430b8d6e124f994f56f47d3116b921.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/grad_desc__and_newton_poly_func.gif&quot; alt=&quot;Fig 4. Find the local minima of a polynomial function using both gradient descent and Newton&#39;s method&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 4. Find the local minima of a polynomial function using both gradient descent and Newton&#39;s method
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;gauss-newton-method&quot;&gt;3. Gauss-Newton method&lt;/h3&gt;
+
+&lt;h4 id=&quot;concept-2&quot;&gt;3.1. Concept&lt;/h4&gt;
+
+&lt;p&gt;Unlike gradient descent and Newton method, Gauss-Newton method can only be used to minimize the sum of squares, such as $C = \frac{1}{2} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2$ where $\hat{y}$ is the predicted output, $y$ is the actual output and $n$ is the total number of observations in the dataset.&lt;/p&gt;
+
+&lt;p&gt;Let’s set $e = (\hat{y}_i - y_i)$ , and suppose &lt;strong&gt;${\theta}_j$ is the coefficient vector of the hypothesis function &lt;script type=&quot;math/tex&quot;&gt;h_\theta(x)&lt;/script&gt; in the $j^{th}$ iteration&lt;/strong&gt;. For the &lt;script type=&quot;math/tex&quot;&gt;(j+1)^{th}&lt;/script&gt; iteration, the updated error term &lt;script type=&quot;math/tex&quot;&gt;e_{j+1}&lt;/script&gt; would be,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_{j+1} = e_j + \begin{bmatrix}\frac{\partial e}{\partial \theta}\end{bmatrix}_{\theta = \theta_j}(\theta_{j+1} - \theta_j) \qquad (I)&lt;/script&gt;
+
+&lt;p&gt;We can make &lt;strong&gt;(I)&lt;/strong&gt; more beautiful by employing the concept of &lt;strong&gt;Jacobian matrix&lt;/strong&gt; $J$ such that,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+J = \begin{bmatrix}\frac{\partial f}{\partial x_1} &amp; \frac{\partial f}{\partial x_2} &amp; \dots &amp; \frac{\partial f}{\partial x_n} \end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Thus, we have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(I) \Longleftrightarrow e_{j+1} = e_j + J(\theta_{j+1} - \theta_j) \qquad (II)&lt;/script&gt;
+
+&lt;p&gt;Our goal is finding $\theta_{j+1}$ such that &lt;strong&gt;the error term &lt;script type=&quot;math/tex&quot;&gt;e_{j+1}&lt;/script&gt; is minimal&lt;/strong&gt;. Mathematically, we have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_{j+1} = \underset{\theta}argmin(\frac{1}{2}\lVert e_{j+1} \rVert_2^2) \qquad (III)&lt;/script&gt;
+
+&lt;p&gt;Remember that &lt;script type=&quot;math/tex&quot;&gt;\lVert v \rVert_2&lt;/script&gt; is the &lt;em&gt;$l_2$-norm&lt;/em&gt; or Euclidiean norm of the vector $v$.&lt;/p&gt;
+
+&lt;p&gt;We now need to elaborate &lt;script type=&quot;math/tex&quot;&gt;\lVert e_{j+1} \rVert^2&lt;/script&gt;. First, remember that the norm of a vector $v$ can be defined as &lt;script type=&quot;math/tex&quot;&gt;\lVert v \rVert^2 = v^Tv&lt;/script&gt;. Second, from the equation &lt;strong&gt;(II)&lt;/strong&gt;, suppose that,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+&amp; A = e_j \\
+&amp; B = J(\theta_{j+1} - \theta_j) \\
+&amp; C = e_{j+1}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Thus, &lt;script type=&quot;math/tex&quot;&gt;(II) \Longleftrightarrow C = A + B&lt;/script&gt;. From that, we also have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\lVert C \rVert^2 &amp; = C^TC \\
+&amp; = (A + B)^T(A+B) \\
+&amp; = (A^T + B^T)(A+B) \\
+&amp; = A^TA + A^TB + B^TA + B^TB
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Because &lt;script type=&quot;math/tex&quot;&gt;A^TB = \sum a_jb_j = \sum b_ja_j = B^TA&lt;/script&gt;, we can rewrite,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C = \lVert A \rVert^2 + 2A^TB + \lVert B \rVert^2 \qquad (IV)&lt;/script&gt;
+
+&lt;p&gt;From &lt;strong&gt;(II)&lt;/strong&gt; and &lt;strong&gt;(IV)&lt;/strong&gt;, we can have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lVert e_{j+1} \rVert^2 = \lVert e_{j} \rVert^2 + 2e^TJ(\theta_{j+1} - \theta_j) + (\theta_{j+1} - \theta_j)^TJ^TJ(\theta_{j+1} - \theta_j) \qquad (V)&lt;/script&gt;
+
+&lt;p&gt;Now, we are going to minimize &lt;strong&gt;(V)&lt;/strong&gt;. First, we need to take the derivative of &lt;strong&gt;(V)&lt;/strong&gt; w.r.t. $\theta$ and set it equal to 0, and then find $\theta$. We have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+&amp; \frac{\partial V}{\partial \theta} = J^Te + J^TJ(\theta_{j+1} - \theta_j) = 0 \\
+\Longleftrightarrow &amp; J^TJ(\theta_{j+1} - \theta_j) = -J^Te \\
+\Longleftrightarrow &amp; \theta_{j+1} - \theta_j = -(J^TJ)^{-1}J^Te \\
+\Longleftrightarrow &amp; \theta_{j+1} = \theta - (J^TJ)^{-1}J^Te \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The formula &lt;script type=&quot;math/tex&quot;&gt;\theta_{j+1} = \theta - (J^TJ)^{-1}J^Te&lt;/script&gt; is &lt;strong&gt;the pure form of Gauss-Newton method&lt;/strong&gt;. By using this equation, we can update the coefficient &lt;script type=&quot;math/tex&quot;&gt;\theta_{j+1}&lt;/script&gt;. To do that, all we need to do is to find the Jacobian matrix. Note that the Gass-Newton method always converge because the Gauss-Newton methods assumes that &lt;script type=&quot;math/tex&quot;&gt;J^TJ&lt;/script&gt; is &lt;strong&gt;non-singular matrix&lt;/strong&gt;, making it possible to find the inverse matrix.&lt;/p&gt;
+
+&lt;h4 id=&quot;experiments-2&quot;&gt;3.2. Experiments&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten columns centered site-example&quot;&gt;
+      &lt;p style=&quot;font-weight: bold&quot;&gt;Example 1:&lt;/p&gt;
+      
+Suppose we have $f(x) = -120*x - 154x^2 + 49x^3 + 140x^4 + 70x^5 + 14x^6 + x^7$. We first will use $f(x)$ to generate sample data points and second, we will use Gauss-Newton method to fit a model to the generated data points.
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In Figure 5, we can see that at the beginning, we naively set $\theta =$ [1 1 1 1 1 1 1 1]. In the second iteration, $\theta$ is updated by Gauss-Newton method, allowing the model to fit to the generated data points.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/newbiettn/969cf66470de9ce193e51992f4b691e2.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/gauss_newton_poly_func.gif&quot; alt=&quot;Fig 5. Use Gauss-Newton method to fit generated data points of $f(x)$&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 5. Use Gauss-Newton method to fit generated data points of $f(x)$
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten columns centered site-example&quot;&gt;
+      &lt;p style=&quot;font-weight: bold&quot;&gt;Example 2:&lt;/p&gt;
+      
+Using the dataset Speed and Stopping Distances of Cars, we will find a model that find the relationship between speed and distance
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/newbiettn/d04f39453c563c86a1fe2ca3ce68be95.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
+  &lt;img src=&quot;/images/gauss_newton_mtcars.gif&quot; alt=&quot;Fig 6. Use Gauss-Newton method to fit a curve line to the dataset&quot; /&gt;
+  &lt;p class=&quot;wp-caption-text&quot;&gt;
+    Fig 6. Use Gauss-Newton method to fit a curve line to the dataset
+  &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 23 Nov 2016 00:00:00 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/11/23/uncontrained-optimization-methods/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/11/23/uncontrained-optimization-methods/</guid>
+      </item>
+    
+      <item>
         <title>Classification using Rough Set theory</title>
         <description>&lt;h4 id=&quot;i-introduction&quot;&gt;I. Introduction&lt;/h4&gt;
 &lt;p&gt;Rough Set (RS) algorithm targets the &lt;strong&gt;vagueness&lt;/strong&gt; of the knowledge, e.g., the boundary between observations is not strong enough to set them apart. Look at Figure 1, we can see that we have no clue how to correctly classify items $x_3$ and $x_4$ when the attribute values of those items are identical.&lt;/p&gt;
@@ -79,8 +369,6 @@ we can have:&lt;/p&gt;
   &lt;li&gt;$BN_B(W) = {x3, x4}$&lt;/li&gt;
   &lt;li&gt;$BO_B = {x2, x5, x7}$&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h4 id=&quot;iii-roughtsets-package-in-r&quot;&gt;III. “RoughtSets” package in R&lt;/h4&gt;
 </description>
         <pubDate>Tue, 06 Sep 2016 00:00:00 +1000</pubDate>
         <link>http://127.0.0.1:4000/2016/09/06/classification-using-roughset-theory/</link>
@@ -245,7 +533,7 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\theta}_{MAP} = argmax\ P(\theta) \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;
 </description>
-        <pubDate>Sat, 05 Mar 2016 22:23:49 +1100</pubDate>
+        <pubDate>Sat, 05 Mar 2016 00:00:00 +1100</pubDate>
         <link>http://127.0.0.1:4000/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</link>
         <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/05/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes-part-2/</guid>
       </item>
@@ -315,9 +603,9 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
 &lt;p&gt;Finally we have
 &lt;script type=&quot;math/tex&quot;&gt;\hat{\theta_{MLE}} = argmax \prod_{i=1}^n P(X_i|\theta)&lt;/script&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 04 Mar 2016 03:48:25 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/04/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
+        <pubDate>Thu, 03 Mar 2016 00:00:00 +1100</pubDate>
+        <link>http://127.0.0.1:4000/2016/03/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/03/maximum-likelihood-estimation-maximum-a-posteriori-estimation-and-naive-bayes/</guid>
       </item>
     
       <item>
@@ -531,59 +819,6 @@ Specificity = \frac{TN}{TN + FP}&lt;/script&gt;
         <pubDate>Wed, 13 Jan 2016 05:21:57 +1100</pubDate>
         <link>http://127.0.0.1:4000/2016/01/13/google-reader-replacement/</link>
         <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/13/google-reader-replacement/</guid>
-      </item>
-    
-      <item>
-        <title>Invited talk at Swiss Post Solution Vietnam</title>
-        <description>&lt;p&gt;Recently, I was invited by a friend of mine, who works at Swiss Post Solution Vietnam, to deliver a training course on the topic of Machine Learning. Despite the fact that the training is very short, approximately 9 hours in total, but it does not prevent me from conveying essential concepts that who is interested in Machine Learning should know. During two training sessions, I’d introduced linear regressions, logistic regression, neural networks as well as clustering (k-means algorithm in specific). It was a pity that people couldn’t have chance to get their hands dirty on the implementation in order to see how those concepts can be easily implemented in Octave.&lt;/p&gt;
-
-&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img src=&quot;/images/hai-swisspost.jpg&quot; alt=&quot;Hai talking about Big Data processing framework&quot; /&gt;
-  &lt;p class=&quot;wp-caption-text&quot;&gt;
-    Hai talking about Big Data processing framework
-  &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img src=&quot;/images/ngoc-swisspost.png&quot; alt=&quot;Just a tour of machine learning&quot; /&gt;
-  &lt;p class=&quot;wp-caption-text&quot;&gt;
-    Just a tour of machine learning
-  &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After all, what I really concern is not only how people evaluate my presentation but what I have learnt during the time period I had spent effort to prepare. It was also great to talk and have lunches with people at the company, including ones who have very mature experiences in the field.&lt;/p&gt;
-
-&lt;p&gt;I start to miss a very cozy atmosphere of the company.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 12 Jan 2016 21:26:07 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/01/12/invited-talk-at-swiss-post-solution-vietnam/</guid>
-      </item>
-    
-      <item>
-        <title>To hold the sun</title>
-        <description>&lt;p&gt;Previously self-helping books are not of my interests. I rarely paid my attention to any book of such type. I neither had any intention to pour my thoughts and feelings onto a book review. I rather prefer to keep it myself.&lt;/p&gt;
-
-&lt;div class=&quot;wp-caption aligncenter&quot;&gt;
-  &lt;img src=&quot;/images/to-hold-the-sun.jpg&quot; alt=&quot;&amp;#8220;To hold the sun&amp;#8221; by Chas Watkins&quot; /&gt;
-  &lt;p class=&quot;wp-caption-text&quot;&gt;
-    &amp;#8220;To hold the sun&amp;#8221; by Chas Watkins
-  &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;“To hold the sun” is the first self-helping book I’ve ever read. I like neither the book cover nor the title. It would definitely fail me if I were sort of person who judges books by their covers. Though the content is positively worth reading, it might attract even more readers if the book possessed aesthetically pleasing cover that is capable of reflecting inner values it wants to convey.&lt;/p&gt;
-
-&lt;p&gt;In a nutshell, the book is a self-narrative book of a typical uninspiring white-collar worker who is being stuck of reality where he has to to pay bills and house rent on a daily basis, and thus desires an escape to a new place. This unstimulating character got an unexpected trip to Roatan, a largest island of Honduras where he will meet a special person who has given strong impact on his life that he would never think of. It is a clique beginning for a self-helping book but what comes in later make the book worth reading. The book barely portrays the main character throughout the course of further conversations between him and the special person he meets. To resolve life problems of him is the ultimate goal of those conversations. There are many things to be named, including how our brains works scientifically, how to trick the brain in order to live a life to its fullest, or how mediation can help. Those conversations are compelling to follow and I was even able to feel I am the main character at different times during reading the book.&lt;/p&gt;
-
-&lt;p&gt;There is many parts of the book I vote. One of the best parts is when the special person elaborates his idea that the reality ain’t the reality. Indeed the reality is built by innermost feelings and thoughts of individuals by which we can have different opinions towards a same object we observe. We can only live life to its fullest only if we understand how our brains and the reality intersect.&lt;/p&gt;
-
-&lt;p style=&quot;text-align: justify;&quot;&gt;
-  I found the book not plainly a self-helping book but also a self-realising. There are many parts of the books I&amp;#8217;ve already known or read beforehand but I rarely notice them. Years ago I have started to learn such things and one of habits that I often do is to remind of myself that happiness is NOW, not tomorrow, and I really enjoy how I&amp;#8217;ve started to change. I highly recommend the book to anyone who is questing for not only motivations but also profound changes to his or her life.
-&lt;/p&gt;
-</description>
-        <pubDate>Sat, 19 Dec 2015 22:16:10 +1100</pubDate>
-        <link>http://127.0.0.1:4000/2015/12/19/to-hold-the-sun/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/19/to-hold-the-sun/</guid>
       </item>
     
   </channel>

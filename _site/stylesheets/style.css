@@ -6,7 +6,7 @@ Theme URI: http://newbiettn.com
 
 body {
 	background: #F6F6F6;
-	font-family: "Times New Roman", Times, serif;
+	font-family: Georgia, serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 17px;
@@ -65,7 +65,7 @@ a {
 	text-decoration: none;
 	line-height: inherit;
 }
-article a {
+.maincontent a {
 	color: navy;
 	text-decoration: underline;
 }
@@ -308,6 +308,7 @@ p.written {
 	border-top: 2px solid;
 	border-bottom: 2px solid;
 	background: #F8F9F9;
+	padding: 10px;
 }
 .hentry p.written a {
 	text-decoration: none;
@@ -319,7 +320,7 @@ p.written {
 .wp-caption {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #f0f0f0;
-    max-width: 60%;
+    max-width: 80%;
     padding: 5px 3px 10px;
     text-align: center;
 }
@@ -344,6 +345,8 @@ code.highlighter-rouge {
 		color: #002d7a !important;
 		padding: 0 5px;;
 }
+
+.gist-file .gist-data {max-height: 300px;}
 /* Archived list  ---------------------- */
 .article-list-item-title{
 	border-bottom: 1px dashed #e6e6e6;
