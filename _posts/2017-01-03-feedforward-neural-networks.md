@@ -55,7 +55,7 @@ The term __feedforward__ is devised to help distinguish from another kinds of ne
 
 {% include image.html url="/images/a_multilayer_perceptron.png" description="Fig 4. A multilayer perceptron" %}
 
-In Figure \ref{fig:feedforward}, we have multilayer perceptrons with $n$ inputs, $m$ activation nodes and $k$ outputs. Denote $\mathbf{\Theta^{(1)}}$ and $\mathbf{\Theta^{(2)}}$ matrices of weights between inputs-hidden layers and hidden-output layers. $\mathbf{\Theta^{(1)}}$ and $\mathbf{\Theta^{(2)}}$ are given by
+In Figure 4, we have multilayer perceptrons with $n$ inputs, $m$ activation nodes and $k$ outputs. Denote $\mathbf{\Theta^{(1)}}$ and $\mathbf{\Theta^{(2)}}$ matrices of weights between inputs-hidden layers and hidden-output layers. $\mathbf{\Theta^{(1)}}$ and $\mathbf{\Theta^{(2)}}$ are given by
 
 $$
 \mathbf{\Theta^{(1)}} =
