@@ -1,7 +1,7 @@
 ---
 title: "Prelude to feedforward neural networks (part 2)"
 author: "Ngoc Tran Trung"
-date: "2 January 2017"
+date: "3 January 2017"
 comments: yes
 layout: post
 ---
