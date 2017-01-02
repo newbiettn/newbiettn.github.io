@@ -75,7 +75,7 @@ More importantly, the plane $w^Tx = 0$ divides the space into two distinct half-
 
 Based on that, we are now going to interpret the perceptron learning algorithm. When $E = -1$, (i.e., $y_j = 0$, $\hat{y}_j = 1$), two vectors $$\mathbf{u}$$ and $$\mathbf{w}$$ should be on __different__ half-planes, but they are not. Thus, the plane needs to be rotated further away on the opposite direction of the vector $\mathbf{u}$ to increase the value of $\theta$. In contrast, when $E = 1$, (i.e., $y_j = 1$, $\hat{y}_j = 0$), $\mathbf{u}$ and $\mathbf{w}$ should be on the __same__ half-plane, but they are not. Thus, the plane need to be rotated closer on the direction of the vector $\mathbf{u}$, making the value of $\theta$ decrease.
 
-{% include image.html url="/images/perceptron_visualisation.png" description="Fig 2. Visualisation of two-half planes divided by the plane $w^Tx = 0$" %}
+{% include image.html url="/images/perceptron_visualisation.png" description="Fig 2. Visualisation of two-half planes divided by the plane $\mathbf{w^Tx = 0}$" %}
 
 __Example__ A visualised example is provided to illustrate the operation of the perceptron learning algorithm. Given a set of data points in the table below, the perceptron learning function will be used to classify them.
 
