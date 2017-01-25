@@ -4,8 +4,6 @@ author: "Ngoc Tran Trung"
 date: "2 January 2017"
 comments: yes
 layout: post
-header-includes:
-   - \usepackage{algorithm}
 ---
 
 __Table of Contents__
