@@ -347,5 +347,33 @@ Figure 4 is a model representation of the network and Figure 5 is a signal flow 
 {% include image.html url="/images/iris_signal_flow_model.png" description="Figure 5: A description of signal flow of the neural network" %}
 
 ###### 4.3. Results
+As said, what we can expect from this model is the posterior probability. An example of the model output is that suppose we have a particular observation belongs to 1st class (e.g., setosa), the encoded output of that observation in this experiment would be $$Y = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}$$. Corresponding with that desired output $Y$, the expected prediction of the classification model would be like $$\hat{Y} = \begin{bmatrix} 0.6609379 \\ 0.1009062 \\ 0.2381559 \end{bmatrix}$$, where 0.6609379 represents the probability that this particular observation would be setosa is 66.09%.
 
-{% include image.html url="/images/iris_accuracy_vs_loss.png" description="Figure 6: loss vs accuracy in the Iris flower classification model" %}
+Figure 6 and 7 are the visual reports of the experiment. In this experiment, we divided the data into 80% for training and 20% for testing. Note that:
+
+- __The learning converges early__. Both Figure 7 demonstrates that both the training and testing accuracy reach their optimal points somewhere before 5000 epochs. When analysing experiment procedures, we can conclude that this early convergence can be achieved due to:
+
+  - __Optimal initialisation of weights__ we initialised weights with mean equals 0 and standard devidation equals $1/\sqrt[2]{n_w}$ where $n_w$ is the number of connecting weights to the neuron. By initialising the weights by this method, we have better chance in avoiding the learning saturation of the model (Haykin, 2009).
+  - __Maximisation of learning__ for every epoch, we shuffled the training data, which makes the learning process very healthy (Haykin, 2009).
+
+- __Overfitting is controlled very well__ Thanks to _L2 regularisation_, it seems that overfitting is avoided in the experiment. Figure 7 shows that the accuracy of the testing set is essentially better than the accuracy of the training set. Besides, we can also observe that the accuracy of the testing set slightly correlates with the accuracy of the training set in this experiment.
+
+{% include image.html url="/images/iris_accuracy_vs_loss.png" description="Figure 6: Accuracy vs loss in the Iris flower classification model" %}
+
+{% include image.html url="/images/iris_testing_vs_training.png" description="Figure 7: Training accuracy vs Testing accuracy in the Iris flower classification model" %}
+
+The code snippet of the experiment implementation in R.
+
+<script src="https://gist.github.com/newbiettn/561f01c6e5cf5e958c1af0c92e2ef58c.js"></script>
+
+##### References
+
+Anderson, E. (1935, September). The Species Problem in Iris. Annals of the Missouri Botanical Garden, 23(3), 457–469. doi:10.2307/2394164
+
+Bishop, C. M. (2006). Pattern Recognition and Machine Learning. Berlin, Germany: Springer.
+
+Fisher, R. A. (1936, September). The use of multiple measurements in taxonomic problems. Annals of Eugenics, 7(2), 179–188. doi:10.1111/j.1469-1809. 1936.tb02137.x
+
+Haykin, S. (2009). Neural Networks and Learning Machines (3rd ed.). Upper Saddle River, NJ, USA: Pearson.
+
+Shannon, C. E. (2001, July). A Mathematical Theory of Communication. Bell Labs Technical Journal, 27(4), 623–656. doi:10.1002/j.1538-7305.1948. tb01338.x
