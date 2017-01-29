@@ -85,6 +85,7 @@ At the beginning, we set the initial value of $\mathbf{w}$ equal to a random val
 
 Because the perceptron algorithm is unable to classify the data in 1 iteration. We need to repeat the process one more time. Figure 4 visualises how the perceptron learns in the 2nd iteration. At the end of the 2nd iteration, the perceptron converges when all data points are successfully classified.
 
+{:.data_table}
 | $x_1$ | $x_2$ | y |
 |-------|-------|---|
 | 1.5   | 1     | 0 |
