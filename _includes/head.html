@@ -1,4 +1,4 @@
-	<!-- 
+	<!--
 	#    #  ######  #    #  #####   #  ######  #####  #####  #    #
 	##   #  #       #    #  #    #  #  #         #      #    ##   #
 	# #  #  #####   #    #  #####   #  #####     #      #    # #  #
@@ -29,5 +29,17 @@
 	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 	<script type='text/javascript' src='{{ site.url }}/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
 	<script type="text/x-mathjax-config">
-	    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+	    MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [['$','$']],
+					displayMath: [['$$','$$']],
+				},
+				TeX: {
+					equationNumbers: {
+						autoNumber: "AMS",
+						formatNumber: function (n) {return n},
+						extensions: ["AMSmath.js"]
+					}
+				}
+			});
 	</script>

@@ -5,6 +5,7 @@ date: "23 January 2017"
 comments: yes
 layout: post
 ---
+
 __Table of Contents__
 
 * [III\. Posterior probabilities with softmax and cross\-entropy](#posterior-probabilities-with-softmax-and-cross-entropy)
