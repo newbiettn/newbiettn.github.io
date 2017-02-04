@@ -153,6 +153,7 @@ __Sparsity__ $\ell$-$1$ exhibits a trait that it tends to create a _sparse coeff
 
 __Feature selection__ $\ell$-$1$ regularisation is also considered as a feature selection method, because it leads to sparse coefficient vectors (i.e., if a feature has the zero value of weight, it is removed from the model).
 
+
 ##### 4. Experiment
 
 In this experiment, we will use the Iris data again to demonstrate how regularisation helps constraint coefficients, which results in a regulated cost function and less overfitting model. Figure 2, 3 and 4 evidently show that without the regularisation term, the cost function and the accuracy of both training and testing are severely vacillating.
