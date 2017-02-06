@@ -9,7 +9,7 @@ layout: post
 __Table of Contents__
 
 
-* [I\. From simple threshold neurons to perceptrons](#from-simple-threshold-neurons-to-perceptrons)
+* [I\. From simple threshold neurons to perceptrons](#i-from-simple-threshold-neurons-to-perceptrons)
   * [1\. Introduction](#introduction)
   * [2\. Threshold neurons](#2-threshold-neurons)
   * [3\. Perceptron](#perceptron)

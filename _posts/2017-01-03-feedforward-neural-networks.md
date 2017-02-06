@@ -18,6 +18,8 @@ __Table of Contents__
     * [5\.2\. Summary of backpropagation](#summary-of-backpropagation)
   * [6\. Experiment](#experiment)
 
+----
+
 #### II. From single-layer perceptrons to multilayer perceptrons
 
 ##### 1. Introduction
