@@ -9,12 +9,12 @@ layout: post
 __Table of Contents__
 
 
-* [I\. From simple threshold neurons to perceptrons](#i-from-simple-threshold-neurons-to-perceptrons)
-  * [1\. Introduction](#1-introduction)
+* [I\. From simple threshold neurons to perceptrons](#from-simple-threshold-neurons-to-perceptrons)
+  * [1\. Introduction](#introduction)
   * [2\. Threshold neurons](#2-threshold-neurons)
-  * [3\. Perceptron](#3-perceptron)
-  * [4\. Geometric interpretation](#4-geometric-interpretation)
-  * [5\. Experiment](#5-experiment)
+  * [3\. Perceptron](#perceptron)
+  * [4\. Geometric interpretation](#geometric-interpretation)
+  * [5\. Experiment](#experiment)
 
 
 ----
