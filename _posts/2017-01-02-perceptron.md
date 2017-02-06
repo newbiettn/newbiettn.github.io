@@ -16,7 +16,8 @@ __Table of Contents__
   * [4\. Geometric interpretation](#4-geometric-interpretation)
   * [5\. Experiment](#5-experiment)
 
----
+
+----
 
 #### I. From simple threshold neurons to perceptrons
 
