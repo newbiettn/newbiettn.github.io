@@ -1,17 +1,19 @@
 ---
-title: "Multivariate imputation with mice package"
-author: "newbiettn"
+title: "Multivariate imputation with mice package in R"
+author: "Ngoc Tran Trung"
 date: "19 December 2016"
 layout: post_rmd
+comments: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is a research experiment of using `mice` package (Buuren and Groothuis-Oudshoorn, 2011) to impute missing values in multivariate data. Basically, `mice` uses __Fully Conditional Specification (FCS)__ method, whereas _chained equation_ is simply an alias of that term. According to (Liu and De, 2015), FCS is more relaxed than the conventional method Joint Modeling (JM) in terms of specifiying distribution of the missing data.
+This is a research experiment of using `mice` package (Buuren and Groothuis-Oudshoorn, 2011) to impute missing values in multivariate data. Basically, `mice` uses __Fully Conditional Specification (FCS)__ method, whereas _chained equation_ is considered an alias of that term. According to Liu and De (2015), FCS is more relaxed than the conventional method Joint Modeling (JM) in terms of specifiying distribution of the missing data.
 
-In this experiment, we will employ an open source dataset __Titanic__ as the sample data to conduct the experiment.
+In this experiment, we will use an open source dataset __Titanic__ (Kaggle, 2012) as the sample data of the experiment.
+
 
 #### 1. Multiple imputation vs Single imputation
 Both multiple and single imputation techniques are ones that can be used to replace missing values in the data by plausible values. In single imputation, we substitute the missing values of the data by __a single value__. For example, we can replace missing values of a variable by the most common value, or the _mean/median_ value (in case that variable is continuous). Multiple imputation is different in a sense that missing values are replaced by __multiple plausible values__. Using `mice` package, we can even have multiple version of imputed data by trying to impute the data more than one time.
@@ -27,15 +29,23 @@ Both multiple and single imputation techniques are ones that can be used to repl
 - $\mathbf{Q}$: predicted model that would be trained on $Y$.
 
 #### 3. Features
-`mice` introduces a _modular approach_ to impute data. The imputation framework offered by `mice` comprises of 3 steps: _imputation_, _analysis_ and _pooling_.
+`mice` introduces a _modular approach_ to impute data. The imputation framework offered by `mice` comprises of 3 steps: _imputation_, _analysis_ and _pooling_ (Figure 1).
+
+```{r fig.width=8, fig.height=8,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("figs/modular_flow.png")
+grid.raster(img)
+```
 
 - `mice()` Impute incomplete data, creating imputed versions of the data $Y^{(1)}$, $Y^{(2)}$, ..., $Y^{(m)}$.
 - `with()` Estimate the predicted model $Q$ on each imputed dataset $Y^{(i)}$, creating multiple versions of the model, which are $\hat{Q}^{(1)}$, $\hat{Q}^{(2)}$,..., $\hat{Q}^{(m)}$
-- `pool`   Pool $\hat{Q}^{(1)}$, $\hat{Q}^{(2)}$,..., $\hat{Q}^{(m)}$ into one estimates $\bar{Q}$
+- `pool()`   Pool $\hat{Q}^{(1)}$, $\hat{Q}^{(2)}$,..., $\hat{Q}^{(m)}$ into one estimates $\bar{Q}$
 
 A notable feature of this imputation model is that we use our predicted model of interest $Q$ to analyse the imputed data by ourself. By doing that, we can specifically select the best imputed data that suits our investigation.
 
 #### 4. Experiment
+
 #### 4.1. Missing value inspection
 First and foremost, load the package and data. In this experiment, we will use Titanic data free available from Kaggle.
 
@@ -149,12 +159,16 @@ Convergence assessment of Gibbs sampling algorithm is important to check that if
 plot(imp)
 ```
 
-#### 6. Conclusion and discussion
+#### 6. Conclusion
+In this experiment, we have demonstrated how missing values in the data can be imputed using FCS technique. When compare FCS with JM technique, MICE is considered as a more adaptable method when we can select appropriate imputation models for  variables on a case by case basis. For example, we can choose linear regression or Bayesian linear regression for continuous variables, and logistic regression or linear discriminant analysis for nominal variables.
 
+`mice` package in R is a powerful and convenient library that enables multivariate imputation in a modular approach consisting of three subsequent steps. First, we can impute missing values by using a single `mice()` function, then effectively analyse imputed versions of data by using `with()` method with our own model of choice, and finally report the imputation result by using `pool()` method. 
 
+After this experiment, we believe that `mice` package is capable of supporting our future research experiments, where we would have chance to explore additional features of it, such as, implementing our own imputation models.
 
 #### References
-
 Buuren, S. & Groothuis-Oudshoorn, K. (2011, December). MICE: Mulitivariate Imputation by Chained Equations in R. Journal of Statistical Software, 45(3), 1–67. Retrieved from http://doc.utwente.nl/78938/
 
-Liu, Y. & De, A. (2015, July). Multiple Imputation by Fully Conditional Spe- cification for Dealing with Missing Data in a Large Epidemiologic Study. International Journal of Statistics in Medical Research, 4(3), 287–295. doi:10.6000/1929-6029.2015.04.03.7
+Kaggle. (2012, September). Titanic: machine learning from disaster. Retrieved from https://www.kaggle.com/c/titanic
+
+Liu, Y. & De, A. (2015, July). Multiple Imputation by Fully Conditional Specification for Dealing with Missing Data in a Large Epidemiologic Study. International Journal of Statistics in Medical Research, 4(3), 287–295. doi:10.6000/1929-6029.2015.04.03.7

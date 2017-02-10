@@ -78,7 +78,7 @@ When I was a child, I never thought writing would be of my interest. I always g
 
 This is the latest version of the site. I used <a title="Mura" href="http://www.getmura.com/" target="_blank">Mura</a> in the past, but now I&#8217;m with <a title="Get WordPress" href="http://wordpress.org/download/" target="_blank">WordPress</a>
 
-**Updated in August 2016**: Wordpress is over, [Jekyll](https://jekyllrb.com) is too simple to be ignored.
+**Updated in August 2016**: Wordpress is over, I am using [Jekyll](https://jekyllrb.com).
 
 <p style="text-align: justify;">
   The content is scattered.
