@@ -555,3 +555,119 @@ __References:__
 
   1. Linear algebra and its application, Gilbert Strang, 3rd Edition.
   2. [https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/null-column-space/v/null-space-2-calculating-the-null-space-of-a-matrix](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/null-column-space/v/null-space-2-calculating-the-null-space-of-a-matrix)
+
+---
+### Singular matrices
+
+Singular matrix is a square matrix which does not have an **inverse**. A square matrix is singular iif its **determinant** is zero.
+
+For example:
+
+$$
+\begin{bmatrix}
+  2 & 6 \\
+  1 & 3
+\end{bmatrix}
+$$
+
+is singular since
+
+$$
+\begin{vmatrix}
+  2 & 6 \\
+  1 & 3
+\end{vmatrix}
+= 2*3 - 6*1 = 0
+$$
+
+
+
+__Geometric interpretation__ A matrix can be thought of as a linear function from a vector space $V$ to a vector space $W$. Typically, one is concerned with $n×n$ real matrices, which are linear functions from $ℝ^n$ to $ℝ^n$. An $n×n$ real matrix is non-singular if its image as a function is all of $ℝ^n$ and singular otherwise. More intuitively, it is singular if it misses some point in $n$-dimensional space and non-singular if it doesn't.
+
+__References:__
+
+  1. Linear algebra and its application, Gilbert Strang, 3rd Edition.
+  2. http://math.stackexchange.com/questions/166021/what-is-the-geometric-meaning-of-singular-matrix
+
+---
+
+### Eigenvalues and Eigenvectors
+
+Suppose we have a matrix $\mathbf{A}$ that acts like a function, when it would takes a vector $x$ and output a vector $\mathbf{A}x$. At this moment, we are more interested in vectors that come out in the same direction as they went in. That is not typical and there will be only a few vectors $\mathbf{A}x$ that are parallel to $x$. Those are called _eigenvectors_. It can be expressed by
+
+$$
+\mathbf{A}x = \lambda x
+$$
+
+where we would call $\lambda$ the _eigenvalue_ and $x$ the _eigenvector_.
+
+If $A$ is _singular_, $\lambda = 0$ is the eigenvalue.
+
+__How to solve $\mathbf{A}x = \lambda x$__
+
+Rewrite: $(\mathbf{A} - \lambda \mathbf{I})x = 0$
+
+We can see that the matrix $\mathbf{A} - \lambda \mathbf{I}$ must be _singular_, otherwise, $x$ is a zero matrix, which is not interesting at all!.
+
+Because $\mathbf{A} - \lambda \mathbf{I}$ is a singular matrix, we would have
+
+$$
+det(\mathbf{A} - \lambda \mathbf{I}) = 0
+$$
+
+---
+
+### Matrix rank
+
+The rank of matrix equals to the maximum number of *independent* columns or the maximum number of *independent* row.
+
+  - Every matrix of rank one has the simple form $A = uv^T$
+
+{% include math-example.html id="1" content="
+
+The matrix
+
+$$
+A =
+\begin{bmatrix}
+1 & 0 & 1 \\
+-2 & -3 & 1 \\
+3 & 3 & 0
+\end{bmatrix}
+$$
+
+has rank 3 because 3 rows are linearly independent.
+
+" %}
+
+{% include math-example.html id="2" content="
+The matrix
+
+$$
+B = \begin{bmatrix}
+1 & 1 & 0 & 2 \\
+-1 & -1 & 0 & -2
+\end{bmatrix}
+$$
+
+has rank 1 because two rows are linearly dependent.
+
+" %}
+
+__References:__
+
+  1. https://en.wikipedia.org/wiki/Rank_(linear_algebra)
+
+---
+
+### The Gram-Schmidt process
+
+The Gram-Schmidt process is a method for orthonormalising a set of vectors.
+
+---
+
+### Singular value decomposition
+
+
+
+Any
