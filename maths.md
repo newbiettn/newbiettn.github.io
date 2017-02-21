@@ -161,7 +161,7 @@ __References:__
 ---
 
 ### Scalar product
-The scalar product (also known as _dot product_, _inner product) of two vectors $x = [x_1, x_2, ..., x_n]$ and $y = [y_1, y_2, ..., y_n]$ is defined as
+The scalar product (also known as _dot product_, _inner product_) of two vectors $x = [x_1, x_2, ..., x_n]$ and $y = [y_1, y_2, ..., y_n]$ is defined as
 
 $$
 x \cdot y = x^Ty = \sum_{i=1}^{n} x_iy_i = x_1y_1 + x_2y_2 + ... + x_ny_n
@@ -509,11 +509,12 @@ where $c_i \in \mathbb{R}^{mxn}$ is the column vectors of the matrix $A$, $w_i \
   - __The row space of the matrix $A$, denoted by $R(A)$__ The row space $R(A)$ is the column space of $A^T$. Thus, $R(A) = C(A^T)$.
   - __The left nullspace of the matrix $A$__ The left null space of $A$ is the _nullspace_ of $A^T$.
 
-{% include math-example.html id="1" content="
+
+__Example:__
 
 Suppose we have the matrix $$A = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{bmatrix}$$, we have,
 
-  1. The column space $C(A)$
+__1.The column space $C(A)$__
 
 $$
 \begin{align}
@@ -524,9 +525,17 @@ c_4\begin{bmatrix} 1 \\ 4 \\ 1 \end{bmatrix}
 \end{align}
 $$
 
-Let's say $c_1 = 2, c_2 = 3, c_3 = 1, c_2 = 1$, we have a vector $$v = 2\begin{bmatrix} 1 \\ 1 \\ 4 \end{bmatrix} + 3\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + 1\begin{bmatrix} 1 \\ 3 \\ 2 \end{bmatrix} + 1\begin{bmatrix} 1 \\ 4 \\ 1 \end{bmatrix} = \begin{bmatrix} 7 \\ 15 \\ 20 \end{bmatrix}$$. Since $v$ is the result of the linear combination, $$v = \begin{bmatrix} 7 \\ 15 \\ 20 \end{bmatrix}$$ is in the column space $C(A)$.
+Let's say $c_1 = 2, c_2 = 3, c_3 = 1, c_2 = 1$, we have a vector
 
-  2. The nullspace $N(A)$
+$$
+\begin{align}
+v = 2\begin{bmatrix} 1 \\ 1 \\ 4 \end{bmatrix} + 3\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + 1\begin{bmatrix} 1 \\ 3 \\ 2 \end{bmatrix} + 1\begin{bmatrix} 1 \\ 4 \\ 1 \end{bmatrix} = \begin{bmatrix} 7 \\ 15 \\ 20 \end{bmatrix}
+\end{align}
+$$.
+
+Since $v$ is the result of the linear combination, $$v = \begin{bmatrix} 7 \\ 15 \\ 20 \end{bmatrix}$$ is in the column space $C(A)$.
+
+__2.The nullspace $N(A)$__
 
 $$
 Ax = 0 \\
@@ -548,8 +557,6 @@ Finally, we have,
 $$
 N(A) = span(x_3, x_4) = x_3\begin{bmatrix} 1 \\ -2  \\ 1 \\ 0 \end{bmatrix} + x_4\begin{bmatrix} 2 \\ -3 \\ 0 \\ 1 \end{bmatrix}
 $$
-
-" %}
 
 __References:__
 
@@ -666,8 +673,86 @@ The Gram-Schmidt process is a method for orthonormalising a set of vectors.
 
 ---
 
-### Singular value decomposition
+### Linear independence
+
+Vectors $v_1, ..., v_k$ are linearly independent if $ c_1 v_1 + ... + c_k v_k = 0$ only happens when $c_1 = c_2 = ... = c_k = 0$.
+
+{% include math-example.html id="1" content="
+
+The columns of matrix
+
+$$
+A =
+\begin{bmatrix}
+1 & 3 & 3 & 2 \\
+2 & 6 & 9 & 5 \\
+-1 & -3 & 3 & 0
+\end{bmatrix}
+$$
+
+are linearly dependent, because the 2nd column is 3 times the 1st column.
+" %}
+
+_If the columns are linearly independent, the nullspace contains only zero vectors._
+
+__References:__
+
+  1. Linear algebra and its application, Gilbert Strang, 3rd Edition.
 
 
+---
 
-Any
+### Basis for a space
+
+Basis for a space is a sequence of vectors $v_1, v_2, ..., v_d$ with 2 properties:
+
+  1. They are __independent__.
+  2. They __span__ the space.
+
+It means that every vector in the space is a combination of the basis vector _because basis vectors span the space_.
+
+{% include math-example.html id="1" content="
+
+Space $\mathbb{R}^3$ has a basis is
+
+$$
+\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix}
+$$
+
+because (1) they are linearly independent (2) we can express any vector in $\mathbb{R}^3$ by these 3 vectors.
+
+" %}
+
+{% include math-example.html id="1" content="
+
+Space $\mathbb{R}^3$ has a basis is
+
+$$
+\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ 2 \\ 5
+\end{bmatrix}
+$$
+
+because (1) they are linearly independent (2) we can express any vector in $\mathbb{R}^3$ by these 3 vectors.
+
+" %}
+
+__References:__
+
+  1. Linear algebra and its application, Gilbert Strang, 3rd Edition.
+
+---
+
+### Orthogonal
+Subspace $S$ is orthogonal to subspace $T$ means every vector in $S$ is orthogonal to every vector in $T$.
