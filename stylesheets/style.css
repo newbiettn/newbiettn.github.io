@@ -11,7 +11,7 @@ Theme URI: http://newbiettn.com
  }
 
 body {
-	font-family: "my-font";
+	font-family: "©my-font";
 	font-weight: normal;
 	font-style: normal;
 	font-size: 16px;
@@ -68,7 +68,7 @@ a {
 	text-decoration: none;
 	line-height: inherit;
 }
-.maincontent a {
+.maincontent a, article a {
 	color: navy;
 	text-decoration: underline;
 }
