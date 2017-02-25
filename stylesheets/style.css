@@ -68,7 +68,7 @@ a {
 	text-decoration: none;
 	line-height: inherit;
 }
-.maincontent a, article a {
+.maincontent a {
 	color: navy;
 	text-decoration: underline;
 }
