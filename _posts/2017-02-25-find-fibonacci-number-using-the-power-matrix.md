@@ -50,7 +50,7 @@ Hence, we can see that the eigenvector of $A^n$ is exactly the same as $A$, wher
 
 ##### 3. The diagonal form of a matrix
 
-Given the __eigenvector matrix__ $S$, which has the form $S = \begin{bmatrix} x_1 & x_2 & \cdots & x_n \end{bmatrix}$, where $x_1, ..., x_n$ are the eigenvectors of any _symmetric_ matrix $A$ with _distinct eigenvalues_ $\lambda_1, ..., \lambda_n$, we can use $S$ to _diagonalise_ A mathematically by
+Given the __eigenvector matrix__ $S$, which has the form $S = \begin{bmatrix} x_1 & x_2 & \cdots & x_n \end{bmatrix}$, where $x_1, ..., x_n$ are the eigenvectors of any _square_ matrix $A$ with _distinct eigenvalues_ $\lambda_1, ..., \lambda_n$, we can use $S$ to _diagonalise_ A mathematically by
 
 $$
 \begin{align}
