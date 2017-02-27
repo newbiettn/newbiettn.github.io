@@ -77,7 +77,8 @@ A^n S = S \Lambda^n \quad \text{or} \quad A^n = S \Lambda^n S^{-1}
 \end{align}
 $$
 
-#### III. Finding $n$-th number of Fibonacci
+#### III. Finding $n$-th number of the Fibonacci sequence
+
 In this section, we will discuss in detail how the power matrix is useful in helping deriving a faster calculation algorithm for the Fibonacci sequence.
 
 An example of a first few elements of the Fibonacci sequence is
