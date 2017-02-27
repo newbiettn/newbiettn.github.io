@@ -8,7 +8,7 @@ layout: post
 
 #### I. Introduction
 
-Calculating nth Fibonacci number is a classical problem that everyone knows. Most of the naive solution to that problem is recursive, which has the _exponential complexity_ $\mathcal{O}(2^n)$. A better solution, which uses iteration, theoretically has the _linear complexity_ $\mathcal{O}(n)$. When reviewing parts of linear algebra, I've realised that we can cut down the complexity to $\mathcal{O}(log n)$ by exploiting fundamental concepts of linear algebra, such as eigenvalues, eigenvectors, diagonal form of a matrix, and the power matrix.
+Calculating nth Fibonacci number is a classical problem that everyone knows. The most naive solution to that problem is recursive-based, which has the _exponential complexity_ $\mathcal{O}(2^n)$. A better solution, which uses iteration, theoretically has the _linear complexity_ $\mathcal{O}(n)$. When reviewing parts of linear algebra, I've realised that we can cut down the complexity to $\mathcal{O}(log n)$ by exploiting fundamental concepts of linear algebra, such as eigenvalues, eigenvectors, diagonal form of a matrix, and the power matrix.
 
 #### II. Mathematical review
 
