@@ -18,14 +18,27 @@
       <div class="one columns"></div>
       <div class="content-container nine columns">
         <div class="row border-top-normal">
-        <article>
-          <div>
-            <h2 class="post_title">
-              <span>{{page.title}}</span>
-            </h2>
-            {{content}}
-          </div>
-        </article>
+          <article>
+            <div>
+              <header class="post_title">
+                <div class="row">
+                  <div class="twelve columns">
+                    <h2><a href="#" title="{{ page.title }}">{{ page.title }}</a></h2>
+                  </div>
+                </div>
+              </header>
+              <div class="row">
+                <div class="maincontent">
+                  <div class="twelve columns">
+                    {{ content }}
+                  </div>
+                </div>
+              </div>
+              {% if page.comments %}
+                {% include disqus.html %}
+              {% endif %}
+            </div>
+          </article>
         </div>
       </div>
       <aside class="two columns fixed">
