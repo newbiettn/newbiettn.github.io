@@ -990,7 +990,7 @@ $$
 [2,]    0    0
 ```
 
-#### 3. Factorisation $A = Q \Lambda Q^T$
+#### 4. Factorisation $A = Q \Lambda Q^T$
 
 Given the factorisation $A = S \Lambda S^{-1}$, if matrix $A$ is __symmetric__, we can have
 
@@ -1023,7 +1023,7 @@ We can see that _when $A$ is symmetric, the orthogonal matrix $S$ can be the ort
 [2,] -2.237114e-17  1.000000e+00
 ```
 
-#### 3. Factorisation $A = Q_1 \Sigma Q_2^T$
+#### 5. Factorisation $A = Q_1 \Sigma Q_2^T$
 
 Any $m x n$ matrix $A$ can be factored into
 
