@@ -16,12 +16,26 @@ This page is a cumulative notes of mine and can be used as a quick reference of 
   * [Law of Cosine](#law-of-cosine)
   * [Orthogonal vectors](#orthogonal-vectors)
   * [Projection of a vector on a line](#projection-of-a-vector-on-a-line)
-  * [LU Decomposition (A = LU)](#lu-decomposition-a--lu)
   * [Normalized vector](#normalized-vector)
   * [Orthonormal vectors](#orthonormal-vectors)
   * [Orthogonal matrix](#orthogonal-matrix)
   * [Span the space](#span-the-space)
   * [Four fundamental subspaces](#four-fundamental-subspaces)
+  * [Singular matrices](#singular-matrices)
+  * [Eigenvalues and Eigenvectors](#eigenvalues-and-eigenvectors)
+  * [Matrix rank](#matrix-rank)
+  * [The Gram\-Schmidt process](#the-gram-schmidt-process)
+  * [Linear independence](#linear-independence)
+  * [Basis for a space](#basis-for-a-space)
+  * [Orthogonal](#orthogonal)
+  * [Projection](#projection)
+  * [Matrix factorisation](#matrix-factorisation)
+    * [1\. Factorisation $A = QR$](#1-factorisation-a--qr)
+    * [2\. Factorisation $A = LU$](#2-factorisation-a--lu)
+    * [3\. Factorisation $A = S \\Lambda S^\{\-1\}$](#3-factorisation-a--s-lambda-s-1)
+    * [3\. Factorisation $A = Q \\Lambda Q^T$](#3-factorisation-a--q-lambda-qt)
+    * [3\. Factorisation $A = Q\_1 \\Sigma Q\_2^T$](#3-factorisation-a--q_1-sigma-q_2t)
+
 
 
 ---
@@ -311,50 +325,6 @@ __References:__
 
 ---
 
-### LU Decomposition (A = LU)
-LU decomposition simply refers to the transformation of the square matrix $A$ into the product of two different matrices __$L$ (lower triangular matrix)__ and __$U$ (upper triangular matrix)__. Mathematically, we have $A = LU$.
-
-{% include math-example.html id="1" content="
-
-$$
-\begin{align}
-A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix} & = LU \\
-& = \begin{bmatrix} 1 & 0 & 0 \\ 4 & 1 & 1 \\ 7 & 2 & 2 \end{bmatrix}\begin{bmatrix} 1 & 2 & 3 \\ 0 & -3 & -6  \\ 0 & 0 & 0 \end{bmatrix}
-\end{align}
-$$
-
-" %}
-
-By using R, we can also have,
-
-
-```R
-> library(pracma)
-> x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
-> x
-     [,1] [,2] [,3]
-[1,]    1    2    3
-[2,]    4    5    6
-[3,]    7    8    9
-> lu(x)
-$L
-     [,1] [,2] [,3]
-[1,]    1    0    0
-[2,]    4    1    0
-[3,]    7    2    1
-
-$U
-     [,1] [,2] [,3]
-[1,]    1    2    3
-[2,]    0   -3   -6
-[3,]    0    0    0
-```
-
-
-__References:__
-
-  1. [https://autarkaw.org/2008/06/04/lu-decomposition-takes-more-computational-time-than-gaussian-elimination-what-gives/](https://autarkaw.org/2008/06/04/lu-decomposition-takes-more-computational-time-than-gaussian-elimination-what-gives/)
-  2. [http://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination](http://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination)
 
 ---
 
@@ -518,14 +488,14 @@ __1.The column space $C(A)$__
 
 $$
 \begin{align}
-C(A) & = span(c_1, c_2) \\
-& = c_1\begin{bmatrix} 1 \\ 1 \\ 4 \end{bmatrix} + c_2\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} +
-c_3\begin{bmatrix} 1 \\ 3 \\ 2 \end{bmatrix} +
-c_4\begin{bmatrix} 1 \\ 4 \\ 1 \end{bmatrix}
+C(A) & = span(c_1, c_2, c_3, c_4) \\
+& = w_1\begin{bmatrix} 1 \\ 1 \\ 4 \end{bmatrix} + w_2\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} +
+w_3\begin{bmatrix} 1 \\ 3 \\ 2 \end{bmatrix} +
+w_4\begin{bmatrix} 1 \\ 4 \\ 1 \end{bmatrix}
 \end{align}
 $$
 
-Let's say $c_1 = 2, c_2 = 3, c_3 = 1, c_2 = 1$, we have a vector
+Let's say $w_1 = 2, w_2 = 3, w_3 = 1, w_4 = 1$, we have a vector
 
 $$
 \begin{align}
@@ -600,7 +570,7 @@ __References:__
 
 ### Eigenvalues and Eigenvectors
 
-Suppose we have a matrix $\mathbf{A}$ that acts like a function, when it would takes a vector $x$ and output a vector $\mathbf{A}x$. At this moment, we are more interested in vectors that come out in the same direction as they went in. That is not typical and there will be only a few vectors $\mathbf{A}x$ that are parallel to $x$. Those are called _eigenvectors_. It can be expressed by
+Suppose we have a matrix $A$ that acts like a function, when it would takes a vector $x$ and output a vector $Ax$. At this moment, we are more interested in vectors that come out in the same direction as they went in. That is not typical and there will be only a few vectors $Ax$ that are parallel to $x$. Those are called _eigenvectors_. It can be expressed by
 
 $$
 \mathbf{A}x = \lambda x
@@ -608,19 +578,49 @@ $$
 
 where we would call $\lambda$ the _eigenvalue_ and $x$ the _eigenvector_.
 
-If $A$ is _singular_, $\lambda = 0$ is the eigenvalue.
+__**How to solve $Ax = \lambda x$__
 
-__How to solve $\mathbf{A}x = \lambda x$__
+__Step 1.__ Rewrite: $(A - \lambda I)x = 0$
 
-Rewrite: $(\mathbf{A} - \lambda \mathbf{I})x = 0$
+We can see that the matrix $A - \lambda I$ must be _singular_ otherwise, $x$ is a zero matrix, which is not interesting at all!
 
-We can see that the matrix $\mathbf{A} - \lambda \mathbf{I}$ must be _singular_, otherwise, $x$ is a zero matrix, which is not interesting at all!.
-
-Because $\mathbf{A} - \lambda \mathbf{I}$ is a singular matrix, we would have
+__Proof:__ Suppose the matrix $T = A - \lambda$, thus we have
 
 $$
-det(\mathbf{A} - \lambda \mathbf{I}) = 0
+T x = 0
 $$
+
+Multiply both side of the equation by $T^{-1}$, we have
+
+$$
+T^{-1}Tx = 0
+$$
+
+If $T$ is a singular matrix, then
+
+$$
+T^{-1}Tx = 0 \\
+\Leftrightarrow Ix = 0 \\
+\Leftrightarrow x = 0
+$$
+
+We conclude that if __$T$ is singular__, then $x = 0$, which is too obvious that it is not interesting at all!
+
+
+__Step 2.__ Because $A - \lambda I$ is a singular matrix, we would have
+
+$$
+det(A - \lambda I) = 0
+$$
+
+By computing the determinant of $A - \lambda I$, we can find the eigenvalue $\lambda$.
+
+__Step 3.__ For each eigenvalue, solve the equation $(A - \lambda I) x = 0$ to find eigenvector $x$.
+
+__References:__
+
+  1. Linear algebra and its application, Gilbert Strang, 3rd Edition.
+
 
 ---
 
@@ -755,4 +755,285 @@ __References:__
 ---
 
 ### Orthogonal
+
 Subspace $S$ is orthogonal to subspace $T$ means every vector in $S$ is orthogonal to every vector in $T$.
+
+__**__ It is important to remember that _a plane cannot be orthogonal to a plan_.
+
+A typical example is that the wall and the floor of a room look like perpendicular planes in $\mathbb{R}^3$. But by the definition of algebra, __it is not so__. Because the common line in both the wall and the floor cannot be orthogonal to itself.
+
+__1. The row space is orthogonal to the null space & the column space is orthogonal to the left nullspace.__
+
+__Proof:__ Suppose $x$ is the vector in the null space. Thus, we have $Ax = 0$.
+
+$$
+Ax = 0 \\
+\leftrightarrow
+\begin{bmatrix} \cdots & row 1 & \cdots \\ \cdots & row 2 & \cdots \\ \cdots & \cdots & \cdots \\ \cdots & row 3 & \cdots \end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ \cdots \\ x_n \end{bmatrix}
+=
+\begin{bmatrix} 0 \\ 0 \\ 0 \\ \cdots \\ 0 \end{bmatrix}
+$$
+
+It means that we have $row 1 \cdot x = 0$ $\Rightarrow$ _row 1 is orthogonal to $x$_.
+
+__2. The space off all vectors orthogonal to a subspace $V$ is called the orthogonal complement of $V$, and denoted by $V^{\perp}$.__
+
+As a result, the row space and the nullspace are _orthogonal complements_.
+
+
+---
+
+### Projection
+
+__1.__ The cosine of the angle between any two vectors $a$ and $b$ is
+
+$$
+cos \, \theta = \frac{a^T b}{\lVert a \rVert \lVert b \rVert}
+$$
+
+__Proof:__ Using [the law of cosine](http://mathworld.wolfram.com/LawofCosines.html), we have,
+
+{% include image.html url="/images/angle_between_vectors.png" description="The cosine of the angle between two vectors $a$ and $b$" %}
+
+$$
+\begin{align}
+\lVert b - a \rVert^2 &= \lVert b \rVert^2 + \lVert a \rVert^2 -  2\lVert b \rVert \lVert a \rVert cos \, \theta \\
+
+\Leftrightarrow (b-a)^T(b-a) &= b^Tb + a^Ta - 2\lVert b \rVert \lVert a \rVert cos \, \theta \\
+
+\Leftrightarrow b^Tb - 2a^Tb + a^Ta &= b^Tb + a^Ta - 2\lVert b \rVert \lVert a \rVert cos \, \theta \\
+
+\Leftrightarrow cos \, \theta &= \frac{a^T b}{\lVert a \rVert \lVert b \rVert}
+\end{align}
+$$
+
+__2.__ The projection of $b$ onto $a$ is
+
+$$
+p = xa = \frac{a^Tb}{aTa}a
+$$
+
+{% include image.html url="/images/projection_b_onto_a.png" description="The projection of $b$ onto $a$ where $p = xa$ "%}
+
+__Proof:__ we have $p = xa$ (because $p$ is on $a$), thus we have the vector $e = b - p$.
+
+Because $e$ is orthogonal to $a$, we can have $a^Te = 0$.
+
+$$
+\begin{align}
+&\, a^Te = 0 \\
+&\Leftrightarrow a^T(b -p) = 0 \\
+&\Leftrightarrow x = \frac{a^Tb}{a^Ta} \\
+&\Rightarrow p = \frac{a^Tb}{a^Ta}a \label{projection_matrix}
+\end{align}
+$$
+
+__3.__ __The projection matrix__ $\mathbf{P}$ is the matrix that project $b$ onto $a$
+
+$$
+\begin{align}
+\mathbf{P} = a \frac{a^Tb}{a^Ta} \label{projection_matrix_definition}
+\end{align}
+$$
+
+__Proof:__ We already have in (\ref{projection_matrix}) that $p = \frac{a^Tb}{a^Ta}a$, by rewriting
+
+$$
+\begin{align}
+p &= \frac{a^Tb}{a^Ta}a \\
+\Leftrightarrow p &=  \frac{a a^T}{a^Ta} b \\
+\Leftrightarrow p &= \mathbf{P}b
+\end{align}
+$$
+
+---
+
+### Matrix factorisation
+
+#### 1. Factorisation $A = QR$
+
+We can factorise any square matrix $A$ as
+
+$$
+A = QR
+$$
+
+where $Q$ is an orthogonal matrix, $R$ is an upper triangular matrix.
+
+{% include math-example.html id="1" content="
+
+$$
+A =
+
+\begin{bmatrix}
+1 & 1 & 2 \\
+0 & 0 & 1 \\
+1 & 0 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+0 & 0 & 1 \\
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{2} & \frac{1}{\sqrt{2}} & \sqrt{2} \\
+& \frac{1}{\sqrt{2}} & \sqrt{2} \\
+& & 1
+\end{bmatrix}
+$$
+
+" %}
+
+```R
+> x <- matrix(data = c(1, 1, 2, 0, 0, 1, 1, 0, 0), nrow = 3, ncol = 3, byrow = T)
+> x
+     [,1] [,2] [,3]
+[1,]    1    1    2
+[2,]    0    0    1
+[3,]    1    0    0
+> qr(x)
+$qr
+           [,1]       [,2]      [,3]
+[1,] -1.4142136 -0.7071068 -1.414214
+[2,]  0.0000000 -0.7071068 -1.414214
+[3,]  0.7071068 -1.0000000  1.000000
+
+$rank
+[1] 3
+
+$qraux
+[1] 1.707107 1.000000 1.000000
+
+$pivot
+[1] 1 2 3
+
+attr(,"class")
+[1] "qr"
+```
+
+#### 2. Factorisation $A = LU$
+
+LU decomposition simply refers to the transformation of the square matrix $A$ into the product of two different matrices __$L$ (lower triangular matrix)__ and __$U$ (upper triangular matrix)__. Mathematically, we have $A = LU$.
+
+{% include math-example.html id="1" content="
+
+$$
+\begin{align}
+A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix} & = LU \\
+& = \begin{bmatrix} 1 & 0 & 0 \\ 4 & 1 & 1 \\ 7 & 2 & 2 \end{bmatrix}\begin{bmatrix} 1 & 2 & 3 \\ 0 & -3 & -6  \\ 0 & 0 & 0 \end{bmatrix}
+\end{align}
+$$
+
+" %}
+
+By using R, we can also have,
+
+
+```R
+> library(pracma)
+> x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
+> x
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+> lu(x)
+$L
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    4    1    0
+[3,]    7    2    1
+
+$U
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    0   -3   -6
+[3,]    0    0    0
+```
+
+#### 3. Factorisation $A = S \Lambda S^{-1}$
+
+Given the __eigenvector matrix__ $S$, which has the form $S = \begin{bmatrix} x_1 & x_2 & \cdots & x_n \end{bmatrix}$, where $x_1, ..., x_n$ are the eigenvectors of any _square_ matrix $A$ with _distinct eigenvalues_ $\lambda_1, ..., \lambda_n$, we can use $S$ to _diagonalise_ A mathematically by
+
+$$
+\begin{align}
+AS = S \Lambda
+\end{align}
+$$
+
+where $\Lambda$ is __the eigenvalue matrix__, which has the form $$\Lambda =  \begin{bmatrix} \lambda_1 &  &  &  \\ & \lambda_2 &  &  & \\ \ &  &  \ddots & \\ & & & \lambda_n \end{bmatrix}$$
+
+From that we can also have
+
+$$
+\begin{align}
+AS = S \Lambda \quad \text{or} \quad A = S \Lambda S^{-1}
+\end{align}
+$$
+
+```R
+> A <- matrix(data = c(2, 1, 0, 0), nrow = 2, ncol = 2, byrow = T) # Define the matrix
+> A
+     [,1] [,2]
+[1,]    2    1
+[2,]    0    0
+> E <- eigen(A) # Find eigenvectors and eigenvalues of A
+> S <- E$vectors # The eigenvector matrix S
+> Lambda <- diag(E$values) # The eigenvalue matrix Lambda
+> S_inv <- solve(S)
+> A <- S %*% Lambda %*% S_inv # Confirm if A = S*Lambda*S_inv
+> A
+     [,1] [,2]
+[1,]    2    1
+[2,]    0    0
+```
+
+#### 3. Factorisation $A = Q \Lambda Q^T$
+
+Given the factorisation $A = S \Lambda S^{-1}$, if matrix $A$ is __symmetric__, we can have
+
+$$
+A = S \Lambda S^{-1} = Q \Lambda Q^T
+$$
+
+where $S$ is the eigenvector matrix, $\Lambda$ is the eigenvalue matrix, $Q$ is the orthogonal matrix.
+
+We can see that _when $A$ is symmetric, the orthogonal matrix $S$ can be the orthogonal matrix $Q$_ (which also mean eigenvectors are orthogonal to each other).
+
+```R
+> A <- matrix(data = c(2, -1, -1, 2), nrow = 2, ncol = 2, byrow = T) # Matrix A
+> A
+     [,1] [,2]
+[1,]    2   -1
+[2,]   -1    2
+> E <- eigen(A) # Find eigenvectors and eigenvalues of A
+> S <- E$vectors # The eigenvector matrix S
+> Lambda <- diag(E$values) # The eigenvalue matrix Lambda
+> S_inv <- solve(S)
+> A <- S %*% Lambda %*% S_inv # Confirm if A = S*Lambda*S_inv
+> A
+     [,1] [,2]
+[1,]    2   -1
+[2,]   -1    2
+> t(S) %*% S # Check if S is orthogonal matrix
+              [,1]          [,2]
+[1,]  1.000000e+00 -2.237114e-17
+[2,] -2.237114e-17  1.000000e+00
+```
+
+#### 3. Factorisation $A = Q_1 \Sigma Q_2^T$
+
+Any $m x n$ matrix $A$ can be factored into
+
+$$
+A = Q_1 \Sigma Q_2^T
+$$
+
+The columns of $Q_1$ ($m$ by $m$) are eigenvectors of $AA^T$, and the columns of $Q_2$ ($n$ by $n$) are eigenvectors of $A^TA$. The $r$ singular values on the diagonal of $\Sigma$ ($m$ by $n$) are the square roots of the nonzero eigenvalues of both $AA^T$ and $A^TA$.
+
+__References:__
+
+  1. [https://autarkaw.org/2008/06/04/lu-decomposition-takes-more-computational-time-than-gaussian-elimination-what-gives/](https://autarkaw.org/2008/06/04/lu-decomposition-takes-more-computational-time-than-gaussian-elimination-what-gives/)
+  2. [http://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination](http://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination)
