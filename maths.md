@@ -33,8 +33,8 @@ This page is a cumulative notes of mine and can be used as a quick reference of 
     * [1\. Factorisation $A = QR$](#1-factorisation-a--qr)
     * [2\. Factorisation $A = LU$](#2-factorisation-a--lu)
     * [3\. Factorisation $A = S \\Lambda S^\{\-1\}$](#3-factorisation-a--s-lambda-s-1)
-    * [3\. Factorisation $A = Q \\Lambda Q^T$](#3-factorisation-a--q-lambda-qt)
-    * [3\. Factorisation $A = Q\_1 \\Sigma Q\_2^T$](#3-factorisation-a--q_1-sigma-q_2t)
+    * [4\. Factorisation $A = Q \\Lambda Q^T$](#3-factorisation-a--q-lambda-qt)
+    * [5\. Factorisation $A = Q\_1 \\Sigma Q\_2^T$](#3-factorisation-a--q_1-sigma-q_2t)
 
 
 
