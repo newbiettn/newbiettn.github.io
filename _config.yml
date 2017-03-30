@@ -13,6 +13,8 @@ links:
     url:          /
   - name:         Maths
     url:          /maths
+  - name:         Statistics
+    url:          /stats
   - name:         About
     url:          /about
 
