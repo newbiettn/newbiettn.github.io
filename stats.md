@@ -7,6 +7,8 @@ layout: page
   * [Paired t\-test](#paired-t-test)
   * [Analysis of Variance (ANOVA)](#analysis-of-variance-anova)
     * [1\. One\-way ANOVA](#1-one-way-anova)
+    * [2\. Two\-way ANOVA](#2-two-way-anova)
+  * [Chi\-squared test](#chi-squared-test)
 
 ---
 
@@ -132,8 +134,105 @@ Calculate $F$ score.
 
 {% include image.html url="/images/f-score-anova.png" description="Figure 7. Calculate F-score." %}
 
-{% include image.html url="/images/f-score-anova-calculate.png" description="Figure 7. Find the critical value corresponding to F-score." %}
+__Implementation in R:__
+
+```R
+> a <- c(2,3,7,2,6)
+> b <- c(10, 8, 7, 5, 10)
+> c <- c(10, 13, 14, 13, 15)
+>
+> val <- c(a, b, c)
+> cat <- c(rep("A", 5), rep("B", 5), rep("C", 5))
+> dt <- data.frame(val, cat)
+> rslt <- aov(val ~ cat, data = dt)
+> summary(rslt)
+            Df Sum Sq Mean Sq F value   Pr(>F)    
+cat          2  203.3   101.7   22.59 8.54e-05 ***
+Residuals   12   54.0     4.5                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+According to the founded p-value, we reject the null hypothesis $H_0$, which suggests that there are differences among groups. _However, it is important to know that ANOVA does not tell which groups differ, only that at least 2 groups among 3 differ._
+
+#### 2. Two-way ANOVA
+
+Use two-way ANOVA when we have __2 factors__ in the data.
+
+```R
+> delivery.df = data.frame(
++   Service = c(rep("Carrier 1", 15), rep("Carrier 2", 15),
++               rep("Carrier 3", 15)),
++   Destination = c(rep(c("Office 1", "Office 2", "Office 3",
++                         "Office 4", "Office 5"), 9)),
++   Time = c(15.23, 14.32, 14.77, 15.12, 14.05,
++            15.48, 14.13, 14.46, 15.62, 14.23, 15.19, 14.67, 14.48, 15.34, 14.22,
++            16.66, 16.27, 16.35, 16.93, 15.05, 16.98, 16.43, 15.95, 16.73, 15.62,
++            16.53, 16.26, 15.69, 16.97, 15.37, 17.12, 16.65, 15.73, 17.77, 15.52,
++            16.15, 16.86, 15.18, 17.96, 15.26, 16.36, 16.44, 14.82, 17.62, 15.04)
++ )
+> head(delivery.df)
+    Service Destination  Time
+1 Carrier 1    Office 1 15.23
+2 Carrier 1    Office 2 14.32
+3 Carrier 1    Office 3 14.77
+4 Carrier 1    Office 4 15.12
+5 Carrier 1    Office 5 14.05
+6 Carrier 1    Office 1 15.48
+> rslt <- aov(Time ~ Service * Destination, data = delivery.df)
+> summary(rslt)
+                    Df Sum Sq Mean Sq F value   Pr(>F)    
+Service              2 23.171  11.585 161.560  < 2e-16 ***
+Destination          4 17.542   4.385  61.155 5.41e-14 ***
+Service:Destination  8  4.189   0.524   7.302 2.36e-05 ***
+Residuals           30  2.151   0.072                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
 
 __References:__
 
-1. https://www.youtube.com/watch?v=-yQb_ZJnFXw
+1. [https://www.youtube.com/watch?v=-yQb_ZJnFXw](https://www.youtube.com/watch?v=-yQb_ZJnFXw)
+
+2. [https://www.learner.org/courses/againstallodds/pdfs/AgainstAllOdds_StudentGuide_Unit31.pdf](https://www.learner.org/courses/againstallodds/pdfs/AgainstAllOdds_StudentGuide_Unit31.pdf)
+
+3. [http://www.stat.columbia.edu/~martin/W2024/R3.pdf](http://www.stat.columbia.edu/~martin/W2024/R3.pdf)
+
+
+---
+
+### Chi-squared test
+
+The Chi-squared test is for categorial data to test how likely it is that an observed distribution is due to chance. The test is also known as __goodness of fit test__, because it measures how well the observed distribution fit the distribution that is expected if the variables are independent.
+
+__Example:__
+
+{% include image.html url="/images/sample-data-chisquare.png" description="Figure 1. Contingency table of the data" %}
+
+Suppose we wish to determine if there is a relationship between _attending the class_ and _passing the course_.
+
+- __Null hypothesis $H_0$__: _Passing the class_ and _Attending the course_ are independent, which implies there is no association between two variables.
+- __Alternative hypothesis $H_A$__: two variables are dependent, which implies there is a relationship between them.
+
+```R
+> mtrx <- matrix(c(25, 6, 8, 15), byrow = T, nrow = 2, ncol = 2)
+> colnames(mtrx) <- c("Pass", "Fail")
+> rownames(mtrx) <- c("Attended", "Skipped")
+> tbl <- as.table(mtrx)
+> tbl
+         Pass Fail
+Attended   25    6
+Skipped     8   15
+> chisq.test(tbl, correct = F)
+
+	Pearson's Chi-squared test
+
+data:  tbl
+X-squared = 11.686, df = 1, p-value = 0.0006297
+```
+
+Because p-value << 0.05, we reject the null hypothesis and accept the alternative hypothesis. The outcome of the test suggests that __attending the class__ and __passing the course__ are two dependent variables.
+
+__References:__
+
+1. [http://www.ling.upenn.edu/~clight/chisquared.htm](http://www.ling.upenn.edu/~clight/chisquared.htm)
