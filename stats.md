@@ -9,6 +9,7 @@ layout: page
     * [1\. One\-way ANOVA](#1-one-way-anova)
     * [2\. Two\-way ANOVA](#2-two-way-anova)
   * [Chi\-squared test](#chi-squared-test)
+  * [McNemar's test](#mcnemars-test)
 
 ---
 
@@ -209,7 +210,11 @@ __Example:__
 
 {% include image.html url="/images/sample-data-chisquare.png" description="Figure 1. Contingency table of the data" %}
 
-Suppose we wish to determine if there is a relationship between _attending the class_ and _passing the course_.
+Suppose we wish to determine if there is a relationship between _attending the class_ and _passing the course_. We will use Chi-squared test to figure out.
+
+What Chi-squared test actually does is making a comparison between the percentage of the <span style="color: red; font-weight: bold">red</span> and <span style="color: green; font-weight: bold">green</span> percentages, which means comparing the percentage of students who attended the class but still fails, and the percentage of student skipped the class and fail. If those percentages are equal, the chi-squared test statistic is zero. It would mean that there is no relationship between attending the class and failing the course.
+
+In our example, we can see that two percentages are not the same, so we could expect that there is an underlying relationship between two given variables.
 
 - __Null hypothesis $H_0$__: _Passing the class_ and _Attending the course_ are independent, which implies there is no association between two variables.
 - __Alternative hypothesis $H_A$__: two variables are dependent, which implies there is a relationship between them.
@@ -236,3 +241,46 @@ Because p-value << 0.05, we reject the null hypothesis and accept the alternativ
 __References:__
 
 1. [http://www.ling.upenn.edu/~clight/chisquared.htm](http://www.ling.upenn.edu/~clight/chisquared.htm)
+2. [http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/](http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/)
+
+---
+
+### McNemar's test
+
+McNemar's test is essentially __a paired version of Chi-squared test__. We, for example, can use McNemar's test to test if the number of participants were significantly changed after and before an experiment.
+
+McNemar's test can only be applied to 2x2 table, rather than larger tables like Chi-squared test. More importantly, unlike Chi-squared test by which we can use to test the independence/dependence between two categorial variables, we use McNemar's test to _test for consistency in response across two variables_.
+
+Our example is introduced in Figure 1. We will use McNemar's test to verify whether or not the treatment is effective. What McNemar's test essentially does is recognizing if the number of people move from Yes to No and vice versa randomly. To do that, McNemar's test ignores the number of patients who are consistently Yes and No before and after the treatment. Instead the test steers its focus on the number of patients changing answers. In Figure 1, the focus is <span style="color: purple">purple cells</span>.
+
+__Note:__ we do not use _row percentage_ in McNemar's test as in Chi-squared test. McNemar's test directly compares the numbers.
+
+{% include image.html url="/images/joint-pain-mcnemar-test.png" description="Figure 1" %}
+
+- __Null hypothesis $H_0$__: The treatment has no effect.
+- __Alternative hypothesis $H_A$__: The treatment has some effects.
+
+```R
+> mtrx <- matrix(c(215, 75, 785, 380), byrow = T, nrow = 2, ncol = 2)
+> colnames(mtrx) <- c("No", "Yes")
+> rownames(mtrx) <- c("No", "Yes")
+> tbl <- as.table(mtrx)
+> tbl
+     No Yes
+No  215  75
+Yes 785 380
+> mcnemar.test(tbl, correct = F)
+
+	McNemar's Chi-squared test
+
+data:  tbl
+McNemar's chi-squared = 586.16, df = 1, p-value < 2.2e-16
+```
+
+Because the p-value is $\ll 0.05$, we reject $H_0$ and accept $H_A$, which suggests that there were some effects of the treatment.
+
+__References:__
+
+1. [http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/](http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/)
+2. [https://en.wikipedia.org/wiki/McNemar%27s_test](https://en.wikipedia.org/wiki/McNemar%27s_test)
+3. [http://yatani.jp/teaching/doku.php?id=hcistats:chisquare](http://yatani.jp/teaching/doku.php?id=hcistats:chisquare)
