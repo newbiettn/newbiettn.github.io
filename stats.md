@@ -11,6 +11,7 @@ layout: page
   * [Chi\-squared test](#chi-squared-test)
   * [McNemar's test](#mcnemars-test)
   * [Sign test](#sign-test)
+  * [Wilcoxon signed\-rank test](#wilcoxon-signed-rank-test)
 
 ---
 
@@ -375,3 +376,45 @@ __References:__
 1. [http://www.r-tutor.com/elementary-statistics/non-parametric-methods/sign-test](http://www.r-tutor.com/elementary-statistics/non-parametric-methods/sign-test)
 2. [http://www.statstutor.ac.uk/resources/uploaded/signtest.pdf](http://www.statstutor.ac.uk/resources/uploaded/signtest.pdf)
 3. [https://onlinecourses.science.psu.edu/stat414/node/318](https://onlinecourses.science.psu.edu/stat414/node/318)
+
+---
+
+### Wilcoxon signed-rank test
+
+Wilcoxon signed-rank test is a non-parametric test for matched/paired data like the Sign test. However, unlike the Signed test, Wilcoxon signed-rank test takes into account the magnitude of observed differences.
+
+__Assumptions:__
+1. __Normal distribution__ Wilcoxon signed-rank test is _non-parametric_, thus, it does not require the data to be normally distributed.
+2. __Dependent data__ The test is applicable to dependent data.
+3. __Ordinal/Continuous data type__ The data has to be measured by using _ordinal_ or _continuous_ level.
+
+__Example:__
+
+The table below shows the hours of relief provided by two analgesic drugs in 12 patients suffering from arthritis. Is there any evidence that one drug provides longer relief than the other?
+
+{% include image.html url="/images/sign-test-drug-example.png" description="Figure 1" %}
+
+- __Null hypothesis $H_0$__: Median of hours of relief of group A equals to that of group B, $m_A = m_B$
+- __Alternative hypothesis $H_A$__: $m_A$ is not equal to $m_B$
+
+```R
+> x <- c(2.0, 3.6, 2.6, 2.6, 7.3, 3.4, 14.9, 6.6, 2.3, 2.0, 6.8, 8.5)
+> y <- c(3.5, 5.7, 2.9, 2.4, 9.9, 3.3, 16.7, 6.0, 3.8, 4.0, 9.1, 20.9)
+> wilcox.test(x, y, paired = T, alternative = "two.sided", correct = F)
+
+	Wilcoxon signed rank test
+
+data:  x and y
+V = 7, p-value = 0.01203
+alternative hypothesis: true location shift is not equal to 0
+
+Warning message:
+In wilcox.test.default(x, y, paired = T, alternative = "two.sided",  :
+  cannot compute exact p-value with ties
+```
+
+__References:__
+
+1. [https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test)
+2. [https://statistics.laerd.com/spss-tutorials/wilcoxon-signed-rank-test-using-spss-statistics.php](https://statistics.laerd.com/spss-tutorials/wilcoxon-signed-rank-test-using-spss-statistics.php)
+3. [http://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_nonparametric/BS704_Nonparametric6.html](http://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_nonparametric/BS704_Nonparametric6.html)
