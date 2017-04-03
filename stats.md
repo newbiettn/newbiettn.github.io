@@ -10,6 +10,7 @@ layout: page
     * [2\. Two\-way ANOVA](#2-two-way-anova)
   * [Chi\-squared test](#chi-squared-test)
   * [McNemar's test](#mcnemars-test)
+  * [Sign test](#sign-test)
 
 ---
 
@@ -284,3 +285,93 @@ __References:__
 1. [http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/](http://www.theanalysisfactor.com/difference-between-chi-square-test-and-mcnemar-test/)
 2. [https://en.wikipedia.org/wiki/McNemar%27s_test](https://en.wikipedia.org/wiki/McNemar%27s_test)
 3. [http://yatani.jp/teaching/doku.php?id=hcistats:chisquare](http://yatani.jp/teaching/doku.php?id=hcistats:chisquare)
+
+---
+
+### Sign test
+
+The sign test can be used to determine (1) if two groups are equally sized, (2) if the median of a group $lt$, $gt$ a specified value.
+
+__Assumptions:__
+
+1. __Normal distribution__ The sign test is _non-parametric_, thus, the data does not need to have Gaussian distribution form.
+2. __Independent samples__ Two samples are independent.
+3. __Dependent samples__ Two samples should be paired ("before-after" sample)
+
+
+__Example 1: Compare two groups using two independent samples__
+
+The table below shows the hours of relief provided by two analgesic drugs in 12 patients suffering from arthritis. Is there any evidence that one drug provides longer relief than the other?
+
+{% include image.html url="/images/sign-test-drug-example.png" description="Figure 1" %}
+
+- __Null hypothesis $H_0$__: Median of hours of relief of group A equals to that of group B, $m_A = m_B$
+- __Alternative hypothesis $H_A$__: $m_A$ is not equal to $m_B$
+
+```R
+> library(BSDA)
+> x <- c(2.0, 3.6, 2.6, 2.6, 7.3, 3.4, 14.9, 6.6, 2.3, 2.0, 6.8, 8.5)
+> y <- c(3.5, 5.7, 2.9, 2.4, 9.9, 3.3, 16.7, 6.0, 3.8, 4.0, 9.1, 20.9)
+> SIGN.test(x, y, alternative = "two.side")
+
+	Dependent-samples Sign-Test
+
+data:  x and y
+S = 3, p-value = 0.146
+alternative hypothesis: true median difference is not equal to 0
+95 percent confidence interval:
+ -2.27872727  0.05745455
+sample estimates:
+median of x-y
+        -1.65
+
+                  Conf.Level  L.E.pt  U.E.pt
+Lower Achieved CI     0.8540 -2.1000 -0.3000
+Interpolated CI       0.9500 -2.2787  0.0575
+Upper Achieved CI     0.9614 -2.3000  0.1000
+```
+
+Our p-value is $0.146 \gt 0.05$, thus we accept the null hypothesis $H_0$. It suggests that two treatment are not evidently different.
+
+__Example 2: Compare the median of a group with a specified value__
+
+Recent studies of the private practices of physicians who saw no Medicaid patients suggested that the median length of each patient visit was 22 minutes. It is believed that the median visit length in practices with a large Medicaid load is shorter than 22 minutes. A random sample of 20 visits in practice with a large Medicaid load yielded, in order, the following visit lengths:
+
+{% include image.html url="/images/sign-test-length-example.png" description="Figure 2" %}
+
+Based on these data, is there sufficient evidence to conclude that the median visit length in practices with a large Medicaid load is shorter than 22 minutes?
+
+- __Null hypothesis $H_0$__: Median of visit length equals to 22 minutes, $m_A = 22$.
+- __Alternative hypothesis $H_A$__: Median of visit length is less than 22", $m_A < 22$.
+
+```R
+> library(BSDA)
+> x <- c(9.4, 13.4, 15.6, 16.2, 16.4, 16.8, 18.1, 18.7, 18.9, 19.1, 19.3, 20.1,
++        20.4, 21.6, 21.9, 23.4, 23.5, 24.8, 24.9, 26.8)
+> SIGN.test(x, alternative = "less", md = 22)
+
+	One-sample Sign-Test
+
+data:  x
+s = 5, p-value = 0.02069
+alternative hypothesis: true median is less than 22
+95 percent confidence interval:
+     -Inf 21.66216
+sample estimates:
+median of x
+       19.2
+
+                  Conf.Level L.E.pt  U.E.pt
+Lower Achieved CI     0.9423   -Inf 21.6000
+Interpolated CI       0.9500   -Inf 21.6622
+Upper Achieved CI     0.9793   -Inf 21.9000
+```
+
+The p-value is $0.0207 \lt 0.05$, which means we reject the null hypothesis $H_0$, and accept the alternative hypothesis. It suggests that the median of visit length is less than 22".
+
+
+__References:__
+
+1. [http://www.r-tutor.com/elementary-statistics/non-parametric-methods/sign-test](http://www.r-tutor.com/elementary-statistics/non-parametric-methods/sign-test)
+2. [http://www.statstutor.ac.uk/resources/uploaded/signtest.pdf](http://www.statstutor.ac.uk/resources/uploaded/signtest.pdf)
+3. [https://onlinecourses.science.psu.edu/stat414/node/318](https://onlinecourses.science.psu.edu/stat414/node/318)
