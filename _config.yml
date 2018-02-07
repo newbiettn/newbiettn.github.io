@@ -14,7 +14,7 @@ links:
     url:          /maths
   - name:         Statistics
     url:          /stats
-  - name:         Automated Planning
+  - name:         Automated-Planning
     url:          /automated_planning
   - name:         About
     url:          /about
