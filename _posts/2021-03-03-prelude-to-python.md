@@ -12,4 +12,18 @@ Python is not a tricky language to learn. In fact, it is one of the easiest prog
 
 In this post, I will definitely not try to convey fundamental programming aspects of Python. I instead would like to focus on little things of Python that ones should know in order to make programming and testing Python apps easier for them.
 
-The first topic I would like to concentrate on is how to manage multiple python versions in Mac.
+The first topic I would like to concentrate on is how to manage multiple python versions, specifically in macOS Big Sure 11.2.
+
+## Mac does come with multiple Python vers
+It is noticeable that macOS BigSure 11.2 is shipped with both Python 2 and 3 vers. We can verify this.
+
+```
+% which python
+/usr/bin/python
+% python --version
+Python 2.7.16
+% python python3
+/usr/local/bin/python3
+% python3 --version
+Python 3.9.2
+```
