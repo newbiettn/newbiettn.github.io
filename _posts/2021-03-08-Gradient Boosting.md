@@ -10,7 +10,7 @@ layout: post
 
 Gradient boosting (GBM) is a highly popular machine learning (ML) algorithm that can be used for both classification and regression. It also has been known that GB can be used in ranking problems, such as retrieving top-$n$ web pages or documents given a search query.
 
-There are two parts of GBM: ``gradient'' and ``boosting''. Here the term ``gradient'' refers to the use of gradient descent in the algorithm while ``boosting'' reflects the boosting mechanism of the algorithm, that is, using an ensemble of weak algorithms (usually Decision Tree) to \textit{boost} the prediction performance.
+There are two parts of GBM: "gradient" and "boosting". Here the term "gradient" refers to the use of gradient descent in the algorithm while "boosting" reflects the boosting mechanism of the algorithm, that is, using an ensemble of weak algorithms (usually Decision Tree) to *boost* the prediction performance.
 
 # Algorithm
 
