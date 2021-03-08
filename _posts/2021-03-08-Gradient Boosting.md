@@ -16,7 +16,7 @@ There are two parts of GBM: "gradient" and "boosting". Here the term "gradient" 
 
 In the following, we have a formal description of GBM:
 
-**Input:** a training dataset ${\{(x_i, y_i)\}}_{i=1}^n$ and a differentiable loss function $\mathcal{L} = (y_i, F(x_i))$.
+
 
 **Step 1:** Initialize model with a constant value:
 
