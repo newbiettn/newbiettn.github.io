@@ -33,5 +33,10 @@ $r_{im} = - \left[ \frac{\partial L(y_i, F(x_i))}{\partial F(x_i) \right]
 \end{equation}
 
 
+**(B)** Fit a weaker learner to the values $r_{im}$ and create terminal regions $R_{jm}$, for $j = 1 ... J_m$
 
+**(C)** For $j = 1 ... J_m$ compute:
 
+\begin{equation}
+\gamma_{jm} = \operatorname*{arg\,min}_\gamma \sum_{x_i \in R_{ij}} \mathcal{L}(y_i, F_{m-1}(x) + \gamma)
+\end{equation}
