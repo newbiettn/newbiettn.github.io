@@ -93,7 +93,7 @@ a:focus {
 p {
 	font-family: inherit;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 20px;
 	margin-bottom: 17px;
 }
 iframe {
@@ -132,10 +132,10 @@ iframe {
  }
 
 .preload-status  {
-     width: 400px;
-     height: 300px;
+     width: 500px;
+     height: 263px;
      position: absolute;
-     left: 40%;
+     left: 20%;
      background-image: url("images/loading.gif");
      background-repeat: no-repeat;
      background-position: center;
@@ -183,14 +183,14 @@ ul.social li:last-child {
 	min-height: 220px;
 }
 h1.logo {
-	font-size: 70px;
+	font-size: 60px;
 	padding: 10px 0 3px;
-	font-weight: 400;
+	font-weight: 800;
 }
 
 p.motto {
-	font-size: 11px;
-	letter-spacing: 4px
+	font-size: 13px;
+	letter-spacing: 3px
 }
 
 @media only screen and (max-width: 767px) {
@@ -285,8 +285,8 @@ article h2 {
 	margin: 0;
 }
 article h1, article h2, article h3, article h4, article h5 {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	text-align:center
 }
 article h1 a {
@@ -314,7 +314,7 @@ article h1 a {
 	font-size: 12px;
 }
 p.written {
-	font-size: 16px;
+	font-size: 18px;
 	color: #999;
 }
 .site-example {
