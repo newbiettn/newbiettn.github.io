@@ -24,25 +24,22 @@
 	<link rel='stylesheet' id='foundation-css' href='{{ site.url }}/stylesheets/foundation.css?ver=4.5.3' type='text/css' media='all' />
 	<link rel='stylesheet' id='aude-layout-css' href='{{ site.url }}/stylesheets/style.css' type='text/css' media='all' />
 	<link rel='stylesheet' id='foundation-css' href='{{ site.url }}/stylesheets/syntax.css' type='text/css' media='all' />
+
 	<!-- ACTIONS -->
 	<script type='text/javascript' src='{{ site.url }}/javascripts/jquery.js'></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js"></script>
 	<script type='text/javascript' src='{{ site.url }}/javascripts/modernizr.foundation.js?ver=4.5.3'></script>
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    packages: ['base', 'ams'],
-    tags: 'ams'
-  },
-  svg: {
-    fontCache: 'global'
-  },
-  loader: {
-    load: ['ui/menu', '[tex]/ams']
-  }
-};
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
+		window.MathJax = {
+			loader: {
+				load: ['input/tex-base', 'output/svg', 'ui/menu', '[tex]/require', '[tex]/bbox', '[tex]/ams']
+			},
+			tex: {
+				inlineMath: [['$', '$'], ['\\(', '\\)']],
+				packages: ['base', 'require', 'bbox', 'ams'],
+				tags: 'ams'
+			},
+			svg: {
+				fontCache: 'global'
+			}};
+	</script>
