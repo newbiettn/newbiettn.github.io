@@ -4,6 +4,7 @@ author: "Ngoc Tran Trung"
 date: "03 March 2021"
 comments: yes
 layout: post
+published: false
 ---
 
 I did used python around 2013-2015 in some of my previous projects but I never actually took it seriously. In 2016 when I first arrived at Swinburne to pursue my PhD, it occured to me that I had to decide between R and Python as my primary language for data science. Since I had never used R before, I chose it instead of Python. The decision at that moment has taken me to a path on which I rarely got a chance to use Python much over the last few years.
@@ -77,7 +78,7 @@ It looks like `brew` has installed `pyenv` 1.2.23. We can verify this.
 pyenv 1.2.23
 ```
 
-Now it is necessary to define environment variable for `pyenv'. To do that, add the following to your `~/.zshprofile' (I use `zsh', for others who use `bash', please refer to the [https://github.com/pyenv/pyenv](official document) for further information.
+Now it is necessary to define environment variable for `pyenv'. To do that, add the following to your `~/.zshprofile' (I use `zsh', for others who use `bash', please refer to the [official document](https://github.com/pyenv/pyenv) for further information.
 
 ```
 export PYENV_ROOT="$HOME/.pyenv" 
