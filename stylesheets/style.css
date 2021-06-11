@@ -6,46 +6,41 @@ Theme URI: http://newbiettn.com
 /*8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
 /* GENERAL */
 /*8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
-@font-face {
-	font-family: 'IBM Plex Sans';
-	src: url(fonts/IBMPlexSans-Light.ttf);
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
-
 body {
-	font: 300 16px/1.5 "IBM Plex Sans", Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
 	font-size: 15px;
-	color: #111;
+    	color: #404040;
 	position: relative;
 	-webkit-font-smoothing: antialiased;
 	overflow: hidden;
 }
 h1, h2, h3, h4, h5 {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
 }
 h1 {
-	font-size: 29px;
-}
-
-h2 {
 	font-size: 27px;
 }
 
-h3 {
+h2 {
 	font-size: 25px;
 }
 
-h4 {
+h3 {
 	font-size: 23px;
 }
 
-h5 {
+h4 {
 	font-size: 21px;
 }
 
-h6 {
+h5 {
 	font-size: 19px;
+}
+
+h6 {
+	font-size: 17px;
 }
 
 a {
@@ -142,12 +137,15 @@ iframe {
 h1.logo {
 	font-size: 35px;
 	padding: 10px 0 3px;
-	font-weight: 800;
+	font-weight: 700;
+	color: #404040
 }
 
 p.motto {
 	font-size: 17px;
 	letter-spacing: 1px
+	color: #404040
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -168,7 +166,9 @@ p.motto {
 	text-align: left;
 	width: 100%;
 	list-style: outside none none;
-	font-weight: bold;
+	font-weight: 700;
+	color: #404040
+
 }
 
 nav {
@@ -239,7 +239,8 @@ article p {
 	font-family: inherit;
 	font-weight: normal;
 	font-size: 17px;
-	margin-bottom: 17px;
+	line-height: 24px;
+    	margin: 0 0 24px;
 }
 
 article {
@@ -252,6 +253,7 @@ article {
 
 article h1, article h2, article h3, article h4, article h5 {
 	margin-bottom: 17px;
+	margin-top: 0;
 }
 article h1 a {
 	color: #2F2F2F;
@@ -310,7 +312,7 @@ p.written {
 	border-color: #ddd !important;
 	border-style: solid !important;
 	border-width: 1px !important;
-	padding: 0 5px;
+	padding: 0 0 0 10px;
 	margin-bottom: 17px;
 	font-size:14px;
 }
@@ -323,8 +325,8 @@ p.written {
 	border-bottom: 1px dashed #e6e6e6;
 }
 .article-list-item-title span{
-	font-size: 16px;
-  	line-height: 27px;
+	font-size: 15px;
+  	line-height: 32px;
 }
 .article-list-item-title .post-meta {
 	float: right;
