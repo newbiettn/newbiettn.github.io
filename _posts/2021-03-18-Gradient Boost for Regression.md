@@ -6,13 +6,13 @@ comments: yes
 layout: post
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Gradient boost or gradient boosted machines (GBM) are a widely used ML algorithm. There are two parts of GBM: "gradient" and "boost". Here the term "gradient" refers to the use of gradient descent in the algorithm while "boost" reflects the boosting mechanism of the algorithm, that is, using an ensemble of weak successive trees to _boost_ the prediction performance.
 
 While an algorithm like Random Forest (RF) builds __an ensemble of deep & independent trees using bagging approach__, GBM builds __an ensemble of weak & successive tree using boosting approach__ where each tree takes into account the error of the previous trees.
 
-# 2. Algorithm
+## 2. Algorithm
 
 In the following, we describe GBM *for regression*:
 
@@ -42,9 +42,9 @@ $$
 
 __(D)__ Update $F_{m}(x) = F_{m-1}(x) + \nu \sum_{j=1}^{J_m} \gamma_m I(x \in R_{jm})$
 
-# 3. Algorithm Exposition
+## 3. Algorithm Exposition
 
-# 3.1. Input
+### 3.1. Input
 
 The input is a training dataset and a __loss function__ $\mathcal{L}$, which is often squared error for regression:
 
@@ -62,7 +62,9 @@ We also take the derivative of the loss function shown in \eqref{eq:loss-func} f
 }
 \end{equation}
 
-# 3.2. Step 1:
+## 3.2. 
+
+### Step 1:
 
 This step indicates that **a GBM model always starts with a single leaf of a constant value**. It is a important difference when we compare GBM with other boosting learners such as AdaBoost when Adaboost always starts with a stump, *i.e.* a very short tree!
 
@@ -89,11 +91,11 @@ $$
 
 So, as it turns out that, when we use mean squared error as a loss function, $F_{0}(x)$ is simply the average value of all target values!
 
-## Step 2: 
+### Step 2: 
 
 In this step, we construct $M$ sequential trees.
 
-### (A) 
+#### (A) 
 
 $r_{im} = - \Bigg[ \frac{\partial L(y_i, F(x_i))}{\partial F(x_i)} \Bigg]$ is basically a derivative of the loss function $\mathcal{L}$ with respect to the predicted value $F(x_i)$. 
 
@@ -118,7 +120,7 @@ Also, the definition of $r_{im}$ indicates that $F(x) = F_{m-1}(x)$, which is th
 
 __In general, the purpose of step (A) is to calculate residual for each data sample $x_i$ in the training set.__ And because $r_{im}$ is a gradient, that's why this algorithm is named Gradient Boosting.
 
-### (B) 
+#### (B) 
 
 The goal of step (B) is to build a weak learner -- a regression tree -- **that predicts the residuals found in step (A)**. 
 
@@ -126,7 +128,7 @@ Next, terminal regions $R_{jm}$ refer to leaves of the tree, *i.e.* each leaf co
 
 __In short, the general idea of this step is to fit a regression tree to the residuals we have calculated in step (A), and finally label the leaves of the new tree.__
 
-### (C)
+#### (C)
 
 For each leaf $j$ of $J_m$ leaves of the new tree, we compute $\gamma_{jm}$, which is the predicted value for the leaf $j$.
 
@@ -146,7 +148,7 @@ Basically $\gamma_{jm}$ is the average value of the residuals of the considering
 
 __In general, step (C) is to compute the output residual $\gamma_{jm}$ for each leaf $j$ of the current tree $m$.__
 
-### (D)
+#### (D)
 
 In step (D), we make a new prediction $F_m(x)$. 
 

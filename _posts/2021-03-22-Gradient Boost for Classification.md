@@ -6,13 +6,13 @@ comments: yes
 layout: post
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 In the 1st part of the Gradient Boost (GBM) series, we covered how GBM handles regression. In this following part, we will shed light on how the algorithm works for classification problems.
 
-# 2. Algorithm Exposition
+## 2. Algorithm Exposition
 
-## 2.1. Loss function
+### 2.1. Loss function
 
 The algorithm idea of GBM for classification remains the same as in the previous part, except that we need to use a different kind of loss function. Usually, we use __log loss__, which is defined as follows:
 
@@ -64,7 +64,7 @@ The loss function that uses $log(odds)$ is as follows:
 }
 \end{equation}
 
-## 2.2. The derivative of the loss function
+### 2.2. The derivative of the loss function
 
 We take the derivative of the above loss function for later use:
 
@@ -85,9 +85,9 @@ In general, the derivative of the loss function \eqref{eq:loss-func-with-log-odd
 \end{equation}
 
 
-## 2.3. Algorithm Steps
+### 2.3. Algorithm Steps
 
-### 2.3.1 Step 1
+#### 2.3.1 Step 1
 
 In this step, we are going to find the initial value $F_0(x)$:
 
@@ -116,9 +116,9 @@ F_0(x) = \frac{p}{1 - p}
 \end{equation}
 
 
-### 2.3.1 Step 2
+#### 2.3.1 Step 2
 
-### (A) 
+#### (A) 
 
 In this step, we are going to compute the residuals $r_{im} = - \Bigg[ \frac{\partial L(y_i, F(x_i))}{\partial F(x_i)} \Bigg]$.
 
@@ -139,11 +139,11 @@ r_{im} = y_i - p_i
 }
 \end{equation}
 
-### (B) 
+#### (B) 
 
 The goal of step (B) is to build a weak learner -- a regression tree -- **that predicts the residuals found in step (A)**. This step is identical for both regression and classification.
 
-### (C)
+#### (C)
 
 In this step, we compute the __output value__ $\gamma_{jm}$ for each leaf that minimizes the following equation:
 
@@ -193,7 +193,7 @@ For a leaf with multiple residuals, we have:
 \end{equation}
 
 
-### (D)
+#### (D)
 
 In step (D), we make a new prediction $F_m(x)$. 
 
