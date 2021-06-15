@@ -1,5 +1,5 @@
 ---
-title: "MNIST with tf.keras"
+title: "2-layer NN with tf.keras to solve MNIST"
 author: "Ngoc Tran Trung"
 date: "7 April 2021"
 comments: yes
@@ -101,18 +101,6 @@ print("Each image is of size: %i x %i" % X_train.shape[1:3])
 The dimensions of `X_train` shows that our training dataset has 60k training examples of 28x28 pixels. Besides, our test dataset, which is `X_test` shows that we have 10k test examples of the same 28x28 pixels.
 
 
-```python
-X_train_reshaped = X_train.T
-X_train_reshaped.shape
-```
-
-
-
-
-    (28, 28, 60000)
-
-
-
 ### 2. Reshape the dataset
 
 Prior to feeding the training and test dataset to the network, it is necessary to *flatten* and *standardize* examples. Here, flattening refers to reshaping each image of 28x28 pixels from 2-dimensions (corresponding to height and width) to a 1-dimension vector of 784 pixels.
@@ -211,10 +199,6 @@ mnist_model.evaluate(X_test_preprocessed, Y_test_preprocessed)
 ```
 
     313/313 [==============================] - 0s 758us/step - loss: 0.1134 - accuracy: 0.9666
-
-
-
-
 
     [0.11341889947652817, 0.9666000008583069]
 
