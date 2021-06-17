@@ -1,5 +1,5 @@
 ---
-title: "2-layer NN with tf.keras to solve MNIST"
+title: "2-layer NN with tf.keras to solve MNIST (part 1)"
 author: "Ngoc Tran Trung"
 date: "7 April 2021"
 comments: yes

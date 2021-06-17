@@ -1,5 +1,5 @@
 ---
-title: "CNN LeNet-5 on MNIST"
+title: "CNN LeNet-5 on MNIST (part 2)"
 author: "Ngoc Tran Trung"
 date: "9 April 2021"
 comments: yes
