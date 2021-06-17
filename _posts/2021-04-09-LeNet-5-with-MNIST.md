@@ -30,6 +30,8 @@ VALIDATION_SPLIT = .2
 
 ## II - Load and Process the Dataset
 
+### 1. Load data
+
 
 ```python
 # Load MNIST dataset
@@ -46,7 +48,57 @@ print("Y_test's shape:", Y_test.shape)
     Y_test's shape: (10000,)
 
 
-This time, we don't need to flatten the images since `keras` allows us to explicit define the shape of the input, which is 28x28. We only need to one-hot encoding for the target variables, which are `Y_train` and `Y_test`.
+### 2. Convert to the dataset to float32
+
+
+```python
+print("Data type of X_train:", X_train.dtype)
+print("Data type of X_test:", X_test.dtype)
+```
+
+    Data type of X_train: uint8
+    Data type of X_test: uint8
+
+
+
+```python
+X_train_preprocessed = X_train.astype('float32')
+X_test_preprocessed = X_test.astype('float32')
+print("Data type of X_train_preprocessed:", X_train_preprocessed.dtype)
+print("Data type of X_test_preprocessed:", X_test_preprocessed.dtype)
+```
+
+    Data type of X_train_preprocessed: float32
+    Data type of X_test_preprocessed: float32
+
+
+### 2. Normalize the data
+
+
+```python
+# Check range of values (peak to peak)
+print("Peak-to-peak value of X_train:", np.ptp(X_train_preprocessed))
+print("Peak-to-peak value of X_test:", np.ptp(X_test_preprocessed))
+```
+
+    Peak-to-peak value of X_train: 255.0
+    Peak-to-peak value of X_test: 255.0
+
+
+
+```python
+# Normalize to range (0-1)
+X_train_preprocessed = np.divide(X_train_preprocessed, 255)
+X_test_preprocessed = np.divide(X_test_preprocessed, 255)
+print("Peak-to-peak value of X_train:", np.ptp(X_train_preprocessed))
+print("Peak-to-peak value of X_test:", np.ptp(X_test_preprocessed))
+```
+
+    Peak-to-peak value of X_train: 1.0
+    Peak-to-peak value of X_test: 1.0
+
+
+### 3. Reshape training and target variables
 
 
 ```python
@@ -61,37 +113,22 @@ print("Y_test_preprocessed's shape: ", Y_test_preprocessed.shape)
     Y_test_preprocessed's shape:  (10000, 10)
 
 
-## III - Build a Convolutional Model 
-
-In this post, we will build a CNN to solve MNIST. Specifically we will use one of the earliest CNN architecture called [LeNet-5](https://en.wikipedia.org/wiki/LeNet) for our problem. 
-
-It is important to note that the input size of the images of LeNet-5 is 32x32 while ours is 28x28, we should add some padding to make our size 32x32. Although we can use `keras` function `.ZeroPadding2D()` to do that, I still would like to decouple this preprocessing step from model building. We also need to reshape it to define that our images have 1 channel.
-
-![png](/../figs/2021-04-09-LeNet-5-with-MNIST/LeNet5.png)
-
 
 ```python
-# Padding and reshape X_train
-X_train_preprocessed = np.pad(X_train, ((0, 0), (2, 2), (2, 2)))  # padding 2 on top and bottom for 2D
-X_train_preprocessed = X_train_preprocessed.reshape(X_train_preprocessed.shape[0], 
-                                       X_train_preprocessed.shape[1], 
-                                       X_train_preprocessed.shape[2], 
-                                       1)  # 1 for 1 channel
-print("X_train's shape:", X_train_preprocessed.shape)
-
-# Doing similar for X_test
-X_test_preprocessed = np.pad(X_test, ((0, 0), (2, 2), (2, 2)))
+# Reshape X_train_preprocessed, X_test_preprocessed
+X_train_preprocessed = X_train_preprocessed.reshape(X_train_preprocessed.shape[0],
+                                                    X_train_preprocessed.shape[1],
+                                                    X_train_preprocessed.shape[2],
+                                                    1)  # 1 represents 1 channel
 X_test_preprocessed = X_test_preprocessed.reshape(X_test_preprocessed.shape[0],
-                                     X_test_preprocessed.shape[1], 
-                                     X_test_preprocessed.shape[2], 1)
-print("X_test's shape:", X_test_preprocessed.shape)
+                                                  X_test_preprocessed.shape[1],
+                                                  X_test_preprocessed.shape[2],
+                                                  1)  # 1 represents 1 channel
 ```
 
-    X_train's shape: (60000, 32, 32, 1)
-    X_test's shape: (10000, 32, 32, 1)
+## III - Build a Convolutional Model 
 
-
-After padding, we have our new images are of size 32x32. Now we proceed to build our CNN model using LeNet-5 architecture. Basically, LeNet-5 basically consits of seven layers, which are as follows:
+In this post, we will build a CNN to solve MNIST. Specifically we will use one of the earliest CNN architecture called [LeNet-5](https://en.wikipedia.org/wiki/LeNet) for our problem. Basically, LeNet-5 consists of seven layers, which are as follows:
 1. `Conv2D`: 6 filters 5x5, stride = 1, padding = 2.
 2. `AveragePooling2D`: 2x2, stride = 2, padding = 0.
 3. `Conv2D`: 16 filters 5x5, stride = 1, padding = 0.
@@ -100,17 +137,35 @@ After padding, we have our new images are of size 32x32. Now we proceed to build
 6. `Dense`: 84 units, activation = "relu".
 7. `Dense`: 10 units, activation = "softmax".
 
+![png](/../figs/2021-04-09-LeNet-5-with-MNIST/LeNet5.png)
+
 
 ```python
 mnist_model = keras.Sequential([
-    #keras.layers.Input(shape=(64, 64)),
-    keras.layers.Conv2D(filters=6, kernel_size=(5, 5), strides=1, padding="valid", input_shape=(32, 32, 1)),
+    keras.layers.Input(shape=(28, 28, 1)),
+    
+    keras.layers.Conv2D(filters=6, kernel_size=(5, 5), strides=1, padding="valid"),
+    keras.layers.BatchNormalization(),
+    keras.layers.Activation("relu"),
+    
     keras.layers.AveragePooling2D(pool_size=(2, 2), strides=(2, 2), padding="valid"),
+    keras.layers.BatchNormalization(),
+    
     keras.layers.Conv2D(filters=16, kernel_size=(5, 5), padding="valid"),
+    keras.layers.BatchNormalization(),
+    keras.layers.Activation("relu"),
+    
     keras.layers.AveragePooling2D(pool_size=(2, 2), padding="valid"),
+    keras.layers.BatchNormalization(),
+    
     keras.layers.Flatten(),
+    
     keras.layers.Dense(units=120, activation="relu"),
+    keras.layers.BatchNormalization(),
+    
     keras.layers.Dense(units=84, activation="relu"),
+    keras.layers.BatchNormalization(),
+    
     keras.layers.Dense(units=10, activation="softmax")
 ])
 ```
@@ -125,25 +180,41 @@ mnist_model.summary()
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #   
     =================================================================
-    conv2d (Conv2D)              (None, 28, 28, 6)         156       
+    conv2d (Conv2D)              (None, 24, 24, 6)         156       
     _________________________________________________________________
-    average_pooling2d (AveragePo (None, 14, 14, 6)         0         
+    batch_normalization (BatchNo (None, 24, 24, 6)         24        
     _________________________________________________________________
-    conv2d_1 (Conv2D)            (None, 10, 10, 16)        2416      
+    activation (Activation)      (None, 24, 24, 6)         0         
     _________________________________________________________________
-    average_pooling2d_1 (Average (None, 5, 5, 16)          0         
+    average_pooling2d (AveragePo (None, 12, 12, 6)         0         
     _________________________________________________________________
-    flatten (Flatten)            (None, 400)               0         
+    batch_normalization_1 (Batch (None, 12, 12, 6)         24        
     _________________________________________________________________
-    dense (Dense)                (None, 120)               48120     
+    conv2d_1 (Conv2D)            (None, 8, 8, 16)          2416      
+    _________________________________________________________________
+    batch_normalization_2 (Batch (None, 8, 8, 16)          64        
+    _________________________________________________________________
+    activation_1 (Activation)    (None, 8, 8, 16)          0         
+    _________________________________________________________________
+    average_pooling2d_1 (Average (None, 4, 4, 16)          0         
+    _________________________________________________________________
+    batch_normalization_3 (Batch (None, 4, 4, 16)          64        
+    _________________________________________________________________
+    flatten (Flatten)            (None, 256)               0         
+    _________________________________________________________________
+    dense (Dense)                (None, 120)               30840     
+    _________________________________________________________________
+    batch_normalization_4 (Batch (None, 120)               480       
     _________________________________________________________________
     dense_1 (Dense)              (None, 84)                10164     
     _________________________________________________________________
+    batch_normalization_5 (Batch (None, 84)                336       
+    _________________________________________________________________
     dense_2 (Dense)              (None, 10)                850       
     =================================================================
-    Total params: 61,706
-    Trainable params: 61,706
-    Non-trainable params: 0
+    Total params: 45,418
+    Trainable params: 44,922
+    Non-trainable params: 496
     _________________________________________________________________
 
 
@@ -172,13 +243,13 @@ history = mnist_model.fit(X_train_preprocessed,
 mnist_model.evaluate(X_test_preprocessed, Y_test_preprocessed)
 ```
 
-    313/313 [==============================] - 1s 4ms/step - loss: 0.1565 - accuracy: 0.9713
+    313/313 [==============================] - 1s 4ms/step - loss: 0.0273 - accuracy: 0.9927
 
 
 
 
 
-    [0.15645572543144226, 0.9713000059127808]
+    [0.0272968802601099, 0.9926999807357788]
 
 
 
@@ -227,52 +298,52 @@ df_loss_acc.describe()
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.079604</td>
-      <td>0.979224</td>
-      <td>0.150545</td>
-      <td>0.967842</td>
+      <td>0.019245</td>
+      <td>0.993931</td>
+      <td>0.046373</td>
+      <td>0.988331</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.117880</td>
-      <td>0.018772</td>
-      <td>0.030265</td>
-      <td>0.006766</td>
+      <td>0.029051</td>
+      <td>0.008527</td>
+      <td>0.005838</td>
+      <td>0.002323</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.027080</td>
-      <td>0.893604</td>
-      <td>0.107625</td>
-      <td>0.944417</td>
+      <td>0.003132</td>
+      <td>0.953438</td>
+      <td>0.037565</td>
+      <td>0.980500</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>0.037492</td>
-      <td>0.977495</td>
-      <td>0.128079</td>
-      <td>0.966542</td>
+      <td>0.006448</td>
+      <td>0.994307</td>
+      <td>0.043261</td>
+      <td>0.987771</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.047665</td>
-      <td>0.985073</td>
-      <td>0.136388</td>
-      <td>0.969583</td>
+      <td>0.010621</td>
+      <td>0.996365</td>
+      <td>0.046205</td>
+      <td>0.989125</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.072220</td>
-      <td>0.989229</td>
-      <td>0.171658</td>
-      <td>0.971417</td>
+      <td>0.017502</td>
+      <td>0.997828</td>
+      <td>0.047923</td>
+      <td>0.989750</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.681337</td>
-      <td>0.991625</td>
-      <td>0.215185</td>
-      <td>0.974917</td>
+      <td>0.158487</td>
+      <td>0.999062</td>
+      <td>0.063203</td>
+      <td>0.990583</td>
     </tr>
   </tbody>
 </table>
@@ -302,19 +373,22 @@ df_acc.plot(title='Training vs Dev Accuracy', figsize=(12, 6))
 
 
     
-![png](/../figs/2021-04-09-LeNet-5-with-MNIST/output_20_1.png)
+![png](/../figs/2021-04-09-LeNet-5-with-MNIST/output_25_1.png)
     
 
 
 
     
-![png](/../figs/2021-04-09-LeNet-5-with-MNIST/output_20_2.png)
+![png](/../figs/2021-04-09-LeNet-5-with-MNIST/output_25_2.png)
     
 
-
-As we can see, the average accuracy on the training set and the dev of our model are 97.92% and 96.78% whereas its accuracy on the test set is 97.13%. Thus, there could be a high variance in our model that adding regularization may benefit our model.
 
 ## V - Conclusion
 
-In this post, we built a LeNet-5 CNN to recognize digits with MNIST dataset. In comparison to [the previous post](https://newbiettn.github.io/2021/04/07/MNIST-with-keras/), this time, our model achieved a slightly better prediction accuracy on the seperate test set with 97.13% (vs. 96.66%). 
+In this post, we built a LeNet-5 CNN to recognize digits with MNIST dataset. In comparison to [the previous post](https://newbiettn.github.io/2021/04/07/MNIST-with-keras/), this time, our model achieved a much better prediction accuracy on a seperate test set with 99.27% (vs. 96.66%). 
+
+
+```python
+
+```
 
