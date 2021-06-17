@@ -5,13 +5,13 @@ date: "9 April 2021"
 comments: yes
 layout: post
 ---
-
 In the previous post, we used `tf.keras` to build and train a 2-layer neural network to predict digits 0-9 with MNIST dataset. This time, we will step up our game a bit when we build a Convolutional Neural Network (CNN) for our learning.
 
 ## I - Load Packages and Define Constants
 
 
 ```python
+# Load packages
 import tensorflow as tf
 import numpy as np
 from tensorflow import keras
@@ -22,8 +22,9 @@ np.random.seed(1)
 
 
 ```python
+# Define constants
 NUMBER_OF_CLASSES = 10
-EPOCHS = 30
+EPOCHS = 100
 BATCH_SIZE = 2**6
 VALIDATION_SPLIT = .2
 ```
@@ -137,12 +138,15 @@ In this post, we will build a CNN to solve MNIST. Specifically we will use one o
 6. `Dense`: 84 units, activation = "relu".
 7. `Dense`: 10 units, activation = "softmax".
 
+
 ![png](/../figs/2021-04-09-LeNet-5-with-MNIST/LeNet5.png)
 
 
 ```python
 mnist_model = keras.Sequential([
     keras.layers.Input(shape=(28, 28, 1)),
+    
+    keras.layers.ZeroPadding2D(padding=(2, 2)),
     
     keras.layers.Conv2D(filters=6, kernel_size=(5, 5), strides=1, padding="valid"),
     keras.layers.BatchNormalization(),
@@ -180,29 +184,31 @@ mnist_model.summary()
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #   
     =================================================================
-    conv2d (Conv2D)              (None, 24, 24, 6)         156       
+    zero_padding2d (ZeroPadding2 (None, 32, 32, 1)         0         
     _________________________________________________________________
-    batch_normalization (BatchNo (None, 24, 24, 6)         24        
+    conv2d (Conv2D)              (None, 28, 28, 6)         156       
     _________________________________________________________________
-    activation (Activation)      (None, 24, 24, 6)         0         
+    batch_normalization (BatchNo (None, 28, 28, 6)         24        
     _________________________________________________________________
-    average_pooling2d (AveragePo (None, 12, 12, 6)         0         
+    activation (Activation)      (None, 28, 28, 6)         0         
     _________________________________________________________________
-    batch_normalization_1 (Batch (None, 12, 12, 6)         24        
+    average_pooling2d (AveragePo (None, 14, 14, 6)         0         
     _________________________________________________________________
-    conv2d_1 (Conv2D)            (None, 8, 8, 16)          2416      
+    batch_normalization_1 (Batch (None, 14, 14, 6)         24        
     _________________________________________________________________
-    batch_normalization_2 (Batch (None, 8, 8, 16)          64        
+    conv2d_1 (Conv2D)            (None, 10, 10, 16)        2416      
     _________________________________________________________________
-    activation_1 (Activation)    (None, 8, 8, 16)          0         
+    batch_normalization_2 (Batch (None, 10, 10, 16)        64        
     _________________________________________________________________
-    average_pooling2d_1 (Average (None, 4, 4, 16)          0         
+    activation_1 (Activation)    (None, 10, 10, 16)        0         
     _________________________________________________________________
-    batch_normalization_3 (Batch (None, 4, 4, 16)          64        
+    average_pooling2d_1 (Average (None, 5, 5, 16)          0         
     _________________________________________________________________
-    flatten (Flatten)            (None, 256)               0         
+    batch_normalization_3 (Batch (None, 5, 5, 16)          64        
     _________________________________________________________________
-    dense (Dense)                (None, 120)               30840     
+    flatten (Flatten)            (None, 400)               0         
+    _________________________________________________________________
+    dense (Dense)                (None, 120)               48120     
     _________________________________________________________________
     batch_normalization_4 (Batch (None, 120)               480       
     _________________________________________________________________
@@ -212,8 +218,8 @@ mnist_model.summary()
     _________________________________________________________________
     dense_2 (Dense)              (None, 10)                850       
     =================================================================
-    Total params: 45,418
-    Trainable params: 44,922
+    Total params: 62,698
+    Trainable params: 62,202
     Non-trainable params: 496
     _________________________________________________________________
 
@@ -221,8 +227,8 @@ mnist_model.summary()
 
 ```python
 # Compile our model
-mnist_model.compile(optimizer="adam", 
-                    loss="categorical_crossentropy",
+mnist_model.compile(optimizer='adam', 
+                    loss='categorical_crossentropy',
                     metrics=['accuracy'])
 ```
 
@@ -243,13 +249,13 @@ history = mnist_model.fit(X_train_preprocessed,
 mnist_model.evaluate(X_test_preprocessed, Y_test_preprocessed)
 ```
 
-    313/313 [==============================] - 1s 4ms/step - loss: 0.0273 - accuracy: 0.9927
+    313/313 [==============================] - 1s 3ms/step - loss: 0.0417 - accuracy: 0.9926
 
 
 
 
 
-    [0.0272968802601099, 0.9926999807357788]
+    [0.041718218475580215, 0.9926000237464905]
 
 
 
@@ -291,59 +297,59 @@ df_loss_acc.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>30.000000</td>
-      <td>30.000000</td>
-      <td>30.000000</td>
-      <td>30.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.019245</td>
-      <td>0.993931</td>
-      <td>0.046373</td>
-      <td>0.988331</td>
+      <td>0.006823</td>
+      <td>0.997854</td>
+      <td>0.050759</td>
+      <td>0.990359</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.029051</td>
-      <td>0.008527</td>
-      <td>0.005838</td>
-      <td>0.002323</td>
+      <td>0.017671</td>
+      <td>0.005248</td>
+      <td>0.005864</td>
+      <td>0.002038</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.003132</td>
-      <td>0.953438</td>
-      <td>0.037565</td>
-      <td>0.980500</td>
+      <td>0.000413</td>
+      <td>0.951917</td>
+      <td>0.034314</td>
+      <td>0.981667</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>0.006448</td>
-      <td>0.994307</td>
-      <td>0.043261</td>
-      <td>0.987771</td>
+      <td>0.001712</td>
+      <td>0.998427</td>
+      <td>0.047801</td>
+      <td>0.989917</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.010621</td>
-      <td>0.996365</td>
-      <td>0.046205</td>
-      <td>0.989125</td>
+      <td>0.002462</td>
+      <td>0.999198</td>
+      <td>0.051356</td>
+      <td>0.990917</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.017502</td>
-      <td>0.997828</td>
-      <td>0.047923</td>
-      <td>0.989750</td>
+      <td>0.004907</td>
+      <td>0.999464</td>
+      <td>0.054700</td>
+      <td>0.991583</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.158487</td>
-      <td>0.999062</td>
-      <td>0.063203</td>
-      <td>0.990583</td>
+      <td>0.163319</td>
+      <td>0.999896</td>
+      <td>0.064379</td>
+      <td>0.992750</td>
     </tr>
   </tbody>
 </table>
@@ -385,10 +391,5 @@ df_acc.plot(title='Training vs Dev Accuracy', figsize=(12, 6))
 
 ## V - Conclusion
 
-In this post, we built a LeNet-5 CNN to recognize digits with MNIST dataset. In comparison to [the previous post](https://newbiettn.github.io/2021/04/07/MNIST-with-keras/), this time, our model achieved a much better prediction accuracy on a seperate test set with 99.27% (vs. 96.66%). 
-
-
-```python
-
-```
+In this post, we built a LeNet-5 CNN to recognize digits with MNIST dataset. In comparison to [the previous post](https://newbiettn.github.io/2021/04/07/MNIST-with-keras/), this time, our model achieved a much better prediction accuracy on a seperate test set with 99.26% (vs. 96.66%). 
 
